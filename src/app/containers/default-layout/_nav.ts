@@ -10,14 +10,18 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
-    iconComponent: { name: 'cil-drop' }
+    name: 'Projects',
+    url: '/projects',
+    iconComponent: { name: 'cil-apps' },
+    children : [
+      {
+        name: 'List Projects',
+        url : 'projects/list'
+      }
+
+    ]
   },
   {
     name: 'Typography',
