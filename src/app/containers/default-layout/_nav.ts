@@ -10,6 +10,10 @@ export const navItems: INavData[] = [
       {
         name: 'List',
         url : 'projects/list'
+      },
+      {
+        name :'all projects',
+        url  :'projects/allprojects' 
       }
 
     ]
