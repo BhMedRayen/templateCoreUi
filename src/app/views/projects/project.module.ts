@@ -3,4 +3,6 @@ export interface Project {
     description: string;
     technologies: string[];
     done: boolean;
+    allTasks: number;
+    doneTasks : number;
   }
