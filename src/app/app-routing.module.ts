@@ -6,6 +6,7 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { ProjectsModule } from './views/projects/projects.module'
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
       {
         path: 'projects',
         loadChildren: () =>
-          import('./views/theme/theme.module').then((m) => m.ThemeModule)
+          import('./views/projects/projects.module').then((m) => m.ProjectsModule)
       },
       {
         path: 'base',
