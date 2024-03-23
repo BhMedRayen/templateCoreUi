@@ -29,12 +29,12 @@ const routes: Routes = [
       {
         path: 'projects',
         loadChildren: () =>
-          import('./views/projects/projects.module').then((m) => m.ProjectsModule)
+          import('./views/models/project/projects.module').then((m) => m.ProjectsModule)
       },
       {
         path: 'projects/allprojects',
         loadChildren: () =>
-          import('./views/projects/projects.module').then((m) => m.ProjectsModule)
+          import('./views/models/project/projects.module').then((m) => m.ProjectsModule)
       },
       {
         path: 'base',

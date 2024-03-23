@@ -1,19 +1,18 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-
 // Import app component
 import { AppComponent } from './app.component';
-
 // Import containers
+import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
+import { TeamModule } from '../app/views/models/teams/teams.module'
+import { ProjectsModule } from '../app/views/models/project/projects.module'; 
 
 import {
   AvatarModule,
@@ -33,7 +32,9 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule
+  UtilitiesModule,
+
+  
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -72,7 +73,10 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    FormsModule  ,
+    TeamModule    ,
+    ProjectsModule 
   ],
   providers: [
     {
@@ -82,7 +86,7 @@ const APP_CONTAINERS = [
     IconSetService,
     Title
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

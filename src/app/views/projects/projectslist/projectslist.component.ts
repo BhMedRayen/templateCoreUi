@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectsModule } from '../projects.module';
+import { ProjectsModule } from '../../models/project/projects.module';
 import { CommonModule } from '@angular/common';
+import { TeamModule } from '../../models/teams/teams.module'
 
 @Component({
   selector: 'app-projectslist',
@@ -15,7 +16,13 @@ export class ProjectslistComponent implements OnInit {
   doneProjects: number =0;
   undoneProjects: any[] = [];
   showAllUndoneProjects: boolean = false;
-  constructor(private projectsModule: ProjectsModule) {}
+   numberOfTeams: number = 0;
+  projectsDoneByTeams: number = 0;
+
+
+  constructor(private projectsModule: ProjectsModule, private teamModule: TeamModule) {} 
+
+
   toggleAllUndoneProjects() {
     this.showAllUndoneProjects = !this.showAllUndoneProjects;
     if (this.showAllUndoneProjects) {
@@ -28,6 +35,10 @@ ngOnInit(): void {
     this.totalProjects = this.projectsModule.projects.length;
     this.doneProjects = this.projectsModule.projects.filter(project => project.done).length;
     this.undoneProjects = this.projectsModule.projects.filter(project => !project.done)
+
+    this.numberOfTeams = this.teamModule.teams.length;
+    this.projectsDoneByTeams = this.teamModule.teams.reduce((total: number, team: any) => total + team.projects.filter((project: any) => project.done).length, 0);
+
 }
 
 }
