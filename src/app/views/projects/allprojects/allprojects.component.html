@@ -12,21 +12,40 @@
                         <th scope="col">All Tasks</th>
                         <th scope="col">Done Tasks</th>
                         <th scope="col">Members</th>
+                        <th scope="col">Details</th>
                     </tr>
                 </thead>
                 <tbody>
                     <ng-container *ngIf="showAllProjects; else limitedProjects">
                         <tr *ngFor="let project of allProjects">
                             <td>{{ project.title }}</td>
-                            <td>{{ project.allTasks }}</td>
-                            <td>{{ project.doneTasks }}</td>
+                            <td>{{  project.backlog.allTasks }}</td>
+                            <td>{{ project.backlog.doneTasks }}</td>
+                            <td>
+                                <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
+                                <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
+                                <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-light">View details</button>
+                            </td>
                         </tr>
                     </ng-container>
                     <ng-template #limitedProjects>
                         <tr *ngFor="let project of allProjects.slice(0, displayedProjects)">
                             <td>{{ project.title }}</td>
-                            <td>{{ project.allTasks }}</td>
-                            <td>{{ project.doneTasks }}</td>
+                            <td>{{ project.backlog.allTasks }}</td>
+                            <td>{{ project.backlog.doneTasks }}</td>
+                            <td>
+                                
+                                    <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
+                                    <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
+                                    <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
+                                
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-light">View details</button>
+                            </td>
                         </tr>
                     </ng-template>
                 </tbody>
