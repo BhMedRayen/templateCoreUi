@@ -10,6 +10,7 @@ import { TeamModule } from '../../models/teams/teams.module'
   templateUrl: './projectslist.component.html',
   styleUrls: ['./projectslist.component.scss']
 })
+
 export class ProjectslistComponent implements OnInit {
 
   totalProjects: number =0;
@@ -23,9 +24,9 @@ export class ProjectslistComponent implements OnInit {
   projectsWithTasks: any[] = [];
 
 
+
   constructor(private projectsModule: ProjectsModule, private teamModule: TeamModule) {} 
-
-
+ 
   toggleAllUndoneProjects() {
     this.showAllUndoneProjects = !this.showAllUndoneProjects;
     if (this.showAllUndoneProjects) {
