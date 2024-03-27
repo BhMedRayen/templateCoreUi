@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { TeamModule } from '../app/views/models/teams/teams.module'
 import { ProjectsModule } from '../app/views/models/project/projects.module'; 
+import { Router, RouterModule } from '@angular/router';
+
+
 
 import {
   AvatarModule,
@@ -33,7 +36,7 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
-
+  ModalModule 
   
 } from '@coreui/angular';
 
@@ -76,7 +79,10 @@ const APP_CONTAINERS = [
     NgScrollbarModule,
     FormsModule  ,
     TeamModule    ,
-    ProjectsModule 
+    ProjectsModule ,
+    ModalModule ,
+    RouterModule
+ 
   ],
   providers: [
     {
