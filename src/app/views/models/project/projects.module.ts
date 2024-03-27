@@ -3,6 +3,7 @@ import {ProjectsRoutingModule } from '../../projects/projects-routing.module'
 import { Project } from './project.model'; 
 import { CommonModule } from '@angular/common'; 
 import { Backlog } from '../backlog/backlog.model';
+import { ButtonModule, ModalModule, } from '@coreui/angular';
 
 
 
@@ -10,6 +11,8 @@ import { Backlog } from '../backlog/backlog.model';
   imports: [
     CommonModule, 
     ProjectsRoutingModule,
+    ButtonModule,
+    ModalModule , 
   ],
   declarations: [
 
