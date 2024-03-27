@@ -16,8 +16,11 @@ export class ProjectslistComponent implements OnInit {
   doneProjects: number =0;
   undoneProjects: any[] = [];
   showAllUndoneProjects: boolean = false;
-   numberOfTeams: number = 0;
+  numberOfTeams: number = 0;
   projectsDoneByTeams: number = 0;
+  totalBacklogs: number = 0;
+  doneBacklogs: number = 0;
+  projectsWithTasks: any[] = [];
 
 
   constructor(private projectsModule: ProjectsModule, private teamModule: TeamModule) {} 
@@ -35,9 +38,16 @@ ngOnInit(): void {
     this.totalProjects = this.projectsModule.projects.length;
     this.doneProjects = this.projectsModule.projects.filter(project => project.done).length;
     this.undoneProjects = this.projectsModule.projects.filter(project => !project.done)
-
     this.numberOfTeams = this.teamModule.teams.length;
     this.projectsDoneByTeams = this.teamModule.teams.reduce((total: number, team: any) => total + team.projects.filter((project: any) => project.done).length, 0);
+    this.totalBacklogs = this.projectsModule.projects.filter(project => project.backlog).length;
+    this.doneBacklogs = this.projectsModule.projects.filter(project => project.backlog && project.backlog.doneTasks === project.backlog.allTasks).length;
+
+    this.projectsWithTasks = this.projectsModule.projects.map(project => ({
+      ...project,
+      allTasks: project.backlog?.allTasks || 0, 
+      doneTasks: project.backlog?.doneTasks || 0 
+    }));
 
 }
 

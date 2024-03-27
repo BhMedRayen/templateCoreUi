@@ -37,12 +37,13 @@
                 <div class="card m-3 custom-card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title">Projects</h5> 
-                            <i class="fa-solid fa-diagram-project"></i>
+                            <h5 class="card-title">Backlog</h5> 
+                            <i class="fa-solid fa-bars-progress"></i>
                         </div>
                         <div class="card-text">
-                            <p class="mb-4 mt-3"><strong>Total Projects:</strong> {{ totalProjects }}</p>
-                            <p><strong>Done Projects:</strong> {{ doneProjects }}</p>
+                            <p class="mb-4 mt-3"><strong>Total backlogs:</strong>{{ totalBacklogs }} </p> 
+                            
+                            <p><strong>Done Backlogs: </strong> {{ doneBacklogs }} </p>
                         </div>
                     </div>
                 </div>
@@ -65,22 +66,22 @@
                             <th scope="col">All Tasks</th>
                             <th scope="col">Done Tasks</th>
                             <th scope="col">Members</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         <ng-container *ngIf="showAllUndoneProjects; else limitedProjects">
                             <tr *ngFor="let project of undoneProjects">
                                 <td>{{ project.title }}</td>
-                                <td>{{ project.allTasks }}</td>
-                                <td>{{ project.doneTasks }}</td>
+                                <td>{{project.backlog.allTasks }}</td>
+                                <td>{{ project.backlog.doneTasks }}</td>
                                 <td>
                                     <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
                                     <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
                                     <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-light">Edit Projects</button>
+                                    <button type="button" class="btn btn-light">View details</button>
 
                                 </td>
                             </tr>
@@ -88,15 +89,15 @@
                         <ng-template #limitedProjects>
                             <tr *ngFor="let project of undoneProjects">
                                 <td>{{ project.title }}</td>
-                                <td>{{ project.allTasks }}</td>
-                                <td>{{ project.doneTasks }}</td>
+                                <td>{{ project.backlog.allTasks}}</td>
+                                <td>{{ project.backlog.doneTasks }}</td>
                                 <td>
                                         <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
                                         <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
                                         <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-light">Edit Projects</button>
+                                    <button type="button" class="btn btn-light">View details</button>
 
                                 </td>
                             </tr>
