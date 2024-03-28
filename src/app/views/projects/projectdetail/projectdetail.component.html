@@ -1,1 +1,27 @@
-<p>projectdetail works!</p>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <h2 class="mb-4">{{ project?.title }}</h2>
+            <h3>Description</h3>
+            <p>{{ project?.description }}</p>
+            <h3>Technologies</h3>
+            <div class="d-flex flex-wrap">
+                <div *ngFor="let technology of project?.technologies" class="mr-4 mb-4 mt-3" style="margin-right: 100px; margin-bottom: 50px;">
+                    <img src="assets/ProjectAassets/{{ technology }}.png" alt="{{ technology }}" class="rounded-circle" style="width: 50px; height: 50px;">
+                    <h5 class="text-center mt-2">{{ technology }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="card shadow rounded" style="width: 18rem;">
+                <img src="../../../../assets/ProjectAassets/Add tasks-pana.png" class="card-img-top" alt="...">
+                <div class="card-body d-flex justify-content-center align-items-center" style="height: 100px;">
+                  <a href="#" class="btn btn-primary">Check BackLog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="width: 100%;  background-color: black;">
+
+    <h2 class="text-center mt-3">Project team</h2>
+</div>
