@@ -1,5 +1,8 @@
+
 <div class="page-container">
-<button type="button" class="btn btn-light mr-2">Create a new project <i class="fa-solid fa-plus icon"></i></button>
+
+    <button type="button" class="btn btn-light ">Create a new project <i class="fa-solid fa-plus icon"></i></button>
+   
     <div class="containe">
         <div class="row ">
             <div class="col-lg-4 col-md-6">
@@ -81,8 +84,9 @@
                                     <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
                                 </td>
                                 <td>
+                                  <a [routerLink]="['/projects/projectdetail']" routerLinkActive="router-link-active" >
                                     <button type="button" class="btn btn-light">View details</button>
-
+                                  </a>
                                 </td>
                             </tr>
                         </ng-container>
@@ -97,8 +101,10 @@
                                         <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
                                 </td>
                                 <td>
-                                    <button  type="button" class="btn btn-light">View details</button>
-                                </td>
+                                  <a [routerLink]="['/projects/details']" routerLinkActive="router-link-active" >
+                                    <button type="button" class="btn btn-light">View details</button>
+                                  </a>
+                            </td>
                             </tr>
                         </ng-template>
                     </tbody>
@@ -115,7 +121,7 @@
 </div>
 
 
-<!-- <button [cModalToggle]="scrollableLongContentModal.id" cButton>Scrollable long content</button>
+ <button [cModalToggle]="scrollableLongContentModal.id" cButton>Scrollable long content</button>
 
 <c-modal #scrollableLongContentModal id="scrollableLongContentModal" scrollable>
   <c-modal-header>
@@ -212,6 +218,6 @@
     scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
     auctor fringilla.
   </p>
-</ng-template> -->
+</ng-template> 
 
 

@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectsModule } from '../../models/project/projects.module';
+import { ProjectsModule } from '../projects.module';
 import { CommonModule } from '@angular/common';
-import { TeamModule } from '../../models/teams/teams.module'
-
+import { TeamModule } from '../../models/teams/teams.module';
+import { RouterModule } from '@angular/router';
+import { ButtonModule, ModalModule, } from '@coreui/angular';
 @Component({
   selector: 'app-projectslist',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [
+  CommonModule , 
+  RouterModule,
+  ModalModule,
+  ButtonModule
+  ], 
   templateUrl: './projectslist.component.html',
   styleUrls: ['./projectslist.component.scss']
 })
