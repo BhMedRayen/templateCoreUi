@@ -29,8 +29,6 @@ export class ProjectslistComponent implements OnInit {
   doneBacklogs: number = 0;
   projectsWithTasks: any[] = [];
 
-
-
   constructor(private projectsModule: ProjectsModule, private teamModule: TeamModule) {} 
  
   toggleAllUndoneProjects() {
@@ -41,6 +39,7 @@ export class ProjectslistComponent implements OnInit {
         this.undoneProjects = this.projectsModule.projects.filter(project => !project.done);
     }
 }
+
 ngOnInit(): void {
     this.totalProjects = this.projectsModule.projects.length;
     this.doneProjects = this.projectsModule.projects.filter(project => project.done).length;

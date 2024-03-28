@@ -26,7 +26,7 @@ export class ProjectsModule {
       id: 1,
       title: 'Project 1',
       description: 'Description for Project 1',
-      technologies: ['Angular', 'Spring Boot'],
+      technologies: ['Angular', 'Spring Boot' , ''],
       done: true,
       backlog: {
         id: 1,
@@ -40,8 +40,8 @@ export class ProjectsModule {
     {
       id: 2,
       title: 'Project 2',
-      description: 'Description for Project 2',
-      technologies: ['React', 'Node.js'],
+      description: 'Description for Project 2  Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2',
+      technologies: ['React', 'Node' ,'Spring'],
       done: false,
       backlog: {
         id: 2,
