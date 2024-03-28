@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Team } from './teams.model'; 
 import { CommonModule } from '@angular/common'; 
 import { Project } from '../project/project.model'; 
-import { ProjectsModule } from '../project/projects.module'; 
+import { ProjectsModule } from '../../projects/projects.module'; 
 
 @NgModule({
   imports: [
