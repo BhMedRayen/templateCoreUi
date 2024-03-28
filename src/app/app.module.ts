@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { TeamModule } from '../app/views/models/teams/teams.module'
-import { ProjectsModule } from '../app/views/models/project/projects.module'; 
+import { ProjectsModule } from './views/projects/projects.module'; 
 import { Router, RouterModule } from '@angular/router';
 
 
