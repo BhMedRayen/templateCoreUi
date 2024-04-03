@@ -11,14 +11,13 @@ import { User } from './User.model';
 })
 export class UserModule {
   users: User[] = [
-    // Define your users here
     {
       id: 1,
       firstName: 'Ben Hassine',
       lastName: 'Mohamed Rayen',
       email: 'rayen@gmail.com.com',
       password: 'password123',
-      isEmp: true // Assuming all users are employees by default
+      isEmp: true
     },
     {
         id: 2,
@@ -26,7 +25,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 3,
@@ -34,7 +33,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password333',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id:4,
@@ -42,7 +41,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 5,
@@ -50,7 +49,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 6,
@@ -58,7 +57,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 7,
@@ -66,7 +65,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 8,
@@ -74,7 +73,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 9,
@@ -82,7 +81,7 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true
       },
       {
         id: 10,
@@ -90,9 +89,8 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true // Assuming all users are employees by default
+        isEmp: true 
       },
-    // Add more users as needed
   ];
 
 }
