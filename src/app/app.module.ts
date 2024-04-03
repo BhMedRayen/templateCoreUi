@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { TeamModule } from '../app/views/models/teams/teams.module'
 import { ProjectsModule } from './views/projects/projects.module'; 
-import { Router, RouterModule } from '@angular/router';
+import {  RouterModule } from '@angular/router';
 
 
 
