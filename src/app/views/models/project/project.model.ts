@@ -8,4 +8,5 @@ export interface Project {
     technologies: string[];
     done: boolean;
     backlog?: Backlog;
+    employeeIds: number[];
   }

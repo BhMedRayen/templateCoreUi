@@ -4,7 +4,8 @@ import { Project } from '../models/project/project.model';
 import { CommonModule } from '@angular/common'; 
 import { Backlog } from '../models/backlog/backlog.model';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
-
+import { UserModule } from '../models/Users/User.module'
+ 
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     ProjectsRoutingModule,
     ButtonModule,
     ModalModule , 
-    RouterModule
+    RouterModule,
+    UserModule
   ],
   declarations: [
 
@@ -28,6 +30,7 @@ export class ProjectsModule {
       description: 'Description for Project 1',
       technologies: ['Angular', 'Spring Boot' , ''],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 1,
         projectId: 1,
@@ -43,6 +46,7 @@ export class ProjectsModule {
       description: 'Description for Project 2  Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2',
       technologies: ['React', 'Node' ,'Spring'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 2,
         projectId: 2,
@@ -58,6 +62,7 @@ export class ProjectsModule {
       description: 'Description for Project 3',
       technologies: ['Vue.js', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 3,
         projectId: 3,
@@ -73,6 +78,7 @@ export class ProjectsModule {
       description: 'Description for Project 4',
       technologies: ['Angular', 'Spring Boot'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 4,
         projectId: 4,
@@ -88,6 +94,7 @@ export class ProjectsModule {
       description: 'Description for Project 5',
       technologies: ['React', 'Node.js'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 5,
         projectId: 5,
@@ -103,6 +110,7 @@ export class ProjectsModule {
       description: 'Description for Project 6',
       technologies: ['Vue.js', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 6,
         projectId: 6,
@@ -118,6 +126,7 @@ export class ProjectsModule {
       description: 'Description for Project 7',
       technologies: ['React', 'Spring Boot'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 7,
         projectId: 7,
@@ -133,6 +142,7 @@ export class ProjectsModule {
       description: 'Description for Project 8',
       technologies: ['Angular', 'Node.js'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 8,
         projectId: 8,
@@ -148,6 +158,7 @@ export class ProjectsModule {
       description: 'Description for Project 9',
       technologies: ['React', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 9,
         projectId: 9,
@@ -164,6 +175,7 @@ export class ProjectsModule {
       description: 'Description for Project 10',
       technologies: ['Vue.js', 'Spring Boot'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 10,
         projectId: 10,
@@ -180,6 +192,7 @@ export class ProjectsModule {
       description: 'Description for Project 11',
       technologies: ['Angular', 'Express'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 11,
         projectId: 11,
@@ -196,6 +209,7 @@ export class ProjectsModule {
       description: 'Description for Project 12',
       technologies: ['Angular', 'Node.js'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 12,
         projectId: 12,
@@ -211,6 +225,7 @@ export class ProjectsModule {
       description: 'Description for Project 13',
       technologies: ['React', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 13,
         projectId: 13,
@@ -226,6 +241,7 @@ export class ProjectsModule {
       description: 'Description for Project 14',
       technologies: ['Vue.js', 'Spring Boot'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 14,
         projectId: 14,
@@ -241,6 +257,7 @@ export class ProjectsModule {
       description: 'Description for Project 15',
       technologies: ['Angular', 'Node.js'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 15,
         projectId: 15,
@@ -256,6 +273,7 @@ export class ProjectsModule {
       description: 'Description for Project 16',
       technologies: ['React', 'Spring Boot'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 16,
         projectId: 16,
@@ -271,6 +289,7 @@ export class ProjectsModule {
       description: 'Description for Project 17',
       technologies: ['Vue.js', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 17,
         projectId: 17,
@@ -286,6 +305,7 @@ export class ProjectsModule {
       description: 'Description for Project 18',
       technologies: ['Angular', 'Node.js'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 18,
         projectId: 18,
@@ -301,6 +321,7 @@ export class ProjectsModule {
       description: 'Description for Project 19',
       technologies: ['React', 'Express'],
       done: true,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 19,
         projectId: 19,
@@ -316,6 +337,7 @@ export class ProjectsModule {
       description: 'Description for Project 20',
       technologies: ['Vue.js', 'Spring Boot'],
       done: false,
+      employeeIds: [1, 2, 3, 4, 5, 6] ,
       backlog: {
         id: 20,
         projectId: 20,
