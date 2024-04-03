@@ -16,7 +16,8 @@
             <div class="card shadow rounded">
                 <img src="../../../../assets/ProjectAassets/Add tasks-pana.png" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <a href="#" class="btn btn-primary">Check BackLog</a>
+                  <a [routerLink]="['/projects/backlogdetails', backlogId]" routerLinkActive="router-link-active" class="btn btn-primary">Check BackLog</a>
+
                 </div>
             </div>
         </div>

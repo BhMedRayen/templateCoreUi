@@ -5,11 +5,13 @@
   import { CommonModule } from '@angular/common';
   import { User } from '../../models/Users/User.model';
   import { UserModule } from '../../models/Users/User.module';
+  import { RouterModule } from '@angular/router';
+
 
   @Component({
     selector: 'app-projectdetail',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule,RouterModule],
     templateUrl: './projectdetail.component.html',
     styleUrl: './projectdetail.component.scss'
   })
@@ -22,6 +24,8 @@
     currentPage: number = 1; // Current page number
     totalPages: number = 0; // Total number of pages
     pages: number[] = []; // Array to hold page numbers for pagination
+    backlogId: number = 0;
+
 
 
 
@@ -36,9 +40,11 @@
     ngOnInit(): void {
       this.route.params.subscribe(params => {
         const projectId = +params['id']; 
-        this.project = this.projectsModule.projects.find(p => p.id === projectId); });
-          this.calculatePages();
-          this.updateVisibleEmployees();
+        this.backlogId = +params['id'];
+        this.project = this.projectsModule.projects.find(p => p.id === projectId);
+      });
+        this.calculatePages();
+        this.updateVisibleEmployees();
       };
 
 
