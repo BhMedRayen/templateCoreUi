@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Backlog } from '../models/backlog/backlog.model';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
 import { UserModule } from '../models/Users/User.module'
- 
+import { User } from '../models/Users/User.model';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -350,7 +350,8 @@ export class ProjectsModule {
     
   ];
 
-  constructor() { 
 
-  }
+  constructor() {  }
+
+
 }

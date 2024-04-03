@@ -10,62 +10,70 @@ import { User } from './User.model';
   ]
 })
 export class UserModule {
-  users: User[] = [
+  static  users: User[] = [
     {
       id: 1,
       firstName: 'Ben Hassine',
       lastName: 'Mohamed Rayen',
       email: 'rayen@gmail.com.com',
       password: 'password123',
-      isEmp: true
+      isEmp: true , 
+      role : 'Scrum Master'
     },
     {
         id: 2,
-        firstName: 'Ben Hassine',
+        firstName: 'Ben Salah',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true
+        isEmp: true,
+        role : 'Front End Developper '
       },
       {
         id: 3,
-        firstName: 'Ben Hassine',
+        firstName: 'Ben AHmed',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password333',
-        isEmp: true
+        isEmp: true,
+        role : 'Front End Developper '
       },
       {
         id:4,
-        firstName: 'Ben Hassine',
+        firstName: 'Ben Fradj',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true
+        isEmp: true,
+        role : 'Back End Developper '
       },
       {
         id: 5,
-        firstName: 'Ben Hassine',
+        firstName: 'Ben Ali',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true
+        isEmp: true,
+        role : 'Back End Developper '
       },
       {
         id: 6,
-        firstName: 'Ben Hassine',
+        firstName: 'Beshikh',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password223',
-        isEmp: true
+        isEmp: true,
+        role : 'Designer'
+
       },
       {
         id: 7,
-        firstName: 'Ben Hassine',
+        firstName: 'Ben alia',
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true
+        isEmp: true,
+        role : 'Front End Developper '
       },
       {
         id: 8,
@@ -73,7 +81,8 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true
+        isEmp: true,
+        role : 'Front End Developper '
       },
       {
         id: 9,
@@ -81,7 +90,8 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true
+        isEmp: true,
+        role : 'Front End Developper '
       },
       {
         id: 10,
@@ -89,7 +99,8 @@ export class UserModule {
         lastName: 'Mohamed Rayen',
         email: 'rayen@gmail.com.com',
         password: 'password123',
-        isEmp: true 
+        isEmp: true ,
+        role : 'Front End Developper '
       },
   ];
 
