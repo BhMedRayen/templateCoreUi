@@ -5,4 +5,5 @@ export interface Backlog {
     description: string;
     allTasks: number;
     doneTasks: number;
+    sprint : number[]
   }
