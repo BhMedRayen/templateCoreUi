@@ -1,48 +1,53 @@
-<div class="container">
-    <div class="row mt-4">
-        <div class="col-md-8">
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
             <h2 class="mb-4">{{ project?.title }}</h2>
             <h3>Description</h3>
             <p>{{ project?.description }}</p>
             <h3>Technologies</h3>
             <div class="d-flex flex-wrap">
-                <div *ngFor="let technology of project?.technologies" class="mr-4 mb-4 mt-3" style="margin-right: 100px; margin-bottom: 50px;">
-                    <img src="assets/ProjectAassets/{{ technology }}.png" alt="{{ technology }}" class="rounded-circle" style="width: 50px; height: 50px;">
-                    <h5 class="text-center mt-2">{{ technology }}</h5>
+                <div *ngFor="let technology of project?.technologies" class="technology">
+                    <img src="assets/ProjectAassets/{{ technology }}.png" alt="{{ technology }}">
+                    <h5 class="text-center mt-0 mb-0">{{ technology }}</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mt-3">
-            <div class="card shadow rounded" style="width: 18rem;">
+        <div class="col-lg-4 mt-3">
+            <div class="card shadow rounded">
                 <img src="../../../../assets/ProjectAassets/Add tasks-pana.png" class="card-img-top" alt="...">
-                <div class="card-body d-flex justify-content-center align-items-center" style="height: 100px;">
-                  <a href="#" class="btn btn-primary">Check BackLog</a>
+                <div class="card-body text-center">
+                    <a href="#" class="btn btn-primary">Check BackLog</a>
                 </div>
             </div>
         </div>
     </div>
-    <hr style="width: 100%;  background-color: black;">
-
-    <h2 class="text-center mt-3">Project team</h2>
-    <!-- here i want to add the project team on card , every employee on a card  -->
-    <div class="row mt-3">
-        <div *ngFor="let employeeId of project?.employeeIds" class="col-md-4">
-            <div class="card shadow rounded mb-3">
-                <div class="card-body d-flex flex-column align-items-center">
-                    <!-- Avatar -->
-                    <div class="avatar-container">
-                        <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
-                    </div>
-                    <!-- Employee Name -->
-                    <h5 class="card-title mt-2">
-                        {{ getUserById(employeeId)?.firstName }} {{ getUserById(employeeId)?.lastName }}
-                    </h5>
-                    <!-- Employee Email -->
-                    <p class="card-text">{{ getUserById(employeeId)?.role }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
 </div>
+<hr>
+
+    <h2 class="text-center mt-3 mb-3">Project team</h2>
+
+ <div class="row mt-3">
+  <div *ngFor="let employeeId of visibleEmployeeIds" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card shadow rounded mb-3">
+      <div class="card-body d-flex flex-column align-items-center">
+        <div class="avatar-container">
+          <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
+        </div>
+        <div class="text-center mt-3">
+          <h5 class="card-title mb-0">{{ getUserById(employeeId)?.firstName }} {{ getUserById(employeeId)?.lastName }}</h5>
+          <p class="card-text text-muted">{{ getUserById(employeeId)?.role }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="pagination">
+        <ul class="pagination-list">
+          <li class="pagination-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <button class="pagination-link" (click)="changePage(page)">{{ page }}</button>
+          </li>
+        </ul>
+      </div>      
+

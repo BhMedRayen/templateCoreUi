@@ -11,7 +11,71 @@
     height: 100%;
     object-fit: cover;
 }
+.card {
+    cursor: pointer;
+}
+  
 
 .card-body {
     text-align: center;
+}
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+.card-text {
+    font-size: 1rem;
+  }
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .pagination-item {
+    margin: 0 5px;
+  }
+  
+  .pagination-link {
+    background-color: rgb(2, 2, 32);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-link:hover {
+    background-color:  rgb(69, 69, 106);
+  }
+  
+  .pagination-item.active .pagination-link {
+    background-color: rgb(69, 69, 106);
+  }
+  
+  .technology {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.technology img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+hr {
+    border-top: 1px solid #dcdcdc;
 }
