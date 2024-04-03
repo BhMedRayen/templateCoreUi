@@ -46,7 +46,7 @@ export class ProjectsModule {
       description: 'Description for Project 2  Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2 Description for Project 2',
       technologies: ['React', 'Node' ,'Spring'],
       done: false,
-      employeeIds: [1, 2, 3, 4, 5, 6] ,
+      employeeIds: [1, 2, 3, 4, 5, 6,7,8,9] ,
       backlog: {
         id: 2,
         projectId: 2,
@@ -337,7 +337,7 @@ export class ProjectsModule {
       description: 'Description for Project 20',
       technologies: ['Vue.js', 'Spring Boot'],
       done: false,
-      employeeIds: [1, 2, 3, 4, 5, 6] ,
+      employeeIds: [1, 2, 3, 4, 5, 6 ] ,
       backlog: {
         id: 20,
         projectId: 20,
