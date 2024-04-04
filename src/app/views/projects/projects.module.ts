@@ -37,7 +37,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 1',
         description: 'Description for Backlog 1',
         allTasks: 132,
-        doneTasks: 132
+        doneTasks: 132,
+        sprint: [1,2,3]
       }
     },
     {
@@ -53,7 +54,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 2',
         description: 'Description for Backlog 2',
         allTasks: 150,
-        doneTasks: 40
+        doneTasks: 40,
+        sprint: [1,2,3]
       }
     },
     {
@@ -69,7 +71,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 3',
         description: 'Description for Backlog 3',
         allTasks: 120,
-        doneTasks: 120
+        doneTasks: 120,
+        sprint: [1,2,3]
       }
     },
     {
@@ -85,7 +88,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 4',
         description: 'Description for Backlog 4',
         allTasks: 100,
-        doneTasks: 25
+        doneTasks: 25 ,
+        sprint: [1,2,3]
       }
     },
     {
@@ -101,7 +105,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 5',
         description: 'Description for Backlog 5',
         allTasks: 180,
-        doneTasks: 180
+        doneTasks: 180,
+        sprint: [1,2,3]
       }
     },
     {
@@ -117,7 +122,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 6',
         description: 'Description for Backlog 6',
         allTasks: 200,
-        doneTasks: 200
+        doneTasks: 200,
+        sprint: [1,2,3]
       }
     },
     {
@@ -133,7 +139,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 7',
         description: 'Description for Backlog 7',
         allTasks: 150,
-        doneTasks: 150
+        doneTasks: 150,
+        sprint: [1,2,3]
       }
     },
     {
@@ -149,7 +156,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 8',
         description: 'Description for Backlog 8',
         allTasks: 120,
-        doneTasks: 90
+        doneTasks: 90,
+        sprint: [1,2,3]
       }
     },
     {
@@ -165,7 +173,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 9',
         description: 'Description for Backlog 9',
         allTasks: 200,
-        doneTasks: 200
+        doneTasks: 200,
+        sprint: [1,2,3]
       }
     },
 
@@ -182,7 +191,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 10',
         description: 'Description for Backlog 10',
         allTasks: 100,
-        doneTasks: 100
+        doneTasks: 100,
+        sprint: [1,2,3]
       }
     },
 
@@ -199,7 +209,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 11',
         description: 'Description for Backlog 11',
         allTasks: 80,
-        doneTasks: 50
+        doneTasks: 50,
+        sprint: [1,2,3]
       }
     },
 
@@ -216,7 +227,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 12',
         description: 'Description for Backlog 12',
         allTasks: 90,
-        doneTasks: 60
+        doneTasks: 60,
+        sprint: [1,2,3]
       }
     },
     {
@@ -232,7 +244,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 13',
         description: 'Description for Backlog 13',
         allTasks: 110,
-        doneTasks: 110
+        doneTasks: 110,
+        sprint: [1,2,3]
       }
     },
     {
@@ -248,7 +261,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 14',
         description: 'Description for Backlog 14',
         allTasks: 80,
-        doneTasks: 30
+        doneTasks: 30,
+        sprint: [1,2,3]
       }
     },
     {
@@ -264,7 +278,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 15',
         description: 'Description for Backlog 15',
         allTasks: 95,
-        doneTasks: 95
+        doneTasks: 95,
+        sprint: [1,2,3]
       }
     },
     {
@@ -280,7 +295,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 16',
         description: 'Description for Backlog 16',
         allTasks: 120,
-        doneTasks: 70
+        doneTasks: 70,
+        sprint: [1,2,3]
       }
     },
     {
@@ -296,7 +312,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 17',
         description: 'Description for Backlog 17',
         allTasks: 150,
-        doneTasks: 150
+        doneTasks: 150,
+        sprint: [1,2,3]
       }
     },
     {
@@ -312,7 +329,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 18',
         description: 'Description for Backlog 18',
         allTasks: 85,
-        doneTasks: 40
+        doneTasks: 40,
+        sprint: [1,2,3]
       }
     },
     {
@@ -328,7 +346,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 19',
         description: 'Description for Backlog 19',
         allTasks: 100,
-        doneTasks: 100
+        doneTasks: 100,
+        sprint: [1,2,3]
       }
     },
     {
@@ -344,7 +363,8 @@ export class ProjectsModule {
         title: 'Backlog for Project 20',
         description: 'Description for Backlog 20',
         allTasks: 130,
-        doneTasks: 80
+        doneTasks: 80,
+        sprint: [1,2,3]
       }
     },
     
