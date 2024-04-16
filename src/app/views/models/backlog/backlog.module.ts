@@ -29,7 +29,7 @@ import { Backlog } from './backlog.model'
             description: 'Description for Backlog 2',
             allTasks: 150,
             doneTasks: 40,
-            sprint: [1,2,3]
+            sprint: [1,2,3,4]
           },
           {
             id: 3,
