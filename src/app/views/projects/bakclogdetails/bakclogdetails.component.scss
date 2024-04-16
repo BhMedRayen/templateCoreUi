@@ -1,0 +1,21 @@
+.sprint-card {
+    width: 400px;
+    height: 400px;
+}
+.tasks-img {
+    width: 500px;
+    height: 500px;
+}
+.avatar-container {
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

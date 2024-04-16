@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+          <img class="tasks-img" src="../../../../assets/ProjectAassets/Accept tasks-bro.png" alt="">
+    </div>
+        <div class="col-lg-4 mt-3">
+            <div class="card shadow rounded">
+
+                <img src="../../../../assets/ProjectAassets/Remote meeting-amico.png" alt="">
+                <div class="card-body text-center">
+                  
+                  <a [routerLink]="['/projects/backlogdetails', backlogId]" routerLinkActive="router-link-active" class="btn btn-primary">Join meeting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+    <h2 class="text-center mt-3 mb-3">Backlog Sprints</h2>
+
+
+
+<!-- here i want to show the cards  -->
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let sprintId of backlog.sprint">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ getSprintById(sprintId).title }}</h5>
+            <p class="card-text">Members: {{ getSprintById(sprintId).membersId.length }}</p>
+            <p class="card-text">Tasks: {{ getSprintById(sprintId).tasksId.length }}</p>
+            <p class="card-text">Done Tasks: {{ getDoneTasksCount(getSprintById(sprintId)) }}</p>
+            <p class="card-text">Start Time: {{ getSprintById(sprintId).startTime | date }}</p>
+            <p class="card-text">End Time: {{ getSprintById(sprintId).endTime | date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
