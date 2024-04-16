@@ -19,3 +19,45 @@
     height: 100%;
     object-fit: cover;
 }
+.sprint-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .pagination-item {
+    margin: 0 5px;
+  }
+  
+  .pagination-link {
+    background-color: rgb(2, 2, 32);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-link:hover {
+    background-color:  rgb(69, 69, 106);
+  }
+  
+  .pagination-item.active .pagination-link {
+    background-color: rgb(69, 69, 106);
+  }
