@@ -33,7 +33,7 @@ export class SprintModule {
       backlogId: 2
     },
     { id:3,
-        title: 'Sprint 1',
+        title: 'Sprint 3',
         membersId: [1,2,3,4], 
         tasksId: [1,2,3,4,5], 
         doneStatus: false,
@@ -43,7 +43,7 @@ export class SprintModule {
       },
       {
         id:4,
-        title: 'Sprint 2',
+        title: 'Sprint 4',
         membersId: [1,2,3,4], 
         tasksId: [1,2,3,4,5], 
         doneStatus: false,
