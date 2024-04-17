@@ -1,26 +1,36 @@
 <div class="container mt-4">
     <h2 class="text-center mb-4">All Tasks</h2>
     <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
           <tr>
             <th>Title</th>
             <th>Description</th>
-            <th>Assigned To</th>
             <th>Status</th>
             <th>Due Date</th>
+            <th>Assigned To</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let task of tasks">
+          <tr *ngFor="let task of visibleTasks">
             <td>{{ task.title }}</td>
             <td>{{ task.description }}</td>
-            <td>{{ task.status ? 'done' : 'udone' }}</td>
+            <td>{{ task.status ? 'Done' : 'Undone' }}</td>
             <td>{{ task.dueDate | date }}</td>
-            <td>{{ task.assignedTo }}</td>
+            <td>
+              <img src="assets/img/avatars/2.jpg" class="avatar" alt="Avatar">
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-auto">
+        <div *ngIf="tasks.length > 6">
+          <button *ngIf="!showAllTasks" class="btn btn-primary" (click)="showAll()">View More</button>
+          <button *ngIf="showAllTasks" class="btn btn-primary" (click)="showLess()">View Less</button>
+        </div>
+      </div>
     </div>
   </div>
   
