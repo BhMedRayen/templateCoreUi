@@ -27,7 +27,7 @@ import { Task } from './task.model'
         assignedTo: 2,
         status: false,
         dueDate: new Date('2024-04-05'),
-        sprintId: 2
+        sprintId: 1
       },
       {
         id : 3,
@@ -36,7 +36,7 @@ import { Task } from './task.model'
         assignedTo: 3,
         status: false,
         dueDate: new Date('2024-04-05'),
-        sprintId: 3
+        sprintId: 1
       },
       {
         id : 4,
@@ -45,7 +45,16 @@ import { Task } from './task.model'
         assignedTo: 4,
         status: false,
         dueDate: new Date('2024-04-05'),
-        sprintId: 4
+        sprintId: 1
+      },
+      {
+        id : 5,
+        title: 'Task 4',
+        description: 'Description for Task 4',
+        assignedTo: 4,
+        status: false,
+        dueDate: new Date('2024-04-05'),
+        sprintId: 1
       },
      
     ];
