@@ -15,6 +15,8 @@
   export class AlltasksComponent implements OnInit{
     sprintId: number=0;
     tasks: Task[] = [];
+    visibleTasks: Task[] = [];
+    showAllTasks: boolean = false;
 
 
     constructor(private route: ActivatedRoute) { }
@@ -26,9 +28,23 @@
         console.log("All Tasks:", TaskModule.tasks); // Log all tasks for debugging
         this.tasks = TaskModule.tasks.filter(task => task.sprintId === this.sprintId);
         console.log("Filtered Tasks:", this.tasks); // Log filtered tasks for debugging
+        this.updateVisibleTasks();
       });
     }
     
+  updateVisibleTasks(): void {
+    this.visibleTasks = this.showAllTasks ? this.tasks : this.tasks.slice(0, 6);
+  }
+
+  showAll(): void {
+    this.showAllTasks = true;
+    this.updateVisibleTasks();
+  }
+
+  showLess(): void {
+    this.showAllTasks = false;
+    this.updateVisibleTasks();
+  }
     
     }
 
