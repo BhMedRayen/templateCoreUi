@@ -1,1 +1,26 @@
-<p>alltasks works!</p>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">All Tasks</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.status ? 'done' : 'udone' }}</td>
+            <td>{{ task.dueDate | date }}</td>
+            <td>{{ task.assignedTo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
