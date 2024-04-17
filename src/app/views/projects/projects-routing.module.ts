@@ -4,6 +4,7 @@ import { ProjectslistComponent } from './projectslist/projectslist.component';
 import { AllprojectsComponent } from './allprojects/allprojects.component' ; 
 import { ProjectdetailComponent } from './projectdetail/projectdetail.component';
 import { BakclogdetailsComponent } from './bakclogdetails/bakclogdetails.component'
+import { AlltasksComponent } from './alltasks/alltasks.component'
 
 const routes: Routes = [
   {
@@ -32,7 +33,12 @@ const routes: Routes = [
       {
         path : 'backlogdetails/:id',
         component : BakclogdetailsComponent
+      },
+      {
+        path : 'alltasks/:id',
+        component : AlltasksComponent
       }
+
     ],
    
   },
