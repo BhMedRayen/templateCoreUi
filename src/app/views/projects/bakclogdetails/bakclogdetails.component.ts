@@ -18,11 +18,12 @@ export class BakclogdetailsComponent implements OnInit {
 
 backlogId: number = 0; 
 backlog: Backlog = {} as Backlog;
-pagedSprints: any[] = []; // Array to hold sprints for the current page
-pageSize: number = 3; // Number of sprints per page
-currentPage: number = 1; // Current page number
-totalPages: number = 0; // Total number of pages
+pagedSprints: any[] = []; 
+pageSize: number = 3;
+currentPage: number = 1; 
+totalPages: number = 0; 
 pages: number[] = [];
+
 
   constructor(private route: ActivatedRoute) { 
 
@@ -37,6 +38,7 @@ pages: number[] = [];
     this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
   
+  
   changePage(page: number) {
     this.currentPage = page;
     this.updatePagedSprints();
@@ -49,7 +51,6 @@ pages: number[] = [];
       return task && task.status;
     }).length;
   }
-
   getSprintById(sprintId: number): any {
     return SprintModule.sprints.find(sprint => sprint.id === sprintId);
   }
