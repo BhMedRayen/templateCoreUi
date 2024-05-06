@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { TeamModule } from '../../models/teams/teams.module';
 import { RouterModule } from '@angular/router';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
+import { ProjectService } from '../services/projectlistservices/project.service';
+import { forEach } from 'lodash-es';
+
 @Component({
   selector: 'app-projectslist',
   standalone: true,
@@ -27,34 +30,67 @@ export class ProjectslistComponent implements OnInit {
   projectsDoneByTeams: number = 0;
   totalBacklogs: number = 0;
   doneBacklogs: number = 0;
-  projectsWithTasks: any[] = [];
+  undoneTasksCount: number = 0;
 
-  constructor(private projectsModule: ProjectsModule, private teamModule: TeamModule) {} 
+
+  constructor(private projectService: ProjectService) {} 
  
   toggleAllUndoneProjects() {
     this.showAllUndoneProjects = !this.showAllUndoneProjects;
     if (this.showAllUndoneProjects) {
-        this.undoneProjects = this.projectsModule.projects.filter(project => !project.done).slice(0, 6);
+      this.projectService.getUndoneProjects().subscribe(response => {
+        this.undoneProjects = response.projects;
+      });
     } else {
-        this.undoneProjects = this.projectsModule.projects.filter(project => !project.done);
+      this.projectService.getUndoneProjects().subscribe(response => {
+        this.undoneProjects = response.projects.slice(0, 6);
+      });
     }
 }
 
+
+  getProjectTasks(ProjectId :number) {
+    return this.projectService.getProjectTasks(ProjectId);
+  }
+  
+  countUndoneTasks(project: any): number {
+    if (!project || !project.tasks) return 0;
+
+    return project.tasks.filter((task: any) => task.status === 'undone').length;
+}
+
+
 ngOnInit(): void {
-    this.totalProjects = this.projectsModule.projects.length;
-    this.doneProjects = this.projectsModule.projects.filter(project => project.done).length;
-    this.undoneProjects = this.projectsModule.projects.filter(project => !project.done)
-    this.numberOfTeams = this.teamModule.teams.length;
-    this.projectsDoneByTeams = this.teamModule.teams.reduce((total: number, team: any) => total + team.projects.filter((project: any) => project.done).length, 0);
-    this.totalBacklogs = this.projectsModule.projects.filter(project => project.backlog).length;
-    this.doneBacklogs = this.projectsModule.projects.filter(project => project.backlog && project.backlog.doneTasks === project.backlog.allTasks).length;
 
-    this.projectsWithTasks = this.projectsModule.projects.map(project => ({
-      ...project,
-      allTasks: project.backlog?.allTasks || 0, 
-      doneTasks: project.backlog?.doneTasks || 0 
-    }));
+    this.projectService.getAllProjects().subscribe(response => {
+      this.totalProjects = response.projects.length;
+      this.totalBacklogs = response.projects.length;
+      this.projectsDoneByTeams = response.projects.length;
+    });
 
+    this.projectService.getDoneProjectsCount().subscribe(response => {
+      this.doneProjects = response.projects.length;
+      this.doneBacklogs = response.projects.length;
+    });
+
+    this.projectService.getAllteams().subscribe(response => {
+      this.numberOfTeams = response.teams.length;
+    })
+    this.projectService.getUndoneProjects().subscribe(response => {
+      this.undoneProjects = response.projects;
+      this.undoneProjects.forEach(project => {
+        this.projectService.getProjectTasks(project.id).subscribe(taskResponse => {
+          project.tasks = taskResponse.tasks;
+          const undoneTasks = project.tasks.filter((task: any) => task.status === 'undone');
+          this.undoneTasksCount += undoneTasks.length;
+       
+        });
+      });
+    });
+    
+    
+    
+    
 }
 
 }

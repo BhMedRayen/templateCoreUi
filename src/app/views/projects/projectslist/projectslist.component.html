@@ -75,9 +75,9 @@
                     <tbody>
                         <ng-container *ngIf="showAllUndoneProjects; else limitedProjects">
                             <tr *ngFor="let project of undoneProjects">
-                                <td>{{ project.title }}</td>
-                                <td>{{project.backlog.allTasks }}</td>
-                                <td>{{ project.backlog.doneTasks }}</td>
+                              <td>{{ project.projectname }}</td>
+                              <td>{{ project.tasks?.length }}</td>
+                              <td>{{ countUndoneTasks(project) }}</td>
                                 <td>
                                     <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
                                     <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
@@ -93,9 +93,9 @@
                         </ng-container>
                         <ng-template #limitedProjects>
                             <tr *ngFor="let project of undoneProjects">
-                                <td>{{ project.title }}</td>
-                                <td>{{ project.backlog.allTasks}}</td>
-                                <td>{{ project.backlog.doneTasks }}</td>
+                                <td>{{ project.projectname }}</td>
+                                <td>{{project.tasks?.length }}</td>
+                                <td> {{countUndoneTasks(project)}} </td>
                                 <td>
                                         <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
                                         <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
@@ -112,9 +112,9 @@
                 </table>
             </div>
             <div class="text-center mt-3">
-                <button type="button" class="btn btn-light" (click)="toggleAllUndoneProjects()">
-                    {{ showAllUndoneProjects ? 'View more' : 'View less' }}
-                </button>
+              <button type="button" class="btn btn-light" (click)="toggleAllUndoneProjects()">
+                {{ showAllUndoneProjects ? 'View more' : 'View less' }}
+            </button>
             </div>
         </div>
     </div>
