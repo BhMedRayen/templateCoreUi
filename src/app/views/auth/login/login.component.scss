@@ -1,0 +1,79 @@
+.content{
+  background-color: #f0f2f1;
+  background-image: linear-gradient(to top, rgba(240, 242, 241, 0), rgba(240, 242, 241, 1));
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.loginImage {
+  height: 30rem;
+  width: 30rem;
+  margin-right: 3rem;
+  margin-top: 4rem;
+}
+.card {
+  margin-top: 1rem;
+  border-radius: 20px;
+  width: 25rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+.card-img-top {
+  width: 50px;
+  height: 50;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+  display: block;
+  margin-top: 1rem;
+
+}
+.card-title {
+  color: #43CCB3;
+}
+.btn-primary {
+  width: 100%;
+}
+.card-body {
+  text-align: center;
+}
+#login_btn{
+  background-color: #1DA291;
+  color: #FFFFFF;
+  border-color: #1DA291;
+  width: 100%;
+}
+#login_btn:hover {
+  background-color: #FFFFFF;
+  color: #1DA291;
+  border-color: #1DA291;
+}
+a {
+  text-decoration: none;
+}
+p{
+  color: #005F60;
+  margin-top: 1rem;
+}
+#Register_btn{
+  background-color: #FFFFFF;
+  color: #1DA291;
+  border-color: #1DA291;
+  width: 100%;
+}
+#Register_btn:hover{
+  background-color: #1DA291;
+  color: #FFFFFF;
+  border-color: #1DA291;
+}
+span {
+  color: #1DA291;
+}
+@media screen and (max-width: 720px) {
+  .card {
+    margin-top: 2rem;
+    width: 20rem;
+  }
+}

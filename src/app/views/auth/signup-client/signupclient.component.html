@@ -1,0 +1,97 @@
+<div class="content">
+    <app-signupnavbar></app-signupnavbar>
+    <div class="text-center mt-5">
+        <div class="d-flex justify-content-center m-5 p-5">
+            <div class="col-xl-12">
+                <div class="row gap-5">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <img class="loginImage" src="../../assets/SignUp Client/Customer relationship management-rafiki.png" alt="">
+                    </div>
+                    <div class="col-lg-3 text-center"> 
+                        <div *ngIf="showSpiner" class="overlay"></div>
+                        <div *ngIf="showSpiner" class="loading-spinner"></div>
+                        <!-- card signup client  -->
+                        <div class="card shadow ">
+                            <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert">
+                            <div class="card-body">
+                                <h5 class="card-title" *ngIf="!showAlert">Sign up</h5>
+                                <form>
+                                
+                                    <div class="alert alert-danger" role="alert" *ngIf="showAlert">
+                                        {{ alertMessage }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col pl-3">
+                                            <div class="input-group mb-3 ">
+                                                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group mb-3">
+                                                <input type="email" class="form-control" id="lastName" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                            <input [type]="passwordVisible ? 'text' : 'password' " class="form-control" id="exampleInputPassword1" aria-describedby="Password" placeholder="Password">
+                                            <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible = !passwordVisible" style="cursor: pointer;">
+                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye' "></i>
+                                            </button>
+                                        </div>    
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                            <input [type]="passwordVisible2 ? 'text' : 'password' " class="form-control" id="exampleInputPassword2" aria-describedby="Password" placeholder="Confirm Password">
+                                            <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible2 = !passwordVisible2" style="cursor: pointer;">
+                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye' "></i>
+                                            </button>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label d-flex left">Gender:</label>
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="gender" id="male" value="man">
+                                                        <label class="form-check-label ms-2" for="male">Man</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="gender" id="female" value="woman">
+                                                        <label class="form-check-label ms-2" for="female">Woman</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3 d-flex align-items-center">
+                                            <input type="file" class="form-control" id="fichier">
+                                        </div>
+
+                                        <div class="mb-2 form-check small-text">
+                                            <input type="checkbox" class="form-check-input" id="agreeCheckbox">
+                                            <label class="form-check-label" for="agreeCheckbox">Yes, I understand and agree to the Aliret Terms of Service, including the User Agreement and Privacy Policy.</label>
+                                        </div>      
+
+                                    </div>
+                                  
+                                        <button type="submit" class="btn btn-outline-success ms-2" (click)="submitForm()" id="login_btn">Create my account</button>
+                                      
+                                 
+
+                                </form>
+                                <a routerLink="/login">Already have an account ?<span>Log In</span></a>
+                            </div>         
+                        </div>
+                        <!-- find card sigup client -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="content">
+  <h3>Aliret</h3>
+  <h2>Join as a client or an employee</h2>
+  <form>
+    <div class="container text-center">
+      <div class="row mt-5 justify-content-center">
+
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
+          <label>
+            <input type="radio" name="joinType" value="client" [(ngModel)]="selectedType" (change)="updateButtonLabel()">
+            <div class="card">
+              <div class="symbol">
+                <i class="fa-solid fa-person"></i>
+              </div>
+              <div class="card-body">    
+                <p class="card-text">
+                  I'm a client, hiring for a project
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
+          <label>
+            <input type="radio" name="joinType" value="employee" [(ngModel)]="selectedType" (change)="updateButtonLabel()">      
+              <div class="card">
+              <div class="symbol">
+                <i class="fa-solid fa-user-tie"></i>
+              </div>
+              <div class="card-body">    
+                <p class="card-text">
+                  I'm an employee, I work in aleret
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+<div class="justify-content-center">
+  <button type="button" class="btn btn-success justify-content-center mt-5 mb-3" style="background-color: #075B51;" [disabled]="!selectedType" (click)="signUp()">{{ buttonLabel }}</button>
+  <br>
+ <a routerLink="/login" class="mt-5" style="text-decoration: none; color: black;">Already have an account ? <span style="color: #075B51;">Log In</span> </a> 
+</div>
+</div>
+ 

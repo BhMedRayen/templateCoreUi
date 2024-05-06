@@ -1,0 +1,56 @@
+<div class="content">
+  <app-homenavbar></app-homenavbar>
+  <div class="text-center mt-5">
+    <div class="d-flex justify-content-center m-5 p-5">
+      <div class="col-xl-12">
+        <div class="row gap-5">
+          <div class="col-lg-6 d-none d-lg-block">
+            <img class="loginImage" src="../../assets/Login/Login-amico.png" alt="">
+          </div>
+          <div class="col-lg-3 text-center">
+            <!-- card login  -->
+            <div class="card shadow">
+              <img src="../../assets/logo.jpg" class="card-img-top" alt="logo">
+              <div class="card-body">
+                <h5 class="card-title">Login</h5>
+                <h6 class="card-text">Sign in to your account</h6>
+                <!-- Alert -->
+
+                <div *ngIf="showAlert && (loginForm.controls['email'].hasError('required') || loginForm.controls['password'].hasError('required'))" class="alert alert-danger" role="alert">
+                  All inputs are required.
+                </div>
+
+                <div *ngIf="showAlert && loginFailed" class="alert alert-danger" role="alert">
+                  Password or email are incorrect.
+                </div>
+                <!-- End Alert -->
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" required>
+                  </div>
+                  <div class="mb-3">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                      <input [type]="passwordVisible ? 'text' : 'password' " class="form-control" formControlName="password" id="exampleInputPassword1" aria-describedby="Password" placeholder="Password" required>
+                      <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()" style="cursor: pointer;">
+                        <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye' "></i>
+                      </button>
+                    </div>
+
+                  </div>
+                  <button type="submit" class="btn btn-outline-success ms-2" id="login_btn">Login</button>
+                  <a href="#"><p>Forget password ? click to reset</p></a>
+                  <a routerLink="/sign-up-type">
+                    <button type="button" class="btn btn-outline-success ms-2" id="Register_btn" >Register a new account</button>
+                  </a>
+                </form>
+              </div>
+            </div>
+            <!-- find card login -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

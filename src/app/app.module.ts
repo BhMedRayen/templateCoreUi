@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { TeamModule } from '../app/views/models/teams/teams.module'
-import { ProjectsModule } from './views/projects/projects.module'; 
+import { ProjectsModule } from './views/projects/projects.module';
 import {  RouterModule } from '@angular/router';
 
 
@@ -36,11 +36,13 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
-  ModalModule 
-  
+  ModalModule
+
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import {HomenavbarComponent} from "@docs-components/shared/homenavbar/homenavbar.component";
+import {HttpClientModule} from "@angular/common/http";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -56,6 +58,7 @@ const APP_CONTAINERS = [
     AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
+    HttpClientModule,
     FooterModule,
     DropdownModule,
     GridModule,
@@ -82,7 +85,7 @@ const APP_CONTAINERS = [
     ProjectsModule ,
     ModalModule ,
     RouterModule
- 
+
   ],
   providers: [
     {
