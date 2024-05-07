@@ -1,3 +1,29 @@
+<div class="card m-3">
+  <div class="card-header">
+    <h4 class="card-title mb-0">
+
+      <button (click)="createNewPost()">Test Create Post</button>
+    </h4>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="text-center">Posts</h2>
+      <div *ngIf="isPostsLoading">
+        <!-- Loader component or HTML for posts loading -->
+        Posts are loading...
+      </div>
+      <ul *ngIf="!isPostsLoading" class="list-group">
+        <li *ngFor="let post of posts" class="list-group-item">
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.body }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="card m-3">
     <div class="card-header">
@@ -38,13 +64,13 @@
                             <td>{{ project.backlog.allTasks }}</td>
                             <td>{{ project.backlog.doneTasks }}</td>
                             <td>
-                                
+
                                     <img src="assets/img/avatars/1.jpg" alt="Avatar" class="avatar-img">
                                     <img src="assets/img/avatars/2.jpg" alt="Avatar" class="avatar-img">
                                     <img src="assets/img/avatars/4.jpg" alt="Avatar" class="avatar-img">
-                                
+
                             </td>
-                            <td>         
+                            <td>
                                 <a [routerLink]="['/projects/details', project.id]" routerLinkActive="router-link-active" >
                                 <button type="button" class="btn btn-light">View details</button>
                               </a>

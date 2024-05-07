@@ -1,0 +1,9 @@
+.content{
+    background-color: #f0f2f1;
+    background-image: linear-gradient(to top, rgba(240, 242, 241, 0), rgba(240, 242, 241, 1));
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
