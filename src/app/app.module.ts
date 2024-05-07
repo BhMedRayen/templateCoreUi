@@ -14,6 +14,7 @@ import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent 
 import { TeamModule } from '../app/views/models/teams/teams.module'
 import { ProjectsModule } from './views/projects/projects.module';
 import {  RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,7 +38,6 @@ import {
   TabsModule,
   UtilitiesModule,
   ModalModule
-
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -84,8 +84,8 @@ const APP_CONTAINERS = [
     TeamModule    ,
     ProjectsModule ,
     ModalModule ,
-    RouterModule
-
+    RouterModule,
+    HttpClientModule
   ],
   providers: [
     {
