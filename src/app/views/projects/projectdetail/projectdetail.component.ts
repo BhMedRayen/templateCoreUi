@@ -1,11 +1,11 @@
   import { Component, OnInit } from '@angular/core';
   import { ActivatedRoute } from '@angular/router';
-  import { Project } from '../../models/project/project.model';
-  import { ProjectsModule } from '../projects.module';
   import { CommonModule } from '@angular/common';
-  import { User } from '../../models/Users/User.model';
-  import { UserModule } from '../../models/Users/User.module';
   import { RouterModule } from '@angular/router';
+  import {ProjectsService} from "../../../services/projects.service";
+  import {UsersService} from "../../../services/users.service";
+  import {User} from "../../../models/user.model";
+  import {Project} from "../../../models/project.model";
 
 
   @Component({
@@ -31,43 +31,50 @@
 
 
 
-    constructor(private route: ActivatedRoute, private projectsModule: ProjectsModule) {}
+    constructor(private route: ActivatedRoute, private projectsService: ProjectsService, private usersService: UsersService) {}
 
-    getUserById(id: number): User | undefined {
-      return UserModule.users.find((user: User) => user.id === id); 
+    getUserById(id: number): User | null {
+      this.usersService.getUserById(id).subscribe({
+        next: (user) => {
+          console.log('User:', user);
+          return user;
+        },
+        error: (error) => {
+          console.error('Error fetching user:', error);
+          return null;
+        }
+
+      });
+
+      return null;
     }
 
+
     ngOnInit(): void {
+
       this.route.params.subscribe(params => {
-        const projectId = +params['id']; 
+        const projectId = +params['id'];
         this.backlogId = +params['id'];
-        this.project = this.projectsModule.projects.find(p => p.id === projectId);
+        this.projectsService.getAllProjects();
+        this.project = this.projectsService.getProjectById(projectId)
       });
         this.calculatePages();
-        this.updateVisibleEmployees();
       };
 
 
       calculatePages() {
-      this.totalPages = Math.ceil((this.project?.employeeIds.length || 0) / this.pageSize);
+     //TODO BETTER TO GET FROM BACKEND this.totalPages = Math.ceil((this.project?.employeeIds.length || 0) / this.pageSize);
+      this.totalPages = 2;
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     }
 
-    updateVisibleEmployees() {
-      const startIndex = (this.currentPage - 1) * this.pageSize;
-      const endIndex = startIndex + this.pageSize;
-      this.visibleEmployeeIds = this.project?.employeeIds.slice(startIndex, endIndex) || [];
-  }
   changePage(page: number) {
-    this.currentPage = page;
-    this.updateVisibleEmployees();
+    console.log('TODO: we will do pagination later')
   }
 
+}
 
 
-    }
 
-
-  
 
 

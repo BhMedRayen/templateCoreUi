@@ -16,10 +16,10 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-getProjectTasks(projectId: number): Observable<any> {
-  const url = `${this.projectTasksUrl}${projectId}`;
-  return this.http.get<any>(url);
-}
+  getProjectTasks(projectId: number): Observable<any> {
+    const url = `${this.projectTasksUrl}${projectId}`;
+    return this.http.get<any>(url);
+  }
 
   getAllProjects(): Observable<any> {
     return this.http.get<any>(this.apiUrl);

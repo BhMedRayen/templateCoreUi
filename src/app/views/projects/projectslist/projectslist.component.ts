@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsModule } from '../projects.module';
 import { CommonModule } from '@angular/common';
-import { TeamModule } from '../../models/teams/teams.module';
 import { RouterModule } from '@angular/router';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
 import { ProjectService } from '../services/projectlistservices/project.service';
@@ -11,11 +10,11 @@ import { forEach } from 'lodash-es';
   selector: 'app-projectslist',
   standalone: true,
   imports: [
-  CommonModule , 
+  CommonModule ,
   RouterModule,
   ModalModule,
   ButtonModule
-  ], 
+  ],
   templateUrl: './projectslist.component.html',
   styleUrls: ['./projectslist.component.scss']
 })
@@ -33,8 +32,8 @@ export class ProjectslistComponent implements OnInit {
   undoneTasksCount: number = 0;
 
 
-  constructor(private projectService: ProjectService) {} 
- 
+  constructor(private projectService: ProjectService) {}
+
   toggleAllUndoneProjects() {
     this.showAllUndoneProjects = !this.showAllUndoneProjects;
     if (this.showAllUndoneProjects) {
@@ -52,7 +51,7 @@ export class ProjectslistComponent implements OnInit {
   getProjectTasks(ProjectId :number) {
     return this.projectService.getProjectTasks(ProjectId);
   }
-  
+
   countUndoneTasks(project: any): number {
     if (!project || !project.tasks) return 0;
 
@@ -83,14 +82,11 @@ ngOnInit(): void {
           project.tasks = taskResponse.tasks;
           const undoneTasks = project.tasks.filter((task: any) => task.status === 'undone');
           this.undoneTasksCount += undoneTasks.length;
-       
+
         });
       });
     });
-    
-    
-    
-    
+
 }
 
 }
