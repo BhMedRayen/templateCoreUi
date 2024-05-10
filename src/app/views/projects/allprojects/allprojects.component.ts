@@ -4,13 +4,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {ProjectsService} from "../../../services/projects.service";
 import {Project} from "../../../models/project.model";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Task } from '../../../models/task.model';
+import { Team } from 'src/app/models/teams.model';
+import { TeamServiceService } from "../../../services/team-service.service"
 
 @Component({
   selector: 'app-allprojects',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './allprojects.component.html',
   styleUrl: './allprojects.component.scss'
@@ -18,6 +23,8 @@ import {Project} from "../../../models/project.model";
 export class AllprojectsComponent implements OnInit{
 
   projects: Project[] = [];
+  tasksMap: { [projectId: number]: Task[] } = {};
+  teamsMap: { [projectId: number]: string } = {};
 
   allProjects: any[] = [];
   showAllProjects: boolean = false;
@@ -25,30 +32,73 @@ export class AllprojectsComponent implements OnInit{
 
   isProjectsLoading: boolean = false;
 
-  constructor(private projectsModule: ProjectsModule, private projectsService: ProjectsService) {
+  constructor(
+    private projectsModule: ProjectsModule,
+    private projectsService: ProjectsService,
+    private teamService: TeamServiceService
+    ) {}
 
-  }
-
-  toggleAllProjects(): void {
-    this.showAllProjects = !this.showAllProjects;
-    if (!this.showAllProjects) {
-      this.displayedProjects = 6;
-    }
-  }
-  ngOnInit(): void {
-    this.isProjectsLoading = true; // Set loading flag to true before fetching data
-
-    this.projectsService.getAllProjects().subscribe({
-      next: (projects: any) => {
-        this.projects = projects;
-        this.isProjectsLoading = false; // Set loading flag to false after fetching data
+    ngOnInit(): void {
+      this.isProjectsLoading = true;
+      this.projectsService.getAllProjects().subscribe({
+      next: (response: any) => {
+        this.projects = response.projects;
+        this.fetchTasksAndTeamsForProjects();
       },
       error: (error: any) => {
-        console.error(error);
-        this.isProjectsLoading = false; // Set loading flag to false if there's an error
-      },
+        console.error('Error fetching projects:', error);
+        this.isProjectsLoading = false;
+      }
     });
+  
+    }
 
+    fetchTasksAndTeamsForProjects(): void {
+      this.projects.forEach(project => {
+        this.projectsService.getProjectTasks(project.id).subscribe({
+          next: (response: any) => {
+            this.tasksMap[project.id] = response.tasks;
+            this.fetchTeamForProject(project.id);
+          },
+          error: (error: any) => {
+            console.error(`Error fetching tasks for project ${project.id}:`, error);
+          },
+          complete: () => {
+            const allTasksFetched = Object.keys(this.tasksMap).length === this.projects.length;
+            if (allTasksFetched) {
+              this.isProjectsLoading = false;
+            }
+          }
+        });
+      });
+    }
+  
+  
+    getAllTasksCount(projectId: number): number {
+      return this.tasksMap[projectId] ? this.tasksMap[projectId].length : 0;
+    }
+  
+    getDoneTasksCount(projectId: number): number {
+      if (!this.tasksMap[projectId]) return 0;
+      return this.tasksMap[projectId].filter(task => task.status === 'done').length;
+    }
+
+    fetchTeamForProject(projectId: number): void {
+      this.teamService.getTeamByProjectId(projectId).subscribe({
+        next: (team: any) => {
+          this.teamsMap[projectId] = team.team.team_name;
+        },
+        error: (error: any) => {
+          console.error(`Error fetching team for project ${projectId}:`, error);
+        }
+      });
+    }
+    getTeamName(projectId: number): string {
+      return this.teamsMap[projectId] || 'No team assigned';
+    }
   }
 
-}
+
+
+
+
