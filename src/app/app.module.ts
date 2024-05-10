@@ -14,7 +14,7 @@ import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent 
 import { ProjectsModule } from './views/projects/projects.module';
 import {  RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 import {
@@ -36,10 +36,12 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
-  ModalModule
+  ModalModule,
+  
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -80,7 +82,8 @@ const APP_CONTAINERS = [
     ProjectsModule ,
     ModalModule ,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
@@ -88,7 +91,8 @@ const APP_CONTAINERS = [
       useClass: HashLocationStrategy
     },
     IconSetService,
-    Title
+    Title,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
 })
