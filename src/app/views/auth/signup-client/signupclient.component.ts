@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ModalModule } from '@coreui/angular';
+
 
 @Component({
   selector: 'app-signupclient',
   templateUrl: './signupclient.component.html',
-  styleUrls: ['./signupclient.component.css']
+  styleUrls: ['./signupclient.component.css'],
 })
 export class SignupclientComponent {
   passwordVisible: boolean = false;

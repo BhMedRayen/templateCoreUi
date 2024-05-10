@@ -11,7 +11,7 @@ import { Team } from "../models/teams.model"
 })
 export class ProjectsService {
 
-  private projects: Project[] = []; // Variable to store the latest projects
+  private projects: Project[] = []; 
   private tasks : Task[] = [];
 
   private projectsSubject: Subject<Project[]> = new Subject<Project[]>();
@@ -30,10 +30,14 @@ export class ProjectsService {
   }
 
 
-  getDoneProject() : Observable<Project[]> {
+  getUnDoneProject() : Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl+'/active-projects')
   }
 
- 
+  getDoneProjects() : Observable<Project[]> {
+    return this.http.get<Project[]>(this.apiUrl+'/done-projects')
+  }
+
+  
 
 }

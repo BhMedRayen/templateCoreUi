@@ -5,6 +5,7 @@ import { ButtonModule, ModalModule, } from '@coreui/angular';
 import {ProjectsService} from "../../../services/projects.service";
 import { forEach } from 'lodash-es';
 import {Project} from "../../../models/project.model";
+import {Team} from "../../../models/teams.model";
 import { TeamServiceService } from "../../../services/team-service.service";
 import { Task } from '../../../models/task.model';
 
@@ -25,6 +26,9 @@ import { Task } from '../../../models/task.model';
 
 export class ProjectslistComponent implements OnInit {
   projects: Project[] = [];
+  AllProjects : Project [] = [];
+  doneProjects : Project [] = [];
+  allTeams : Team[]= [];
   isProjectsLoading: boolean = false;
   tasksMap: { [projectId: number]: Task[] } = {};
   teamsMap: { [projectId: number]: string } = {};
@@ -46,7 +50,10 @@ export class ProjectslistComponent implements OnInit {
 ngOnInit(): void {
 
   this.isProjectsLoading = true;
-  this.projectsService.getDoneProject().subscribe({
+  this.getAllProjects();
+  this.getDoneProjects();
+  this.getAllTeams();
+  this.projectsService.getUnDoneProject().subscribe({
   next: (response: any) => {
     this.projects = response.projects;
     console.log(this.projects);
@@ -102,5 +109,28 @@ getDoneTasksCount(projectId: number): number {
 getTeamName(projectId: number): string {
   return this.teamsMap[projectId] || 'No team assigned';
 }
+
+getAllProjects() : void {
+  this.projectsService.getAllProjects().subscribe({
+    next:(response : any) => {
+      this.AllProjects=response.projects;
+    }
+  })
+}
+getDoneProjects() : void {
+  this.projectsService.getDoneProjects().subscribe({
+    next:(response:any)=> 
+      this.doneProjects=response.projects
+  });
+}
+
+getAllTeams() : void {
+  this.teamService.getAllTeams().subscribe({
+    next:(response:any)=>{
+      this.allTeams=response.teams
+    }
+  })
+}
+  
 
 }

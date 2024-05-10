@@ -13,8 +13,8 @@
                             <i class="fa-solid fa-diagram-project"></i>
                         </div>
                         <div class="card-text">
-                            <p class="mb-4 mt-3"><strong>Total Projects:</strong></p>
-                            <p><strong>Done Projects:</strong> </p>
+                            <p class="mb-4 mt-3"><strong>Total Projects:</strong> {{AllProjects.length}}</p>
+                            <p><strong>Done Projects:</strong>{{doneProjects.length}} </p>
                         </div>
                     </div>
                 </div>
@@ -28,8 +28,8 @@
                             <i class="fa-solid fa-people-group"></i>
                         </div>
                         <div class="card-text">
-                             <p class="mb-4 mt-3"><strong>Number of teams:</strong> </p> 
-                            <p><strong>Projects done by teams:</strong> </p>
+                             <p class="mb-4 mt-3"><strong>Number of teams:</strong>{{allTeams.length}}</p> 
+                            <p><strong>Projects done by teams:</strong>{{doneProjects.length}} </p>
                         </div>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
                             <i class="fa-solid fa-bars-progress"></i>
                         </div>
                         <div class="card-text">
-                            <p class="mb-4 mt-3"><strong>Total backlogs:</strong></p> 
+                            <p class="mb-4 mt-3"><strong>Total backlogs:</strong>{{AllProjects.length}}</p> 
                             
-                            <p><strong>Done Backlogs: </strong>  </p>
+                            <p><strong>Done Backlogs: </strong> {{doneProjects.length}}  </p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
     
 <div class="card m-3">
     <div class="card-header">
-        <h4 class="card-title mb-0">All Projects</h4>
+        <h4 class="card-title mb-0">Active Projects</h4>
     </div>
     <div class="card-body">
       <div *ngIf="isProjectsLoading">
@@ -67,9 +67,7 @@
         <div>Loading projects...</div>
       </div>
       <ng-container *ngIf="!isProjectsLoading">
-       
-
-        <div class="table-responsive">
+         <div class="table-responsive">
             <table *ngIf="projects.length > 0; else noProjects" class="table table-striped table-bordered mb-0">
           <thead>
           <tr>
@@ -101,108 +99,3 @@
       </ng-container>
     </div>
 </div>
-
-
-   
-
-<!-- 
- <button [cModalToggle]="scrollableLongContentModal.id" cButton>Scrollable long content</button>
-
-<c-modal #scrollableLongContentModal id="scrollableLongContentModal" scrollable>
-  <c-modal-header>
-    <h5 cModalTitle>Modal title</h5>
-    <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
-  </c-modal-header>
-  <c-modal-body>
-    <ng-container *ngTemplateOutlet="longContent"></ng-container>
-  </c-modal-body>
-  <c-modal-footer>
-    <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary">
-      Close
-    </button>
-    <button cButton color="primary">Save changes</button>
-  </c-modal-footer>
-</c-modal>
-
-<ng-template #longContent>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-  <p>
-    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-  </p>
-  <p>
-    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-    lacus vel augue laoreet rutrum faucibus dolor auctor.
-  </p>
-  <p>
-    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-    auctor fringilla.
-  </p>
-</ng-template> 
-
- -->

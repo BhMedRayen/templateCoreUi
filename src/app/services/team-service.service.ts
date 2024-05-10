@@ -14,6 +14,9 @@ export class TeamServiceService {
   getTeamByProjectId(id : number) : Observable<Team> {
     return this.http.get<Team>(`${this.apiUrl}/get-team-by-backlog/${id}`);
   }
+  getAllTeams() : Observable<Team[]> {
+    return this.http.get<Team[]>(this.apiUrl+'/get-all-teams');
+  }
   
 
 }
