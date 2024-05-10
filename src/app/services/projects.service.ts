@@ -38,6 +38,11 @@ export class ProjectsService {
     return this.http.get<Project[]>(this.apiUrl+'/done-projects')
   }
 
+  createProject(projectData: any): Observable<Project> {
+    return this.http.post<Project>(`${this.apiUrl}/create`, projectData);
+  }
+  
+
   
 
 }

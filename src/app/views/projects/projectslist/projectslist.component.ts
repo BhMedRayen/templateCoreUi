@@ -8,6 +8,9 @@ import {Project} from "../../../models/project.model";
 import {Team} from "../../../models/teams.model";
 import { TeamServiceService } from "../../../services/team-service.service";
 import { Task } from '../../../models/task.model';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateProjectDialogComponent } from '../create-project-dialog/create-project-dialog.component';
+
 
 
 
@@ -38,11 +41,21 @@ export class ProjectslistComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private teamService: TeamServiceService
+    private teamService: TeamServiceService,
+    public dialog: MatDialog
     ) {}
 
 
-
+    openCreateProjectDialog(): void {
+      const dialogRef = this.dialog.open(CreateProjectDialogComponent, {
+        width: '500px', // Adjust the width as per your requirement
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        // Here you can perform actions after the dialog is closed
+      });
+    }
 
 
 
