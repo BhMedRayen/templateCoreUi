@@ -56,7 +56,7 @@
         const projectId = +params['id'];
         this.backlogId = +params['id'];
         this.projectsService.getAllProjects();
-        this.project = this.projectsService.getProjectById(projectId)
+       
       });
         this.calculatePages();
       };
