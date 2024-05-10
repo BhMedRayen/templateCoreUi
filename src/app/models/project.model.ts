@@ -1,8 +1,9 @@
 import {Backlog} from "./backlog.model";
+import { Task } from "./task.model";
 
 export class Project {
   id: number;
-  projectName: string;
+  projectname: string;
   description: string;
   technologies: string[];
   productOwnerId: number;
@@ -10,11 +11,12 @@ export class Project {
   createdAt: string;
   backlogId: number;
   backlog: Backlog;
+ 
 
 
   constructor(data: any) {
     this.id = data.id;
-    this.projectName = data.projectname;
+    this.projectname = data.projectname;
     this.description = data.description;
     this.technologies = JSON.parse(data.technologies);
     this.productOwnerId = data.product_owner_id;

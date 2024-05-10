@@ -1,9 +1,9 @@
 export interface Task {
     id: number;
-    title: string;
     description: string;
-    assignedTo: number ;
-    status: boolean;
-    dueDate: Date;
-    sprintId: number; 
+    status : String;
+    sprint_id: number ;
+    assigned_user_id: number;
+    updatedAt: string;
+    createdAt: string;
   }
