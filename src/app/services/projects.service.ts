@@ -41,8 +41,20 @@ export class ProjectsService {
   createProject(projectData: any): Observable<Project> {
     return this.http.post<Project>(`${this.apiUrl}/create`, projectData);
   }
-  
 
+  getProjectById(projectId: number): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/get-by-id/${projectId}`).pipe(
+      tap((response: any) => {
+        console.log('Response from getProjectById:', response);
+      }),
+      map((response: any) => {
+        // Parse the technologies string into an array
+        response.project.technologies = JSON.parse(response.project.technologies);
+        return response;
+      })
+    );
+  }
+  
   
 
 }
