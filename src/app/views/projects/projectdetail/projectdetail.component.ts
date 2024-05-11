@@ -6,8 +6,8 @@
   import {UsersService} from "../../../services/users.service";
   import {User} from "../../../models/user.model";
   import {Project} from "../../../models/project.model";
-import { Subscription } from 'rxjs';
-import { TeamServiceService } from "../../../services/team-service.service"
+  import { Subscription } from 'rxjs';
+  import { TeamServiceService } from "../../../services/team-service.service"
 
 
 
@@ -93,11 +93,18 @@ import { TeamServiceService } from "../../../services/team-service.service"
       this.teamService.getTeamByProjectId(projectId).subscribe({
         next: (team: any) => {
           this.teamsMap[projectId] = team;
-          this.team = team; // Assigning the fetched team to the component property
+          this.team = team; 
+          this.team.team_members.forEach((teamMember: any) => {
+            teamMember.photo = 'http://localhost:8000' + teamMember.photo;
+            console.log(team);
+            
+          });
+          console.log(team);
         },
         error: (error: any) => {
           console.error(`Error fetching team for project ${projectId}:`, error);
         }
       });
     }
+    
   }

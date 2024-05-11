@@ -1,5 +1,17 @@
+p{
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-size: 17px;
+}
+
+h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+  color: #1DA291;
+}
 h3 {
-  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #0a6d60;
 }
 .avatar-container {
     width: 60px; 
@@ -81,4 +93,15 @@ h3 {
 }
 hr {
     border-top: 1px solid #dcdcdc;
+}
+.user-photo {
+  width: 70px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensures the photo fills the container */
+}
+
+
+
+.text-center {
+  text-align: center; /* Aligns the text in the center */
 }

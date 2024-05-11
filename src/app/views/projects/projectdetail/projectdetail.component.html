@@ -1,14 +1,23 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-lg-8">
-      <h2 class="mb-4 text-primary">{{ project?.projectname }}</h2>
-      <h3 class="text-success">Description</h3>
+      <h2 class="mb-4 text">{{ project?.projectname }}</h2>
+      <h3 class="text">Description</h3>
       <p>{{ project?.description }}</p>
-      <h3 class="text-success">Technologies</h3>
+      <h3 class="text">Technologies</h3>
       <div class="row">
-        <div *ngFor="let technology of project?.technologies" class="col-6 col-md-4 col-lg-3 mb-3">
+        <div
+          *ngFor="let technology of project?.technologies"
+          class="col-6 col-md-4 col-lg-3 mb-3"
+        >
           <div class="text-center">
-            <img [src]="getTechnologyImage(technology)" alt="{{ technology }}" class="img-fluid mb-2" width="50" height="50">
+            <img
+              [src]="getTechnologyImage(technology)"
+              alt="{{ technology }}"
+              class="img-fluid mb-2"
+              width="50"
+              height="50"
+            />
             <p class="text-muted">{{ technology }}</p>
           </div>
         </div>
@@ -16,30 +25,41 @@
     </div>
     <div class="col-lg-4 mt-3">
       <div class="card shadow rounded">
-        <img src="../../../../assets/ProjectAassets/Add tasks-pana.png" class="card-img-top" alt="...">
+        <img
+          src="../../../../assets/ProjectAassets/Add tasks-pana.png"
+          class="card-img-top"
+          alt="..."
+        />
         <div class="card-body text-center">
-          <!-- <a [routerLink]="['/projects/backlogdetails', backlogId]" routerLinkActive="router-link-active" class="btn btn-primary">Check BackLog</a> -->
+          <a
+            [routerLink]="['/projects/backlogdetails', project?.id]"
+            routerLinkActive="router-link-active"
+            class="btn btn-primary"
+            >Check Backlog</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<hr />
 
-<hr>
-
-<h2 class="text-center mt-3 mb-3 text-danger">Project team - {{ team?.team_name }}</h2>
+<h2 class="text-center mt-3 mb-3 text">Project team - {{ team?.team.team_name }}</h2>
 <div class="container">
-  <div class="row">
-    <div *ngFor="let teamMember of team?.team_members" class="col-6 col-md-4 col-lg-3 mb-3">
-      <div class="card shadow rounded">
-        <div class="avatar-container">
-          <img [src]="teamMember.photo" alt="{{ teamMember.name }}" class="card-img-top rounded-circle">
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ teamMember.name }}</h5>
-          <p class="card-text">{{ teamMember.role ? teamMember.role : 'Team Member' }}</p>
-          <p *ngIf="teamMember.is_scrum_master === 1" class="text-muted">Scrum Master</p>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let teamMember of team?.team_members" class="col">
+      <div class="card h-100 shadow rounded">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+          <img
+            [src]="teamMember.photo" 
+            alt="{{ teamMember.name }}"
+            class="card-img-top rounded-circle user-photo"
+          />
+          <div class="text-center">
+            <h5 class="card-title">{{ teamMember.name }}</h5> 
+            <p class="card-text">{{ teamMember.role ? teamMember.role : "Team Member" }}</p>
+            <p *ngIf="teamMember.id === team?.team.scrum_master_id" class="text-muted">Scrum Master</p>
+          </div>
         </div>
       </div>
     </div>
