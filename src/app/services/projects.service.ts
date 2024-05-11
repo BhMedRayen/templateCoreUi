@@ -48,11 +48,14 @@ export class ProjectsService {
         console.log('Response from getProjectById:', response);
       }),
       map((response: any) => {
-        // Parse the technologies string into an array
         response.project.technologies = JSON.parse(response.project.technologies);
         return response;
       })
     );
+  }
+
+  deleteProject(projectId:number) : Observable<Project> {
+    return this.http.delete<Project>(`${this.apiUrl}/delete/${projectId}`)
   }
   
   
