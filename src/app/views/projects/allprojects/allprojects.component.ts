@@ -7,7 +7,11 @@ import {Project} from "../../../models/project.model";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Task } from '../../../models/task.model';
 import { Team } from 'src/app/models/teams.model';
-import { TeamServiceService } from "../../../services/team-service.service"
+import { TeamServiceService } from "../../../services/team-service.service";
+import { DeleteprojectComponent } from '../deleteproject/deleteproject.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-allprojects',
@@ -35,7 +39,8 @@ export class AllprojectsComponent implements OnInit{
   constructor(
     private projectsModule: ProjectsModule,
     private projectsService: ProjectsService,
-    private teamService: TeamServiceService
+    private teamService: TeamServiceService,
+    public dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
@@ -96,6 +101,19 @@ export class AllprojectsComponent implements OnInit{
     getTeamName(projectId: number): string {
       return this.teamsMap[projectId] || 'No team assigned';
     }
+
+    
+    openDeleteProjectDialog(projectId:number): void {
+      const dialogRef = this.dialog.open(DeleteprojectComponent,{
+        width:'500px',
+        data: { projectId: projectId } 
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        
+      })
+    }
+
   }
 
 
