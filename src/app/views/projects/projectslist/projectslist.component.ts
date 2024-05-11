@@ -11,7 +11,7 @@ import { Task } from '../../../models/task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from '../create-project-dialog/create-project-dialog.component';
 import { DeleteprojectComponent } from '../deleteproject/deleteproject.component';
-
+import { UpdateprojectComponent } from '../updateproject/updateproject.component'
 
 
 
@@ -50,6 +50,17 @@ export class ProjectslistComponent implements OnInit {
     openCreateProjectDialog(): void {
       const dialogRef = this.dialog.open(CreateProjectDialogComponent, {
         width: '500px',
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
+
+    openUpdateProjectDialog(projectId:number): void {
+      const dialogRef = this.dialog.open(UpdateprojectComponent, {
+        width: '500px',
+        data: { projectId: projectId } 
       });
   
       dialogRef.afterClosed().subscribe(result => {
