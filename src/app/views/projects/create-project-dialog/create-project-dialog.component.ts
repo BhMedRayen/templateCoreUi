@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ProjectsService } from '../../../services/projects.service';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-project-dialog',
@@ -34,6 +35,8 @@ export class CreateProjectDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
     private projectsService: ProjectsService,
+    private router: Router 
+
   ) { }
   onCancelClick(): void {
     this.dialogRef.close();
@@ -87,6 +90,8 @@ export class CreateProjectDialogComponent {
       },
       complete: () => {
         this.loading = false; 
+        this.router.navigate(['/projects/list']);
+        
       }
     });
   }
