@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
 import {ProjectsService} from "../../../services/projects.service";
-import { forEach } from 'lodash-es';
+import { forEach, result } from 'lodash-es';
 import {Project} from "../../../models/project.model";
 import {Team} from "../../../models/teams.model";
 import { TeamServiceService } from "../../../services/team-service.service";
 import { Task } from '../../../models/task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from '../create-project-dialog/create-project-dialog.component';
+import { DeleteprojectComponent } from '../deleteproject/deleteproject.component';
 
 
 
@@ -48,13 +49,23 @@ export class ProjectslistComponent implements OnInit {
 
     openCreateProjectDialog(): void {
       const dialogRef = this.dialog.open(CreateProjectDialogComponent, {
-        width: '500px', // Adjust the width as per your requirement
+        width: '500px',
       });
   
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        // Here you can perform actions after the dialog is closed
       });
+    }
+
+    openDeleteProjectDialog(projectId:number): void {
+      const dialogRef = this.dialog.open(DeleteprojectComponent,{
+        width:'500px',
+        data: { projectId: projectId } 
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        
+      })
     }
 
 
