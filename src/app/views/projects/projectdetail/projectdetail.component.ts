@@ -6,6 +6,9 @@
   import {UsersService} from "../../../services/users.service";
   import {User} from "../../../models/user.model";
   import {Project} from "../../../models/project.model";
+import { Subscription } from 'rxjs';
+import { TeamServiceService } from "../../../services/team-service.service"
+
 
 
   @Component({
@@ -18,63 +21,83 @@
   export class ProjectdetailComponent implements OnInit{
 
     project: Project | undefined;
-
-    visibleEmployeeIds: number[] = []; // Array to hold visible employee ids
-    pageSize: number = 3; // Number of items per page
-    currentPage: number = 1; // Current page number
-    totalPages: number = 0; // Total number of pages
-    pages: number[] = []; // Array to hold page numbers for pagination
-    backlogId: number = 0;
+    routeSubscription: Subscription | undefined;
+    teamsMap: { [projectId: number]: string } = {};
+    team: any; 
 
 
+    constructor(
+      private route: ActivatedRoute, 
+      private projectsService: ProjectsService,
+      private teamService: TeamServiceService,
+      private usersService: UsersService) {}
 
+   
 
+      ngOnInit(): void {
+        this.routeSubscription = this.route.paramMap.subscribe(params => {
+          const projectId = Number(params.get('id')); 
+          this.fetchTeamForProject(projectId);
+         
+          if (projectId) {
+            console.log('Calling getProjectById');
+            this.getProjectById(projectId);
+          }
+        });
+      }
+      
+      
 
-
-    constructor(private route: ActivatedRoute, private projectsService: ProjectsService, private usersService: UsersService) {}
-
-    getUserById(id: number): User | null {
-      this.usersService.getUserById(id).subscribe({
-        next: (user) => {
-          console.log('User:', user);
-          return user;
+    ngOnDestroy(): void {
+      if (this.routeSubscription) {
+        this.routeSubscription.unsubscribe();
+      }
+    }
+  
+    getProjectById(projectId: number): void {
+      this.projectsService.getProjectById(projectId).subscribe(
+        (response: any) => {
+          this.project = response.project;
+          console.log('Project Details:', this.project);
         },
-        error: (error) => {
-          console.error('Error fetching user:', error);
-          return null;
+        error => {
+          console.error('Error fetching project:', error);
         }
-
-      });
-
-      return null;
+      );
     }
 
+    getTechnologyImage(technology: string): string {
+      switch (technology) {
+        case 'Spring boot':
+          return '../../../../assets/ProjectAassets/Spring.png';
+        case 'Laravel':
+          return '../../../../assets/ProjectAassets/Laravel.png';
+        case 'Symfony':
+          return '../../../../assets/ProjectAassets/Symphony.png';
+        case 'Node.js': 
+          return '../../../../assets/ProjectAassets/Node.png';
+        case 'Angular':
+          return '../../../../assets/ProjectAassets/Angular.png';
+        case 'React' : 
+          return '../../../../assets/ProjectAassets/React.png';
+        case 'Svelte':
+          return '../../../../assets/ProjectAassets/Svelte.png';
+        case 'Vue.js':
+          return '../../../../assets/ProjectAassets/Vue.png';
+        default:
+          return 'default';
+      }
 
-    ngOnInit(): void {
-
-      this.route.params.subscribe(params => {
-        const projectId = +params['id'];
-        this.backlogId = +params['id'];
-        this.projectsService.getAllProjects();
-       
-      });
-        this.calculatePages();
-      };
-
-
-      calculatePages() {
-     //TODO BETTER TO GET FROM BACKEND this.totalPages = Math.ceil((this.project?.employeeIds.length || 0) / this.pageSize);
-      this.totalPages = 2;
-      this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     }
-
-  changePage(page: number) {
-    console.log('TODO: we will do pagination later')
+    fetchTeamForProject(projectId: number): void {
+      this.teamService.getTeamByProjectId(projectId).subscribe({
+        next: (team: any) => {
+          this.teamsMap[projectId] = team;
+          this.team = team; // Assigning the fetched team to the component property
+        },
+        error: (error: any) => {
+          console.error(`Error fetching team for project ${projectId}:`, error);
+        }
+      });
+    }
   }
-
-}
-
-
-
-
-

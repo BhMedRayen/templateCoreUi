@@ -21,7 +21,7 @@ export class CreateProjectDialogComponent {
   description: string = '';
   SpringBoot: boolean = false;
   Laravel: boolean = false;
-  Symfony: boolean = false;
+  Symphony: boolean = false;
   NodeJs: boolean = false;
   Angular: boolean = false;
   React: boolean = false;
@@ -49,8 +49,8 @@ export class CreateProjectDialogComponent {
     if (this.Laravel) {
       this.technologies.push("Laravel");
     }
-    if (this.Symfony) {
-      this.technologies.push("Symfony");
+    if (this.Symphony) {
+      this.technologies.push("Symphony");
     }
     if (this.NodeJs) {
       this.technologies.push("Node.js");
