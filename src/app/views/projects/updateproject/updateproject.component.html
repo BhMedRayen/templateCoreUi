@@ -21,47 +21,46 @@
             <div class="mb-3">
                 <label class="form-label">Backend</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="springBoot" value="Spring boot" [(ngModel)]="springBootSelected">
-                    <label class="form-check-label" for="springBoot">Spring boot</label>
+                  <input class="form-check-input" type="checkbox" id="springBoot" value="Spring boot" [(ngModel)]="SpringBoot" name="springBoot">
+                  <label class="form-check-label" for="springBoot">Spring boot</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="laravel" value="Laravel" [(ngModel)]="laravelSelected">
-                    <label class="form-check-label" for="laravel">Laravel</label>
+                  <input class="form-check-input" type="checkbox" id="laravel" value="Laravel" [(ngModel)]="Laravel" name="laravel">
+                  <label class="form-check-label" for="laravel">Laravel</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="symphony" value="Symphony" [(ngModel)]="symphonySelected">
-                    <label class="form-check-label" for="symphony">Symphony</label>
+                  <input class="form-check-input" type="checkbox" id="Symphony" value="Symphony" [(ngModel)]="Symphony" name="Symphony">
+                  <label class="form-check-label" for="Symphony">Symphony</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="nodejs" value="Node.js" [(ngModel)]="nodejsSelected">
-                    <label class="form-check-label" for="nodejs">Node.js</label>
+                  <input class="form-check-input" type="checkbox" id="nodejs" value="Node.js" [(ngModel)]="NodeJs" name="node.js">
+                  <label class="form-check-label" for="nodejs">Node.js</label>
                 </div>
-            </div>
-            <!-- Frontend -->
-            <div class="mb-3">
+              </div>
+              <div class="mb-3">
                 <label class="form-label">Frontend</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="angular" value="Angular" [(ngModel)]="angularSelected">
-                    <label class="form-check-label" for="angular">Angular</label>
+                  <input class="form-check-input" type="checkbox" id="angular" value="Angular" [(ngModel)]="Angular" name="Angular">
+                  <label class="form-check-label" for="angular">Angular</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="react" value="React" [(ngModel)]="reactSelected">
-                    <label class="form-check-label" for="react">React</label>
+                  <input class="form-check-input" type="checkbox" id="react" value="React" [(ngModel)]="React" name="React">
+                  <label class="form-check-label" for="react">React</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="vuejs" value="Vue.js" [(ngModel)]="vuejsSelected">
-                    <label class="form-check-label" for="vuejs">Vue.js</label>
+                  <input class="form-check-input" type="checkbox" id="vuejs" value="Vue.js" [(ngModel)]="VueJs" name="Vue.js">
+                  <label class="form-check-label" for="vuejs">Vue.js</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="svelte" value="Svelte" [(ngModel)]="svelteSelected">
-                    <label class="form-check-label" for="svelte">Svelte</label>
+                  <input class="form-check-input" type="checkbox" id="svelte" value="Svelte" [(ngModel)]="Svelte" name="Svelte">
+                  <label class="form-check-label" for="svelte">Svelte</label>
                 </div>
+              </div>
             </div>
-        </div>
      
         <div class="card-footer d-flex justify-content-end">
             <button type="button" class="btn btn-secondary me-2" (click)="onCancelClick()">Cancel</button>
-            <button type="button" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-primary" (click)=" updateProject(project.id)">Update</button>
         </div>
     </form>
 </div>
