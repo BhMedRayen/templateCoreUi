@@ -21,11 +21,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
+
       {
         path: 'projects',
         loadChildren: () =>
           import('./views/projects/projects.module').then((m) => m.ProjectsModule)
       },
+      {
+        path :'scrums',
+        loadChildren : () =>
+        import('./views/scrum/scrum.module').then((m)=> m.ScrmModule)
+      }
+
     ]
   },
   {
