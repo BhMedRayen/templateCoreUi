@@ -1,60 +1,67 @@
-<!-- <div class="card">
+<!-- Updated HTML template -->
+<div class="card">
     <div class="loading-overlay" *ngIf="loading">
         <div class="spinner"></div>
     </div>
 
     <form *ngIf="project">
         <div class="card-body">
+           <!-- Project Name -->
             <div class="mb-3">
                 <label for="projectName" class="form-label">Project Name</label>
-                <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Enter project name" [(ngModel)]="project.projectname">
+                <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Enter project name" [(ngModel)]="project.projectname" [ngModelOptions]="{ standalone: true }">
             </div>
+            <!-- Description -->
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter project description" [(ngModel)]="project.description"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter project description" [(ngModel)]="project.description" [ngModelOptions]="{standalone: true}"></textarea>
             </div>
+
+            <!-- Backend -->
             <div class="mb-3">
                 <label class="form-label">Backend</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="springBoot" value="Spring boot" [(ngModel)]="project.technologies.includes('Spring boot')">
+                    <input class="form-check-input" type="checkbox" id="springBoot" value="Spring boot" [(ngModel)]="springBootSelected">
                     <label class="form-check-label" for="springBoot">Spring boot</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="laravel" value="Laravel" [(ngModel)]="project.technologies.includes('Laravel')">
+                    <input class="form-check-input" type="checkbox" id="laravel" value="Laravel" [(ngModel)]="laravelSelected">
                     <label class="form-check-label" for="laravel">Laravel</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="symphony" value="Symphony" [(ngModel)]="project.technologies.includes('Symphony')">
+                    <input class="form-check-input" type="checkbox" id="symphony" value="Symphony" [(ngModel)]="symphonySelected">
                     <label class="form-check-label" for="symphony">Symphony</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="nodejs" value="Node.js" [(ngModel)]="project.technologies.includes('Node.js')">
+                    <input class="form-check-input" type="checkbox" id="nodejs" value="Node.js" [(ngModel)]="nodejsSelected">
                     <label class="form-check-label" for="nodejs">Node.js</label>
                 </div>
             </div>
+            <!-- Frontend -->
             <div class="mb-3">
                 <label class="form-label">Frontend</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="angular" value="Angular" [(ngModel)]="project.technologies.includes('Angular')">
+                    <input class="form-check-input" type="checkbox" id="angular" value="Angular" [(ngModel)]="angularSelected">
                     <label class="form-check-label" for="angular">Angular</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="react" value="React" [(ngModel)]="project.technologies.includes('React')">
+                    <input class="form-check-input" type="checkbox" id="react" value="React" [(ngModel)]="reactSelected">
                     <label class="form-check-label" for="react">React</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="vuejs" value="Vue.js" [(ngModel)]="project.technologies.includes('Vue.js')">
+                    <input class="form-check-input" type="checkbox" id="vuejs" value="Vue.js" [(ngModel)]="vuejsSelected">
                     <label class="form-check-label" for="vuejs">Vue.js</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="svelte" value="Svelte" [(ngModel)]="project.technologies.includes('Svelte')">
+                    <input class="form-check-input" type="checkbox" id="svelte" value="Svelte" [(ngModel)]="svelteSelected">
                     <label class="form-check-label" for="svelte">Svelte</label>
                 </div>
             </div>
         </div>
+     
         <div class="card-footer d-flex justify-content-end">
             <button type="button" class="btn btn-secondary me-2" (click)="onCancelClick()">Cancel</button>
             <button type="button" class="btn btn-primary">Update</button>
         </div>
     </form>
-</div> -->
+</div>

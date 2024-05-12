@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ButtonModule, ModalModule, } from '@coreui/angular';
 import {ProjectsService} from "../../../services/projects.service";
-import { forEach, result } from 'lodash-es';
 import {Project} from "../../../models/project.model";
 import {Team} from "../../../models/teams.model";
 import { TeamServiceService } from "../../../services/team-service.service";
@@ -58,6 +57,7 @@ export class ProjectslistComponent implements OnInit {
     }
 
     openUpdateProjectDialog(projectId:number): void {
+      console.log("open project update");
       const dialogRef = this.dialog.open(UpdateprojectComponent, {
         width: '500px',
         data: { projectId: projectId } 
