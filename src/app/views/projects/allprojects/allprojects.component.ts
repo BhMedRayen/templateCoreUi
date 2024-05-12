@@ -10,6 +10,7 @@ import { Team } from 'src/app/models/teams.model';
 import { TeamServiceService } from "../../../services/team-service.service";
 import { DeleteprojectComponent } from '../deleteproject/deleteproject.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateprojectComponent } from '../updateproject/updateproject.component';
 
 
 
@@ -112,6 +113,18 @@ export class AllprojectsComponent implements OnInit{
         console.log('The dialog was closed');
         
       })
+    }
+
+    openUpdateProjectDialog(projectId:number): void {
+      console.log("open project update");
+      const dialogRef = this.dialog.open(UpdateprojectComponent, {
+        width: '500px',
+        data: { projectId: projectId } 
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
     }
 
   }

@@ -34,7 +34,7 @@
               <a [routerLink]="['/projects/details', project.id]" routerLinkActive="router-link-active">
                 <button type="button" class="btn btn-light">View details</button>
               </a>
-              <button type="button" class="btn btn-primary btn-sm m-1" ><i class="bi bi-arrow-down-up"></i> Update</button>
+              <button type="button" class="btn btn-primary btn-sm m-1" (click)="openUpdateProjectDialog(project.id)" ><i class="bi bi-arrow-down-up"></i> Update</button>
               <button type="button" class="btn btn-dark btn-sm m-1"  (click)="openDeleteProjectDialog(project.id)"><i class="bi bi-archive"></i> Delete</button>
             </td>
           </tr>
