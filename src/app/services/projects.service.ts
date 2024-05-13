@@ -23,6 +23,7 @@ export class ProjectsService {
 
   getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl+'/get-all');
+    // use project subject 
   }
 
   getProjectTasks(id: number): Observable<Task[]> {

@@ -12,10 +12,10 @@ const routes: Routes = [
         {
           path: '',
           pathMatch: 'full',
-          redirectTo: 'all',
+          redirectTo: 'all-teams',
         },
         {
-            path : 'all-teams',
+            path : 'all',
             component : AllTeamsComponent
         },
       ]
