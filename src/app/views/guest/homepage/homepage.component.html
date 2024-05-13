@@ -1,2 +1,114 @@
+<!-- In your Angular component template -->
+<div class="content">
 
-<h1>TODO Home PAGE here</h1>
+  <nav class="navbar navbar-expand-lg fw-bold bg_color_palette_gris mb-5">
+    <div class="container-fluid">
+      <img class="logo" src="../../assets/logo.jpg" alt="">
+      <div class="d-flex flex-row align-items-center" id="buttons">
+        <a routerLink="#"><button type="button" class="btn btn-outline-success ms-2">Sign in</button></a>
+        <a routerLink="#"><button type="button" class="btn btn-outline-success ms-2">Sign up</button></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container text-center" style="margin-top: 140px;">
+    <div class="row">
+      <div class="col">
+        <img class="home_image" src="../../../../assets/Developer activity-rafiki.png" alt="">
+      </div>
+      <div class="col mt-5">
+        <h1 >Welcome to aliret</h1>
+        <h2>Your favorite development space, Where ideas flourish with grace.</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body text-center"> 
+          <img src="../../../../assets/Mobile login-rafiki.png" class="card-img-top" alt="Mobile development">
+            <h5 class="card-title">Mobile development</h5>
+            <p class="card-text">Mobile apps are central to our society, enabling seamless connectivity, convenience, and constant innovation. They have become an integral part of our daily lives.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body text-center"> 
+          <img src="../../../../assets/Web search-bro.png" class="card-img-top" alt="Web development">
+         
+            <h5 class="card-title">Web development</h5>
+            <p class="card-text">Web development shapes our society, enabling dynamic online experiences and driving innovation in connectivity and business.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body text-center">
+          <img  src="../../../../assets/desktop computer-bro.png" class="card-img-top" alt="Desktop Applications">
+        
+            <h5 class="card-title">Desktop Applications</h5>
+            <p class="card-text">Desktop development powers our society with versatile platforms for productivity and innovation, shaping interactions and workflows for efficiency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3" >
+      <h2 class="aliret  d-flex justify-content-center mb-3 ">Who we are</h2>
+      <p class="para mt-3"> 
+        "Aliret," a young start-up founded in 2023, experiencing rapid growth, specializes in the design and development of computer systems.
+       It boasts a range of experienced profiles in various areas of expertise: new technologies,
+       Cloud, BI, BIG DATA, AI, ML, system infrastructure, networks, security, DevOps, and gaming.
+      </p>
+      
+    </div>
+
+    <h2 class="aliret  d-flex justify-content-center">Our Team</h2>
+
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-3 mb-4" *ngFor="let user of users">
+        
+          <div class="card shadow border border-raduis rounded text-center">
+            <div class="card-body">
+              <img src="{{ user.photo }}" class="card-img-top rounded-circle" alt="{{ user.name }}'s photo" style="width: 100px; height: 100px;">
+            
+              <h5 class="card-title">{{ user.name }}</h5>
+              <p class="card-text">{{ user.lastName }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <h2 class="aliret  d-flex justify-content-center">Random Projects done by Aliret</h2>
+
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div *ngFor="let project of projects" class="col-md-4 mb-4">
+          <div class="card shadow rounded text-center">
+            <div class="card-body">
+            
+              <h5 class="card-title">{{ project.projectname }}</h5>
+              
+              <p class="card-text">{{ project.description }}</p>
+          
+              <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <div *ngFor="let technology of project?.technologies" class="d-flex flex-column align-items-center mx-2">
+                  <img [src]="getTechnologyImage(technology)" alt="{{ technology }}" class="img-fluid mb-2">
+                  <p>{{ technology }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  </div>
+  
