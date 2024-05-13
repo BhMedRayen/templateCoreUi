@@ -7,6 +7,7 @@ export class User {
   type: string;
   sex : String;
   confirmed : boolean;
+  
   constructor(data: any) {
     this.id = data.id;
     this.name = data.name;

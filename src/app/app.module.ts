@@ -4,11 +4,8 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-// Import routing module
 import { AppRoutingModule } from './app-routing.module';
-// Import app component
 import { AppComponent } from './app.component';
-// Import containers
 import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { ProjectsModule } from './views/projects/projects.module';

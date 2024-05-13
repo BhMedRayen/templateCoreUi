@@ -1,1 +1,22 @@
-<p>all-teams works!</p>
+<div class="content">
+    <h1 class="title d-flex justify-content-center mt-2">Teams Management</h1>
+
+    <button type="button" class="btn btn-light mb-3">Create new team <i class="bi bi-plus"></i> </button>
+
+    <div class="card-container d-flex justify-content-around flex-wrap">
+      <div class="card" *ngFor="let team of teams">
+        <div class="card-body">
+          <h5 class="card-title">{{ team.team_name }}</h5>
+          <div class="scrum-master">
+            <img [src]="team.users[0].photo" alt="Scrum Master" class="scrum-master-photo">
+            <p class="scrum-master-name">{{ team.users[0].name }}</p>
+          </div>
+          <p class="card-text">Number of Users: {{ team.users.length }}</p>
+          <button type="button" class="btn btn-light btn-view-more">View More</button>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  
