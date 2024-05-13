@@ -10,19 +10,14 @@ const routes: Routes = [
        },
        children: [
         {
-          path: '',
-          pathMatch: 'full',
-          redirectTo: 'all-teams',
-        },
-        {
-            path : 'all',
+            path : 'all-teams',
             component : AllTeamsComponent
             
         },
       ]
 
     }
-]
+];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
