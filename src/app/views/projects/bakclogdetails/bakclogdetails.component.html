@@ -1,1 +1,43 @@
-<h1>Back log detail</h1>
+
+  <div class="content">
+    <div class="details" *ngIf="backlog">
+      <h2>{{ backlog.backlog }}</h2>
+      <h3>{{ backlog.description }}</h3>
+    </div>
+    <button type="button" class="btn btn-light mb-2">Add new sprint <i class="bi bi-plus"></i></button>
+    <div class="card shadow-sm rounded">
+      <h2 class="card-header">
+        Product Backlog
+      </h2>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered mb-0">
+            <thead>
+              <tr>
+                <th>Sprint number</th>
+                <th>Sprint Name</th>
+                <th>User Story</th>
+                <th>Priority</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let productBacklog of productBacklogs">
+                <td>{{ productBacklog.num_sprint }}</td>
+                <td>{{ productBacklog.sprint_name}} </td>
+                <td> {{ productBacklog.user_story }} </td>
+                <td> {{ productBacklog.priority }} </td>
+                <td >
+                  <button type="button" class="btn btn-light m-1">update <i class="bi bi-arrow-clockwise"></i></button>
+                  <button type="button" class="btn btn-dark ">delete <i class="bi bi-x-lg"></i></button>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

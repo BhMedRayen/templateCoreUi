@@ -1,63 +1,23 @@
-.sprint-card {
-    width: 400px;
-    height: 400px;
+.details {
+  color: #0d534a;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
 }
-.tasks-img {
-    width: 500px;
-    height: 500px;
+.details h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 2rem;
 }
-.avatar-container {
-    width: 60px; 
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 10px;
+.details h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.3rem;
+  margin-top: 10px;
 }
-
-.avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.sprint-card {
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  
-  }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .pagination-item {
-    margin: 0 5px;
-  }
-  
-  .pagination-link {
-    background-color: rgb(2, 2, 32);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .pagination-link:hover {
-    background-color:  rgb(69, 69, 106);
-  }
-  
-  .pagination-item.active .pagination-link {
-    background-color: rgb(69, 69, 106);
-  }
+.card-header {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
