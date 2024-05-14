@@ -7,4 +7,5 @@ export interface Team {
     created_at: string;
     updated_at: string;
     users: User[];
+    scrum_master : any
 }
