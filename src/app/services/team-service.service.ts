@@ -25,6 +25,10 @@ export class TeamServiceService {
   deleteTeam(id:number) : Observable<Team> {
     return this.http.delete<Team>(`${this.apiUrl}/delete/${id}`)
   }
+  
+  getTeamById(id:number) : Observable<Team> {
+    return this.http.get<Team>(`${this.apiUrl}/get-team-by-id/${id}`)
+  }
 
 
 }
