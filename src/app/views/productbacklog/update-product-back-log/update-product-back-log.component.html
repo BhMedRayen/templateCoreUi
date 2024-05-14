@@ -1,1 +1,39 @@
-<p>update-product-back-log works!</p>
+<div class="container">
+    <h2>Update Sprint</h2>
+    <form>
+        <div class="loading-overlay" *ngIf="loading">
+            <div class="spinner"></div>
+        </div>
+        <div class="form-group">
+            <label for="num_sprint">Sprint Number:</label>
+            <input type="number" class="form-control" id="num_sprint" [(ngModel)]="sprint.num_sprint" name="num_sprint">
+        </div>
+        <div class="form-group">
+            <label for="sprint_name">Sprint Name:</label>
+            <input type="text" class="form-control" id="sprint_name" [(ngModel)]="sprint.sprint_name" name="sprint_name">
+        </div>
+        <div class="form-group">
+            <label for="user_story">User Story:</label>
+            <textarea class="form-control" id="user_story" [(ngModel)]="sprint.user_story" name="user_story"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Priority:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="highPriority" [(ngModel)]="sprint.priority" name="priority" value="High">
+                <label class="form-check-label" for="highPriority">High</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="averagePriority" [(ngModel)]="sprint.priority" name="priority" value="Average">
+                <label class="form-check-label" for="averagePriority">Average</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="lowPriority" [(ngModel)]="sprint.priority" name="priority" value="Low">
+                <label class="form-check-label" for="lowPriority">Low</label>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary m-1" [disabled]="loading" (click)="onUpdateSprint()">Update Sprint</button>
+            <button type="button" class="btn btn-secondary m-1" (click)="onCancelClick()" [disabled]="loading">Cancel</button>
+        </div>
+    </form>
+</div>

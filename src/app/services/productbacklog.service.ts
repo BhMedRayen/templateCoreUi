@@ -17,6 +17,19 @@ export class ProductbacklogService {
   deleteProductBacklog(sprintId : number) : Observable <any> {
     return this.http.delete<any>(`${this.apiUrl}/delete/${sprintId}`)
   }
+
+  createSprint(sprintData:any,backlogId : number) : Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/create/${backlogId}`,sprintData)
+  }
+
+  updateSprint(sprintData:any,sprintId:number):Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/update/${sprintId}`,sprintData)
+  }
+
+  getSprintById(sprintId:number):Observable <any> {
+    return this.http.get<any>(`${this.apiUrl}/get-by-id/${sprintId}`)
+  }
   
+
   
 }
