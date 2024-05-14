@@ -4,7 +4,8 @@
   import { CommonModule } from '@angular/common';
   import { ProjectsService } from 'src/app/services/projects.service';
   import {ProductbacklogService} from 'src/app/services/productbacklog.service'
-  
+  import { MatDialog } from '@angular/material/dialog';
+  import {DeleteProductBackLogComponent} from '../../productbacklog/delete-product-back-log/delete-product-back-log.component'
   @Component({
     selector: 'app-bakclogdetails',
     standalone: true,
@@ -23,6 +24,7 @@
         private route: ActivatedRoute,
         private projectsService: ProjectsService,
         private productService : ProductbacklogService,
+        public dialog: MatDialog
     ) {}
 
 
@@ -70,6 +72,14 @@
         console.log("product back log ", this.productBacklogs);
         
       }
+    })
+  }
+
+
+  openDeleteSprintDialog(sprintId : number) : void {
+    const dialogRef = this.dialog.open(DeleteProductBackLogComponent, {
+      width :'500px',
+      data : { sprintId :  sprintId}
     })
   }
 

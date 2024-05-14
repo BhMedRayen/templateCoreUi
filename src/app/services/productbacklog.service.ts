@@ -13,6 +13,10 @@ export class ProductbacklogService {
   getBackLogById(backlogId : number) : Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/get-by-backlog-id/${backlogId}`)
   }
+
+  deleteProductBacklog(sprintId : number) : Observable <any> {
+    return this.http.delete<any>(`${this.apiUrl}/delete/${sprintId}`)
+  }
   
   
 }

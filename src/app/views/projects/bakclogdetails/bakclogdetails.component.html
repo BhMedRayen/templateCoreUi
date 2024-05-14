@@ -23,14 +23,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let productBacklog of productBacklogs">
-                <td>{{ productBacklog.num_sprint }}</td>
-                <td>{{ productBacklog.sprint_name}} </td>
-                <td> {{ productBacklog.user_story }} </td>
-                <td> {{ productBacklog.priority }} </td>
+              <tr *ngFor="let sprint of productBacklogs">
+                <td>{{ sprint.num_sprint }}</td>
+                <td>{{ sprint.sprint_name}} </td>
+                <td> {{ sprint.user_story }} </td>
+                <td> {{ sprint.priority }} </td>
                 <td >
                   <button type="button" class="btn btn-light m-1">update <i class="bi bi-arrow-clockwise"></i></button>
-                  <button type="button" class="btn btn-dark ">delete <i class="bi bi-x-lg"></i></button>
+                  <button type="button" class="btn btn-dark" (click)="openDeleteSprintDialog(sprint.id)">delete <i class="bi bi-x-lg"></i></button>
                 </td>
               </tr>
             </tbody>
