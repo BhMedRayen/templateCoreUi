@@ -7,6 +7,7 @@ export class User {
   type: string;
   sex : String;
   confirmed : boolean;
+  pivot : any;
   
   constructor(data: any) {
     this.id = data.id;
@@ -17,5 +18,6 @@ export class User {
     this.type = data.type;
     this.sex = data.sex;
     this.confirmed = data.confirmed;
+    this.pivot=data.pivot;
   }
 }
