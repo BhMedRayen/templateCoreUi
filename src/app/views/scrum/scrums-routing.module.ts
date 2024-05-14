@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AllTeamsComponent } from '../scrum/all-teams/all-teams.component'
+import { CreateTeamComponent } from './create-team/create-team.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,11 @@ const routes: Routes = [
             component : AllTeamsComponent
             
         },
+        
+        {
+            path :'create-team',
+            component : CreateTeamComponent
+        } 
       ]
 
     }
