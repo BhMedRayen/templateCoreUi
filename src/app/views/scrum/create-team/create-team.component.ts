@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms'; 
 import { TeamServiceService } from 'src/app/services/team-service.service';
 
 @Component({
@@ -61,12 +61,12 @@ export class CreateTeamComponent implements OnInit{
   }
 
   filterUsers(): void {
-    // If search query is empty, display all users
+  
     if (!this.searchQuery.trim()) {
       this.filteredUsers = this.users.slice();
       return;
     }
-    // Filter users based on the search query
+
     this.filteredUsers = this.users.filter(user =>
       user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
