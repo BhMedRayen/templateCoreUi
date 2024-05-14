@@ -5,6 +5,7 @@ import { EmployeeServiceService } from 'src/app/services/employee-service.servic
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { TeamServiceService } from 'src/app/services/team-service.service';
+import { Team } from 'src/app/models/teams.model';
 
 @Component({
   selector: 'app-create-team',
@@ -32,7 +33,7 @@ export class CreateTeamComponent implements OnInit{
   teamName: string = '';
   loading : boolean = false;
   showSuccessAlert: boolean = false;
-
+  teams : Team [] = [];
   constructor (
     private empService : EmployeeServiceService,
     private teamService : TeamServiceService
@@ -71,10 +72,11 @@ export class CreateTeamComponent implements OnInit{
       user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
+
   createTeam(): void {
-    console.log('Team Name:', this.teamName); // Debugging statement
+    console.log('Team Name:', this.teamName); 
     if (!this.teamName.trim() || !this.selectedScrumMasterId || this.selectedTeamMemberIds.length === 0) {
-      console.log('Validation Failed'); // Debugging statement
+      console.log('Validation Failed'); 
       if (!this.teamName.trim()) {
         alert('Please enter a team name.');
         return;
@@ -91,11 +93,13 @@ export class CreateTeamComponent implements OnInit{
       }
       return;
     }
+
+    this.selectedTeamMemberIds.push(this.selectedScrumMasterId);
   
     const teamData = {
       team_name: this.teamName,
       scrum_master_id: this.selectedScrumMasterId,
-      users: this.selectedTeamMemberIds
+      users: this.selectedTeamMemberIds,
     };
     this.loading=true
     console.log("data :",teamData);
@@ -106,6 +110,12 @@ export class CreateTeamComponent implements OnInit{
         this.teamName = '';
         this.selectedScrumMasterId = undefined;
         this.selectedTeamMemberIds = [];
+        
+        // Update filteredScrumMasters to include only the selected Scrum Master
+        this.filteredScrumMasters = this.users.filter((user: any) => user.id === this.selectedScrumMasterId);
+        
+        // Filter users to get only team members (excluding Scrum Masters)
+        this.filteredTeamMembers = this.users.filter((user: any) => user.is_scrum_master !== 1);
       },
       error: (error: any) => {
         console.error('Error creating team:', );
@@ -114,20 +124,29 @@ export class CreateTeamComponent implements OnInit{
       }
     });
   }
+
   
   toggleTeamMemberSelection(userId: number, event: Event): void {
     const isChecked = (event.target as HTMLInputElement).checked;
     if (isChecked) {
-      // If checkbox is checked, add the user ID to selectedTeamMemberIds
-      this.selectedTeamMemberIds.push(userId);
+       
+        if (!this.selectedTeamMemberIds.includes(userId)) {
+         
+            if (userId === this.selectedScrumMasterId) {
+                this.selectedTeamMemberIds.unshift(userId);
+            } else {
+                this.selectedTeamMemberIds.push(userId);
+            }
+        }
     } else {
-      // If checkbox is unchecked, remove the user ID from selectedTeamMemberIds
-      const index = this.selectedTeamMemberIds.indexOf(userId);
-      if (index !== -1) {
-        this.selectedTeamMemberIds.splice(index, 1);
-      }
+        // If checkbox is unchecked, remove the user ID from selectedTeamMemberIds
+        const index = this.selectedTeamMemberIds.indexOf(userId);
+        if (index !== -1) {
+            this.selectedTeamMemberIds.splice(index, 1);
+        }
     }
-  }
+}
+
 
 
 }
