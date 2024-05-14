@@ -62,6 +62,10 @@ export class ProjectsService {
   updateProject(projectId: number, projectData: any): Observable<Project> {
     return this.http.put<Project>(`${this.apiUrl}/update/${projectId}`, projectData);
   }
+
+  getBackLogById(backlogId : number) : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get-backlog-by-id/${backlogId}`)
+  }
   
   
   
