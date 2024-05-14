@@ -5,7 +5,9 @@
   import { ProjectsService } from 'src/app/services/projects.service';
   import {ProductbacklogService} from 'src/app/services/productbacklog.service'
   import { MatDialog } from '@angular/material/dialog';
-  import {DeleteProductBackLogComponent} from '../../productbacklog/delete-product-back-log/delete-product-back-log.component'
+  import {DeleteProductBackLogComponent} from '../../productbacklog/delete-product-back-log/delete-product-back-log.component';
+  import {CreateProductBackLogComponent} from '../../productbacklog/create-product-back-log/create-product-back-log.component'
+  import {UpdateProductBackLogComponent} from '../../productbacklog/update-product-back-log/update-product-back-log.component'
   @Component({
     selector: 'app-bakclogdetails',
     standalone: true,
@@ -82,5 +84,20 @@
       data : { sprintId :  sprintId}
     })
   }
+
+    openAddSprintDialog(backlogId : number) : void {
+    const dialogRef = this.dialog.open(CreateProductBackLogComponent, {
+      width : '500px',
+      data : { backlogId : backlogId }
+    })
+  }
+
+  openUpdateSprintDialog(sprintId : number ) : void {
+    const dialogRef = this.dialog.open(UpdateProductBackLogComponent,{
+      width : '500px',
+      data : {sprintId : sprintId}
+    })
+  }
+  
 
   }

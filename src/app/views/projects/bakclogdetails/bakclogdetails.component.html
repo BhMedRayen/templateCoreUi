@@ -4,7 +4,7 @@
       <h2>{{ backlog.backlog }}</h2>
       <h3>{{ backlog.description }}</h3>
     </div>
-    <button type="button" class="btn btn-light mb-2">Add new sprint <i class="bi bi-plus"></i></button>
+    <button type="button" class="btn btn-light mb-2" (click)="openAddSprintDialog(backlog.id)">Add new sprint <i class="bi bi-plus"></i></button>
     <div class="card shadow-sm rounded">
       <h2 class="card-header">
         Product Backlog
@@ -29,7 +29,7 @@
                 <td> {{ sprint.user_story }} </td>
                 <td> {{ sprint.priority }} </td>
                 <td >
-                  <button type="button" class="btn btn-light m-1">update <i class="bi bi-arrow-clockwise"></i></button>
+                  <button type="button" class="btn btn-light m-1" (click)="openUpdateSprintDialog(sprint.id)">update <i class="bi bi-arrow-clockwise"></i></button>
                   <button type="button" class="btn btn-dark" (click)="openDeleteSprintDialog(sprint.id)">delete <i class="bi bi-x-lg"></i></button>
                 </td>
               </tr>
