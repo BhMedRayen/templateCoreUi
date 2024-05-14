@@ -4,7 +4,6 @@
   import { RouterModule } from '@angular/router';
   import {ProjectsService} from "../../../services/projects.service";
   import {UsersService} from "../../../services/users.service";
-  import {User} from "../../../models/user.model";
   import {Project} from "../../../models/project.model";
   import { Subscription } from 'rxjs';
   import { TeamServiceService } from "../../../services/team-service.service"
@@ -89,6 +88,7 @@
       }
 
     }
+    
     fetchTeamForProject(projectId: number): void {
       this.teamService.getTeamByProjectId(projectId).subscribe({
         next: (team: any) => {
