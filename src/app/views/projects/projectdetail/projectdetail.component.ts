@@ -3,7 +3,6 @@
   import { CommonModule } from '@angular/common';
   import { RouterModule } from '@angular/router';
   import {ProjectsService} from "../../../services/projects.service";
-  import {UsersService} from "../../../services/users.service";
   import {Project} from "../../../models/project.model";
   import { Subscription } from 'rxjs';
   import { TeamServiceService } from "../../../services/team-service.service"
@@ -29,7 +28,7 @@
       private route: ActivatedRoute, 
       private projectsService: ProjectsService,
       private teamService: TeamServiceService,
-      private usersService: UsersService) {}
+      ) {}
 
    
 
