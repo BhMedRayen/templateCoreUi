@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/models/teams.model';
 import  {DeleletTeamMemberComponent} from '../delelet-team-member/delelet-team-member.component'
 import { MatDialog } from '@angular/material/dialog';
+import {ConfirmComponent} from '../confirm/confirm.component'
 @Component({
   selector: 'app-update-team',
   standalone: true,
@@ -53,7 +54,6 @@ export class UpdateTeamComponent implements OnInit{
           });
         }
         console.log("team", this.team);
-        // Add debugging statement to check the users array
         console.log("Users:", this.team?.users);
       },
       error: (error: any) => {
@@ -77,19 +77,15 @@ export class UpdateTeamComponent implements OnInit{
   }
   
   
-  // openDeleteProjectDialog(projectId:number): void {
-  //   const dialogRef = this.dialog.open(DeleteprojectComponent,{
-  //     width:'500px',
-  //     data: { projectId: projectId } 
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-      
-  //   })
-  // }
-  
   openDeleteMemberComponent(teamId : number , userId : number) : void {
     const dialogRef = this.dialog.open(DeleletTeamMemberComponent,{
+      width :'500px',
+      data : { teamId : teamId , userId : userId  }
+    })
+  }
+
+  openConfirmMemberComponent(teamId : number , userId : number) : void {
+    const dialogRef = this.dialog.open(ConfirmComponent,{
       width :'500px',
       data : { teamId : teamId , userId : userId  }
     })
