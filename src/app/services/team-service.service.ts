@@ -42,10 +42,10 @@ export class TeamServiceService {
     return this.http.put<any> ((`${this.apiUrl}/${teamId}/change-scrum-master/${userId}`),'')
   }
 
-  addTeamMember(teamId: number, userIds: number[]): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/${teamId}/add-team-member`, { user_ids: userIds });
-  }
 
+  addTeamMember(teamId: number, userIds: number[]): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${teamId}/add-member`, { user_ids: userIds });
+  }
   getEligibleUsers(teamId : number ) : Observable<any> {
     return this.http.get<any>(`http://localhost:8000/api/user/eligible-users/${teamId}`)
   }

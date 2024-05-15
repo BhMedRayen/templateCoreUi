@@ -20,6 +20,9 @@ export class EligibleUsersComponent implements OnInit {
   
   teamId : number = 0;
   users : User [] = [];
+  selectedUserIds: number[] = [];
+  loading : boolean = false;
+  showSuccessAlert : boolean = false ;
   
   constructor (
     private route: ActivatedRoute, 
@@ -48,6 +51,31 @@ export class EligibleUsersComponent implements OnInit {
       }
     });
   }
-  
+
+  toggleUserSelection(userId: number): void {
+    const index = this.selectedUserIds.indexOf(userId);
+    if (index === -1) {
+      this.selectedUserIds.push(userId);
+    } else {
+      this.selectedUserIds.splice(index, 1);
+    }
+  }
+
+  addToTeam(): void {
+  this.loading=true;
+  this.teamService.addTeamMember(this.teamId, this.selectedUserIds).subscribe({
+    next: (response: any) => {
+      console.log("Users added to team successfully");
+      this.loading=false;
+      this.selectedUserIds = [];
+      this.showSuccessAlert = true;
+    },
+    error: (error: any) => {
+      this.loading=false;
+      console.log("Error adding users to team: ", error);
+    }
+  });
+  }
+
 
 }

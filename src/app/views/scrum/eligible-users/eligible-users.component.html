@@ -1,32 +1,36 @@
 <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col">
-              <h2>Find users to add to team</h2>
-        
-              <input type="text" class="form-control mb-3" placeholder="Search users...">
-              
-        
-              <div class="row">
-                <div class="col-6 col-md-4 col-lg-3 mb-4" *ngFor="let user of users">
-                  <img class="photo mb-2" [src]="user.photo" alt="User Photo">
-                  <div>{{ user.name }} {{ user.lastName }}</div>
-                  <input type="checkbox" name="selectedUser" class="custom-control-input mr-2"> <!-- Checkbox -->
-                </div>
+  <div class="row">
+    <div class="col">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <h2>Find users to add to team</h2>
             
+            <div class="loading-overlay" *ngIf="loading">
+              <div class="spinner"></div>
+          </div>
+
+          <div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+            Team created successfully!
+        </div>
+            <input type="text" class="form-control mb-3" placeholder="Search users...">
+
+            <div class="row">
+              <div class="col-6 col-md-4 col-lg-3 mb-4" *ngFor="let user of users">
+                <img class="photo mb-2" [src]="user.photo" alt="User Photo">
+                <div>{{ user.name }} {{ user.lastName }}</div>
+                <input type="checkbox" name="selectedUser" class="custom-control-input mr-2" 
+                  (change)="toggleUserSelection(user.id)"> <!-- Bind the method to handle checkbox change -->
               </div>
-              
-           
-              <button class="btn btn-primary">Add to Team</button>
             </div>
+
+            <button class="btn btn-primary" (click)="addToTeam()">Add to Team</button> <!-- Bind the method to add users -->
           </div>
         </div>
       </div>
-      <div class="col">
-        <img class="image" src="../../../../assets/User research-bro.png">
-      </div>
+    </div>
+    <div class="col">
+      <img class="image" src="../../../../assets/User research-bro.png">
     </div>
   </div>
-  
+</div>
