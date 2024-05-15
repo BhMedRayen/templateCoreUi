@@ -35,16 +35,22 @@ import {
   TabsModule,
   UtilitiesModule,
   ModalModule,
-  
+
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {ClientLayoutComponent} from "./containers/client/client-layout/client-layout.component";
+import {ClientHeaderComponent} from "./containers/client/client-layout/client-header/client-header.component";
+import {ClientFooterComponent} from "./containers/client/client-layout/client-footer/client-footer.component";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
+  ClientFooterComponent,
   DefaultHeaderComponent,
-  DefaultLayoutComponent
+  ClientHeaderComponent,
+  DefaultLayoutComponent,
+  ClientLayoutComponent,
 ];
 
 @NgModule({

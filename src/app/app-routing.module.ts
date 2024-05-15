@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
+import {ClientLayoutComponent} from "./containers/client/client-layout/client-layout.component";
 
 
 const routes: Routes = [
@@ -8,6 +9,20 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'client',
+    component: ClientLayoutComponent,
+    data: {
+      title: 'Client Home'
+    },
+    children: [
+      {
+        path: 'projects',
+        loadChildren: () =>
+          import('./views/client/projects/client-projects.module').then((m) => m.ClientProjectsModule)
+      }
+    ]
   },
   {
     path: '',
