@@ -8,6 +8,7 @@
   import {DeleteProductBackLogComponent} from '../../productbacklog/delete-product-back-log/delete-product-back-log.component';
   import {CreateProductBackLogComponent} from '../../productbacklog/create-product-back-log/create-product-back-log.component'
   import {UpdateProductBackLogComponent} from '../../productbacklog/update-product-back-log/update-product-back-log.component'
+  import { AssignTeamComponent } from '../../scrum/assign-team/assign-team.component'
   @Component({
     selector: 'app-bakclogdetails',
     standalone: true,
@@ -96,6 +97,13 @@
     const dialogRef = this.dialog.open(UpdateProductBackLogComponent,{
       width : '500px',
       data : {sprintId : sprintId}
+    })
+  }
+
+  openAssignTeamDialog(projectId : number) : void {
+    const dialogRef = this.dialog.open(AssignTeamComponent, {
+      width : '500px',
+      data : { projectId : projectId }
     })
   }
   
