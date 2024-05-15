@@ -1,0 +1,26 @@
+<form class="center-form">
+
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
+      
+    <div class="form-group">
+      <h3 class="form-label m-3">Select Team:</h3>
+      <div class="radio-group">
+        <label *ngFor="let team of Teams" class="radio m-1">
+          <input type="radio" class="radio-input" name="team" [value]="team.id" [(ngModel)]="selectedTeamId">
+          <span class="radio-label">{{ team.team_name }}</span>
+        </label>
+      </div>
+    </div>
+  
+    <div class="form-group m-1">
+      <button type="submit" class="btn btn-primary m-1"(click)="assignTeam()">
+        <i class="bi bi-check2"></i> Assign Team
+      </button>
+      <button type="button" class="btn btn-secondary m-1" (click)="onCancelClick()">
+        <i class="bi bi-x-lg"></i> Cancel
+      </button>
+    </div>
+  </form>
+  

@@ -29,6 +29,9 @@ export class TeamServiceService {
   getTeamById(id:number) : Observable<Team> {
     return this.http.get<Team>(`${this.apiUrl}/get-team-by-id/${id}`)
   }
-
+  
+  assignTeamToBacklog(backlogId: number, teamId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/backlogs/${backlogId}/assign-team/${teamId}`, {});
+  }
 
 }

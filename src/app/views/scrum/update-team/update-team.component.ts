@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { TeamServiceService } from 'src/app/services/team-service.service';
 import { ActivatedRoute } from '@angular/router'; 
 import { Team } from 'src/app/models/teams.model';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-update-team',

@@ -5,6 +5,7 @@
       <h3>{{ backlog.description }}</h3>
     </div>
     <button type="button" class="btn btn-light mb-2" (click)="openAddSprintDialog(backlog.id)">Add new sprint <i class="bi bi-plus"></i></button>
+    <button type="button" class="btn btn-light mb-2" (click)="openAssignTeamDialog(backlog.id)">Assign team <i class="bi bi-plus"></i></button>
     <div class="card shadow-sm rounded">
       <h2 class="card-header">
         Product Backlog
