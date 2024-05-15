@@ -14,24 +14,25 @@
                     <h2>Team Name</h2>
                     <input type="text" class="form-control mb-3" placeholder="Enter team name" name="teamName" [(ngModel)]="teamName">
                     <h2>Choose Scrum Master</h2>
+                    
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search for Scrum Master">
+                        <input type="text" class="form-control" placeholder="Search for Scrum Master"  [(ngModel)]="searchQuery2" (input)="filterUsers2()" name="searchQuery2">
                         <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
                     </div>
                     <div class="user-container">
-                        <ng-container *ngFor="let user of users; let i = index">
+                        <ng-container *ngFor="let user of filteredScrumMasters; let i = index">
                             <div class="form-check user-item" [style.display]="'inline-block'">
                                 <input class="form-check-input" type="radio" name="scrumMaster" [id]="'scrumMaster_' + user.id" 
                                     (change)="selectedScrumMasterId = user.id">
                                 <label class="form-check-label" [for]="'scrumMaster_' + user.id">
-                                    <img [src]="user.photo" class="rounded-circle" width="30" height="30" alt="User Photo"> {{ user.name }}
+                                    <img [src]="user.photo" class="rounded-circle" width="30" height="30" alt="User Photo"> {{ user.name }} {{user.lastName}}
                                 </label>
                             </div>
                         </ng-container>
                     </div>
                     <h2>Choose Team Members</h2>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search for team members" [(ngModel)]="searchQuery" (input)="filterUsers()" name="searchQuery">
+                        <input type="text" class="form-control" placeholder="Search for team members"[(ngModel)]="searchQuery" (input)="filterUsers()" name="searchQuery">
                         <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
                     </div>
                     <div class="user-container">
@@ -41,7 +42,7 @@
                                 <input class="form-check-input" type="checkbox" [id]="'teamMember_' + user.id"
                                 (change)="toggleTeamMemberSelection(user.id, $event)">
                                 <label class="form-check-label" [for]="'teamMember_' + user.id">
-                                    <img [src]="user.photo" class="rounded-circle" width="30" height="30" alt="User Photo"> {{ user.name }}
+                                    <img [src]="user.photo" class="rounded-circle" width="30" height="30" alt="User Photo"> {{ user.name }} {{user.lastName}}
                                 </label>
                             </div>
                         </ng-container>

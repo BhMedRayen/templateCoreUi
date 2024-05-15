@@ -23,7 +23,9 @@ export class CreateTeamComponent implements OnInit{
 
   users : User [] = [];
   filteredUsers: User[] = [];
+  filteredUsers2: User[] = [];
   searchQuery: string = '';
+  searchQuery2: string = '';
   filteredScrumMasters: User[] = [];
   filteredTeamMembers: User[] = [];
   scrumMasterQuery: string = '';
@@ -54,6 +56,8 @@ export class CreateTeamComponent implements OnInit{
           this.filteredTeamMembers=user;
           return user;
         });
+        this.filterUsers();
+        this.filterUsers2();
       },
       error: (error: any) => {
         console.error('Error fetching confirmed employees:', error);
@@ -62,16 +66,30 @@ export class CreateTeamComponent implements OnInit{
   }
 
   filterUsers(): void {
-  
     if (!this.searchQuery.trim()) {
       this.filteredUsers = this.users.slice();
       return;
     }
-
+  
+    const query = this.searchQuery.toLowerCase().trim();
     this.filteredUsers = this.users.filter(user =>
-      user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      user.name.toLowerCase().includes(query) ||
+      user.lastName.toLowerCase().includes(query)
     );
   }
+  filterUsers2(): void {
+    if (!this.searchQuery2.trim()) {
+      this.filteredScrumMasters = this.users.slice();
+      return;
+    }
+  
+    const query = this.searchQuery2.toLowerCase().trim();
+    this.filteredScrumMasters = this.users.filter(user =>
+      user.name.toLowerCase().includes(query) ||
+      user.lastName.toLowerCase().includes(query)
+    );
+  }
+  
 
   createTeam(): void {
     console.log('Team Name:', this.teamName); 
@@ -112,7 +130,7 @@ export class CreateTeamComponent implements OnInit{
         this.selectedTeamMemberIds = [];
         
         // Update filteredScrumMasters to include only the selected Scrum Master
-        this.filteredScrumMasters = this.users.filter((user: any) => user.id === this.selectedScrumMasterId);
+        this.filteredScrumMasters = this.users.slice(); // Populate filteredScrumMasters with all users initially
         
         // Filter users to get only team members (excluding Scrum Masters)
         this.filteredTeamMembers = this.users.filter((user: any) => user.is_scrum_master !== 1);

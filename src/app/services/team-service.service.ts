@@ -41,8 +41,6 @@ export class TeamServiceService {
   changeScrumMaster(teamId : number , userId : number ) : Observable <any> {
     return this.http.put<any> ((`${this.apiUrl}/${teamId}/change-scrum-master/${userId}`),'')
   }
-
-
   addTeamMember(teamId: number, userIds: number[]): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${teamId}/add-member`, { user_ids: userIds });
   }
