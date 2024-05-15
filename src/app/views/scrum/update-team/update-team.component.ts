@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { TeamServiceService } from 'src/app/services/team-service.service';
 import { ActivatedRoute } from '@angular/router'; 
 import { Team } from 'src/app/models/teams.model';
-
+import  {DeleletTeamMemberComponent} from '../delelet-team-member/delelet-team-member.component'
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-update-team',
   standalone: true,
@@ -26,6 +27,7 @@ export class UpdateTeamComponent implements OnInit{
   constructor (
     private teamServices : TeamServiceService,
     private route: ActivatedRoute, 
+    public dialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -75,6 +77,22 @@ export class UpdateTeamComponent implements OnInit{
   }
   
   
+  // openDeleteProjectDialog(projectId:number): void {
+  //   const dialogRef = this.dialog.open(DeleteprojectComponent,{
+  //     width:'500px',
+  //     data: { projectId: projectId } 
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+      
+  //   })
+  // }
   
+  openDeleteMemberComponent(teamId : number , userId : number) : void {
+    const dialogRef = this.dialog.open(DeleletTeamMemberComponent,{
+      width :'500px',
+      data : { teamId : teamId , userId : userId  }
+    })
+  }
 
 }

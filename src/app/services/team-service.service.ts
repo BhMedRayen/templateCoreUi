@@ -29,9 +29,13 @@ export class TeamServiceService {
   getTeamById(id:number) : Observable<Team> {
     return this.http.get<Team>(`${this.apiUrl}/get-team-by-id/${id}`)
   }
-  
+
   assignTeamToBacklog(backlogId: number, teamId: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/backlogs/${backlogId}/assign-team/${teamId}`, {});
+  }
+
+  deleteTeamMembre(teamId : number , userId : number ) : Observable<any> {
+    return this.http.delete<any> (`${this.apiUrl}/delete-team-membre/${teamId}/${userId}`)
   }
 
 }
