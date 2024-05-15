@@ -38,4 +38,13 @@ export class TeamServiceService {
     return this.http.delete<any> (`${this.apiUrl}/delete-team-membre/${teamId}/${userId}`)
   }
 
+  changeScrumMaster(teamId : number , userId : number ) : Observable <any> {
+    return this.http.put<any> ((`${this.apiUrl}/${teamId}/change-scrum-master/${userId}`),'')
+  }
+
+  addTeamMember(teamId: number, userIds: number[]): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${teamId}/add-team-member`, { user_ids: userIds });
+  }
+
+
 }
