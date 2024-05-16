@@ -61,6 +61,11 @@ const routes: Routes = [
         path :'scrums',
         loadChildren : () =>
         import('./views/scrum/scrum.module').then((m)=> m.ScrmModule)
+      },
+      {
+        path : 'users',
+        loadChildren : () => 
+        import ('./views/users/users.module').then((m)=> m.UsersModule)
       }
 
     ]

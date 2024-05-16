@@ -29,6 +29,25 @@ export const navItems: INavData[] = [
         url : 'scrums/all-teams'
       }
     ]
+  },
+  {
+    name :'Users',
+    url :'/users',
+    iconComponent : {name :'cil-apps'},
+    children : [
+      {
+        name :'all employees',
+        url : 'users/all-employees',
+      },
+      {
+        name :'unconfirmed employees',
+        url : 'users/unconfirmed'
+      },
+      {
+        name :'clients',
+        url :'users/clients'
+      }
+    ]
   }
   
 ];
