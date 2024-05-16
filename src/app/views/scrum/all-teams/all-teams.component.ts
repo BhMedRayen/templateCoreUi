@@ -18,6 +18,10 @@ import { DeleteTeamComponent} from '../delete-team/delete-team.component'
 export class AllTeamsComponent implements OnInit {
 
   teams : Team [] = []
+  team : Team | undefined;
+  scrumMaster: any;
+
+
 
   constructor (
     private teamsService : TeamServiceService,
@@ -53,5 +57,7 @@ openDeleteProjectComponent(teamId: number): void {
     data : { id : teamId },
   })
 }
+
+
 
 }

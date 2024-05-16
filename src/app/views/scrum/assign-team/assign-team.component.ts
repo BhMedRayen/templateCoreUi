@@ -57,11 +57,16 @@ export class AssignTeamComponent implements OnInit  {
         next: (response: any) => {  
           this.loading = false;
           this.dialogRef.close();
+         
         },
+        
         error: (error: any) => {
           console.error('Error assigning team ', error);
           this.loading = false;
+        },
+        complete : () => {
         }
+        
       });
     }
   }

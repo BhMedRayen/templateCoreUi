@@ -67,7 +67,7 @@ export class UpdateTeamComponent implements OnInit{
   getScrumMasterDetails(): void {
     console.log("Team:", this.team); 
     const scrumMasterUser = this.team?.users.find(user => user.pivot?.is_scrum_master === 1);
-    console.log("Scrum master user:", scrumMasterUser); // Log the potential Scrum Master user
+    console.log("Scrum master user:", scrumMasterUser);
     if (scrumMasterUser) {
       this.scrumMaster = scrumMasterUser;
       console.log("Scrum master:", this.scrumMaster);
