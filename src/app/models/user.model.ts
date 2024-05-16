@@ -8,6 +8,7 @@ export class User {
   sex : String;
   confirmed : boolean;
   pivot : any;
+  skills?: string[]
   
   constructor(data: any) {
     this.id = data.id;

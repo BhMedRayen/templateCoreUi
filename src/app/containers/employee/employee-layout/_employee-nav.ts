@@ -10,8 +10,7 @@ export const navItems: INavData[] = [
       {
         name :'Inbox',
         url  :'messages/inbox'
-      }
-
+      },
     ]
   }
 

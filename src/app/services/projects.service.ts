@@ -14,7 +14,6 @@ export class ProjectsService {
   private projects: Project[] = []; 
   private tasks : Task[] = [];
 
-  private projectsSubject: Subject<Project[]> = new Subject<Project[]>();
 
   private apiUrl = 'http://localhost:8000/api/projects';
   
@@ -23,7 +22,6 @@ export class ProjectsService {
 
   getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl+'/get-all');
-    // use project subject 
   }
 
   getProjectTasks(id: number): Observable<Task[]> {

@@ -16,5 +16,10 @@ export class EmployeeServiceService {
     return this.http.get<User[]>(this.apiUrl+'/confirmed')
   }
 
+  deleteUser(userId : number) : Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/delete/${userId}`)
+  } 
+  
+
 
 }
