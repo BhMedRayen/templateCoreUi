@@ -38,6 +38,7 @@ export class AllTeamsComponent implements OnInit {
         this.teams.forEach(team => { 
           team.users.forEach(user => { 
             user.photo = 'http://localhost:8000' + user.photo; 
+            console.log(user.photo);
           });
         });
         console.log("teams : ", this.teams);
