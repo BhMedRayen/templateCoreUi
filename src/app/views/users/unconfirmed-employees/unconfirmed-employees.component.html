@@ -1,1 +1,32 @@
-<p>unconfirmed-employees works!</p>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Aliret Service  Unconfirmed Employees</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <div class="col mb-4" *ngFor="let employee of pagedEmployees"> 
+            <div class="card h-100">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <img [src]="employee.photo" alt="User Photo" class="m-1" style="width: 60px; height: 60px; border-radius: 50%;">
+                            <span>{{ employee.name }} {{ employee.lastName }}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-light m-1" (click)="openConfirmUserRequestComponent(employee.id)" >Confirm</button>
+                            <button class="btn btn-dark m-1" (click)="openDeleteUserComponent(employee.id)">Delete</button> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Email:</th>
+                                <td>{{ employee.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination [totalItems]="totalEmployees" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)" [maxSize]="5" class="d-flex justify-content-center"></pagination>
+</div>
