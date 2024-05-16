@@ -1,0 +1,23 @@
+<div class="card m-3">
+
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
+      
+    <div class="card-header">
+        <h4 class="card-title mb-0">Confirm Memeber</h4>
+    </div>
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <span class="bi bi-exclamation-triangle text-warning fs-3 me-3"></span>
+            <div>
+                <p class="mb-0">Are you sure you want to confirm this Member?</p>
+                <small>This action facilitated the user's ability to access the platform, granting them entry and allowing them to engage with its features, services, and content seamlessly.</small>
+            </div>
+        </div>
+        <div class="mt-3 d-flex justify-content-end">
+            <button type="button" class="btn btn-dark me-2" (click)="onCancelClick()">Cancel</button>
+            <button type="button" class="btn btn-light" (click)="onConfirm()" >Confirm Request</button>
+        </div>
+    </div>
+</div>
