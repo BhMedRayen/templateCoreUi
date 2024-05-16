@@ -1,9 +1,13 @@
 <div class="container" *ngIf="team">
     <div class="row">
         <div class="col-md-6">
-            <!-- Team Name -->
+           
             <h2 class="title text-center mb-4">{{ team.team_name }}</h2>
-            
+            <a [routerLink]="['/scrums/eligibleUsers',team.id]" routerLinkActive="router-link-active" >
+            <button type="button" class="btn btn-light mb-2">
+                Add a member to {{ team.team_name }} <i class="fa-solid fa-plus icon"></i>
+              </button>
+            </a>
             <div class="card mb-4" *ngIf="scrumMaster">
                 <div class="card-body text-center">
                     <div class="mb-3">
@@ -18,26 +22,28 @@
             <div *ngIf="!scrumMaster">
                 <p class="text-muted">No Scrum Master assigned.</p>
             </div>
-            
-            <!-- Team Members -->
             <div class="row">
-                <div *ngFor="let member of team.users" class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <img class="rounded-circle" src="{{ member.photo }}" alt="{{ member.name }} photo" width="100" height="100">
-                            </div>
-                            <div>
-                                <p class="m-0">{{ member.name }} {{ member.lastName }}</p>
-                                <button class="btn btn-sm btn-danger mt-2">Delete</button>
+                <ng-container *ngFor="let member of team.users">
+                    <div class="col-md-6 mb-3" *ngIf="member.id !== scrumMaster.id">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <img class="rounded-circle" src="{{ member.photo }}" alt="{{ member.name }} photo" width="100" height="100">
+                                </div>
+                                <div>
+                                    <p class="m-0">{{ member.name }} {{ member.lastName }}</p>
+                                    
+                                    <button class="btn btn-sm btn-light mt-2" (click)="openConfirmMemberComponent(team.id, member.id)" >Assign as scrum master</button> <br>
+                                    <button class="btn btn-sm btn-dark mt-2" (click)="openDeleteMemberComponent(team.id, member.id)">Delete</button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
         <div class="col-md-6">
-            <!-- Placeholder Image -->
             <img class="img-fluid rounded" src="../../../../assets/Team page-amico.png" alt="Team Illustration">
         </div>
     </div>

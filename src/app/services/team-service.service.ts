@@ -29,9 +29,23 @@ export class TeamServiceService {
   getTeamById(id:number) : Observable<Team> {
     return this.http.get<Team>(`${this.apiUrl}/get-team-by-id/${id}`)
   }
-  
+
   assignTeamToBacklog(backlogId: number, teamId: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/backlogs/${backlogId}/assign-team/${teamId}`, {});
+  }
+
+  deleteTeamMembre(teamId : number , userId : number ) : Observable<any> {
+    return this.http.delete<any> (`${this.apiUrl}/delete-team-membre/${teamId}/${userId}`)
+  }
+
+  changeScrumMaster(teamId : number , userId : number ) : Observable <any> {
+    return this.http.put<any> ((`${this.apiUrl}/${teamId}/change-scrum-master/${userId}`),'')
+  }
+  addTeamMember(teamId: number, userIds: number[]): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${teamId}/add-member`, { user_ids: userIds });
+  }
+  getEligibleUsers(teamId : number ) : Observable<any> {
+    return this.http.get<any>(`http://localhost:8000/api/user/eligible-users/${teamId}`)
   }
 
 }
