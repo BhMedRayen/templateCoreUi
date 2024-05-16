@@ -4,10 +4,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 
 @Component({
-  selector: 'app-client-header',
-  templateUrl: './client-header.component.html',
+  selector: 'app-employee-header',
+  templateUrl: './employee-header.component.html',
 })
-export class ClientHeaderComponent extends HeaderComponent {
+export class EmployeeHeaderComponent extends HeaderComponent {
 
   @Input() sidebarId: string = "sidebar";
 

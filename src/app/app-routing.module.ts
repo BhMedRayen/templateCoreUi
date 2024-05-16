@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
-import {ClientLayoutComponent} from "./containers/client/client-layout/client-layout.component";
+import {EmployeeLayoutComponent} from "./containers/employee";
+import {ClientLayoutComponent} from "./containers/client";
 
 
 const routes: Routes = [
@@ -9,6 +10,20 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'employee',
+    component: EmployeeLayoutComponent,
+    data: {
+      title: 'Employee Home'
+    },
+    children: [
+      {
+        path: 'messages',
+        loadChildren: () =>
+          import('./views/employee/messages/employee-messages.module').then((m) => m.EmployeeMessagesModule)
+      }
+    ]
   },
   {
     path: 'client',

@@ -41,16 +41,18 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {ClientLayoutComponent} from "./containers/client/client-layout/client-layout.component";
-import {ClientHeaderComponent} from "./containers/client/client-layout/client-header/client-header.component";
-import {ClientFooterComponent} from "./containers/client/client-layout/client-footer/client-footer.component";
+import {EmployeeLayoutComponent} from "./containers/employee/employee-layout/employee-layout.component";
+import {EmployeeHeaderComponent} from "./containers/employee/employee-layout/employee-header/employee-header.component";
+import {EmployeeFooterComponent} from "./containers/employee/employee-layout/employee-footer/employee-footer.component";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
-  ClientFooterComponent,
+  EmployeeFooterComponent,
   DefaultHeaderComponent,
-  ClientHeaderComponent,
+  EmployeeHeaderComponent,
   DefaultLayoutComponent,
   ClientLayoutComponent,
+  EmployeeLayoutComponent,
 ];
 
 @NgModule({
