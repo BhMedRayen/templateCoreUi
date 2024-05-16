@@ -20,6 +20,13 @@ export class EmployeeServiceService {
     return this.http.delete<any>(`${this.apiUrl}/delete/${userId}`)
   } 
   
+  getUnConfirmedEmp() : Observable <User[]>  {
+    return this.http.get<User[]>(this.apiUrl+'/unconfirmed')
+  }
+
+  confirmEmpRequest (empId : number) : Observable <User> {
+    return this.http.put<User>(`${this.apiUrl}/confirm/${empId}`, '');
+  }
 
 
 }
