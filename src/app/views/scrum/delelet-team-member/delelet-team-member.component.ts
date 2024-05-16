@@ -41,6 +41,7 @@ export class DeleletTeamMemberComponent  implements OnInit{
         this.loading = false;
         console.log("Team member deleted successfully");
         this.dialogRef.close();
+        location.reload();
         
       },
       (error) => {
