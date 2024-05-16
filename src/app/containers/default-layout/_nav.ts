@@ -18,7 +18,6 @@ export const navItems: INavData[] = [
 
     ]
   },
-  
   {
     name : 'Scrums',
     url : '/scrums',
@@ -31,7 +30,6 @@ export const navItems: INavData[] = [
       }
     ]
   },
-
   {
     name :'Users',
     url :'/users',
