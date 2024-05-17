@@ -1,20 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormModule } from '@coreui/angular';
 import { User } from 'src/app/models/user.model';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteEmpComponent } from '../delete-emp/delete-emp.component'
 import { ConfirmEmpRequestComponent } from '../confirm-emp-request/confirm-emp-request.component'
 @Component({
   selector: 'app-unconfirmed-employees',
-  standalone: true,
-  imports: [
-    CommonModule,
-    PaginationModule,
-    FormModule
-  ],
   templateUrl: './unconfirmed-employees.component.html',
   styleUrl: './unconfirmed-employees.component.scss'
 })
@@ -32,7 +23,7 @@ export class UnconfirmedEmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllEmployees();
-    
+
   }
 
 
@@ -65,7 +56,7 @@ export class UnconfirmedEmployeesComponent implements OnInit {
     this.setPage(event.page);
   }
 
-  
+
   openDeleteUserComponent(empId : number ) : void {
     const dialogRef = this.dialog.open(DeleteEmpComponent,{
       width: '500px',

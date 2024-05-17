@@ -1,25 +1,16 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormModule } from '@coreui/angular';
 import { User } from 'src/app/models/user.model';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteEmpComponent } from '../delete-emp/delete-emp.component'
 
 @Component({
   selector: 'app-all-employees',
-  standalone: true,
-  imports: [
-    CommonModule,
-    PaginationModule,// Add this line
-    FormModule
-  ],
   templateUrl: './all-employees.component.html',
   styleUrl: './all-employees.component.scss'
 })
 export class AllEmployeesComponent implements OnInit {
-  
+
   employees : User []  =  [];
   pagedEmployees: User[] = [];
   currentPage = 1;
@@ -33,7 +24,7 @@ export class AllEmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllEmployees();
-    
+
   }
 
   getAllEmployees() : void {
@@ -42,10 +33,10 @@ export class AllEmployeesComponent implements OnInit {
         this.employees = response.users.map((user: any) => {
           user.photo = 'http://localhost:8000' + user.photo;
           return user;
-        
+
         });
         console.log(this.employees);
-        
+
         this.totalEmployees = this.employees.length;
         this.setPage(1);
       },
@@ -67,7 +58,7 @@ export class AllEmployeesComponent implements OnInit {
     this.setPage(event.page);
   }
 
-  
+
 
 
   openDeleteUserComponent(empId : number ) : void {
@@ -77,6 +68,6 @@ export class AllEmployeesComponent implements OnInit {
     })
   }
 
-  
+
 
 }

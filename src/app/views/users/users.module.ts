@@ -1,13 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {UsersRoutingModule} from '../users/users-routing.module'
+import {FormModule} from "@coreui/angular";
+import {UnconfirmedEmployeesComponent} from "./unconfirmed-employees/unconfirmed-employees.component";
+import {DeleteEmpComponent} from "./delete-emp/delete-emp.component";
+import {ConfirmEmpRequestComponent} from "./confirm-emp-request/confirm-emp-request.component";
+import {ClientsComponent} from "./clients/clients.component";
+import {AllEmployeesComponent} from "./all-employees/all-employees.component";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UnconfirmedEmployeesComponent,
+    DeleteEmpComponent,
+    ConfirmEmpRequestComponent,
+    ClientsComponent,
+    AllEmployeesComponent
+  ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    PaginationModule,
+    FormModule
   ]
 })
 export class UsersModule { }

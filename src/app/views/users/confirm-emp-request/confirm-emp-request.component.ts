@@ -1,14 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 
 @Component({
   selector: 'app-confirm-emp-request',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
   templateUrl: './confirm-emp-request.component.html',
   styleUrl: './confirm-emp-request.component.scss'
 })
@@ -23,7 +18,7 @@ export class ConfirmEmpRequestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
+
   }
 
   onCancelClick () {
@@ -31,7 +26,7 @@ export class ConfirmEmpRequestComponent implements OnInit {
   }
 
   onConfirm () : void {
-    this.loading = true 
+    this.loading = true
     this.empService.confirmEmpRequest(this.data.empId).subscribe({
       next:(response : any )=> {
           this.loading=false
@@ -41,7 +36,7 @@ export class ConfirmEmpRequestComponent implements OnInit {
       error:(error : any) => {
         this.loading=false
         console.log("error confirm request " , error);
-        
+
       }
     })
   }
