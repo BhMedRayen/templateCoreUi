@@ -4,7 +4,9 @@ import { LoginComponent } from './login/login.component';
 import {SignupclientComponent} from "./signup-client/signupclient.component";
 import {SignuptypeComponent} from "./signuptype/signuptype.component";
 import {SignupemployeComponent} from "./signupemploye/signupemploye.component";
-
+import {VerifyMailComponent} from "./verify-mail/verify-mail.component";
+import {SendedRequestComponent} from "./sended-request/sended-request.component";
+import {VerifyMailEmployeeComponent} from "./verify-mail-employee/verify-mail-employee.component"
 const routes: Routes = [
   {
     path: 'login',
@@ -24,7 +26,22 @@ const routes: Routes = [
     path:'sign-up-type',
     component:SignuptypeComponent
   },
-  {path:'sign-up-employe',component:SignupemployeComponent}
+  {
+    path:'sign-up-employe',
+    component:SignupemployeComponent
+  },
+  {
+    path :'verify-mail',
+    component:VerifyMailComponent
+  },
+  {
+    path:'sended-request',
+    component:SendedRequestComponent
+  },
+  {
+    path:'verify-mail-employee',
+    component : VerifyMailEmployeeComponent
+  }
 
 ];
 
