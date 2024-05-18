@@ -126,17 +126,17 @@ export class SignupemployeComponent {
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe(
           response => {
-            this.router.navigate(['/verify-email-employee']);
+            this.router.navigate(['/auth/verify-mail-employee']);
 
-            this.http.post<any>('http://localhost:8082/user/createUser', formData)
-              .subscribe(
-                response => {
-                  console.log("account created on spring boot data base")
-                },
-                error => {
-                  console.error('Error creating user on second URL: ', error);
-                }
-              );
+            // this.http.post<any>('http://localhost:8082/user/createUser', formData)
+            //   .subscribe(
+            //     response => {
+            //       console.log("account created on spring boot data base")
+            //     },
+            //     error => {
+            //       console.error('Error creating user on second URL: ', error);
+            //     }
+            //   );
           },
           error => {
             console.error('Error creating user: ', error);
@@ -150,7 +150,7 @@ export class SignupemployeComponent {
 
 
       const email = formData.email;
-      this.http.post<any>(`http://localhost:8000/api/user/RenvoyerEmail/${email}`, {}).subscribe(
+      this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}).subscribe(
         response => {
           console.log("Verification email sent successfully");
         },

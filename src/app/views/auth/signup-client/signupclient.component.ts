@@ -20,29 +20,27 @@ export class SignupclientComponent {
   constructor(private http: HttpClient, private router: Router,private spinner: NgxSpinnerService) {} 
 
   validateForm() {
-    // Reset alert status
+
     this.showAlert = false;
     this.alertMessage = '';
-    // Get form inputs
+ 
     const firstNameInput = document.getElementById('firstName') as HTMLInputElement;
     const lastNameInput = document.getElementById('lastName') as HTMLInputElement;
     const emailInput = document.getElementById('exampleInputEmail1') as HTMLInputElement;
     const passwordInput = document.getElementById('exampleInputPassword1') as HTMLInputElement;
     const confirmPasswordInput = document.getElementById('exampleInputPassword2') as HTMLInputElement;
     const agreeCheckbox = document.getElementById('agreeCheckbox') as HTMLInputElement;
-    // Check if any required field is empty
+    
     if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value) {
       this.showAlert = true;
       this.alertMessage = 'All the inputs are required';
       return false;
     }
-    // Check if password and confirm password match
     if (passwordInput.value !== confirmPasswordInput.value) {
       this.showAlert = true;
       this.alertMessage = 'You should put the same password';
       return false;
     }
-    // Check if terms are agreed  
     if (!agreeCheckbox.checked) {
       this.showAlert = true;
       this.alertMessage = 'Aliret Terms are required';
@@ -64,22 +62,23 @@ export class SignupclientComponent {
         type :("client"),
       };
   
-      this.http.post<any>('http://localhost:8000/api/user/createUser', formData)
+      this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe(
           response => {
             this.showSpiner=false;
-            this.router.navigate(['/verify-email']);
+            this.router.navigate(['/verify-mail']);
 
-            this.http.post<any>('http://localhost:8082/user/createUser', formData)
-            .subscribe(
-              response => {
-               console.log("account created on spring boot data base")
-              },
-              error => {       
-                console.error('Error creating user on second URL: ', error);
-              }
-            );
+            // this.http.post<any>('http://localhost:8082/user/createUser', formData)
+            // .subscribe(
+            //   response => {
+            //    console.log("account created on spring boot data base")
+            //   },
+            //   error => {       
+            //     console.error('Error creating user on second URL: ', error);
+            //   }
+            // );
           },
+          
           error => {       
             console.error('Error creating user: ', error);
             if (error.error instanceof ErrorEvent) {
@@ -93,7 +92,7 @@ export class SignupclientComponent {
         );
 
         const email = formData.email;
-        this.http.post<any>(`http://localhost:8000/api/user/RenvoyerEmail/${email}`, {}) .subscribe(
+        this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}) .subscribe(
           response => {
             console.log("Verification email sent successfully");
           },
@@ -103,4 +102,5 @@ export class SignupclientComponent {
             )
           } 
       }
+      
     }
