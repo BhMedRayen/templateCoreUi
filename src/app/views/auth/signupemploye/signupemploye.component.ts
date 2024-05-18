@@ -11,8 +11,8 @@ export class SignupemployeComponent {
   passwordVisible: boolean = false;
   passwordVisible2: boolean = false;
   currentPage = 1;
-  itemsPerPage = 3; // Adjust as needed
-  totalItems = 9; // Total number of items, adjust as needed
+  itemsPerPage = 3;
+  totalItems = 9; 
   checkboxValues: boolean[] = [false, false, false, false, false, false, false, false];
   showAlert: boolean = false;
   alertMessage: string = '';
@@ -22,13 +22,12 @@ export class SignupemployeComponent {
 
   
   saveSkills() {
-    // Clear the existing skills array
+  
     this.skills = [];
 
-    // Iterate over the checkboxValues array to determine the selected skills
+    
     this.checkboxValues.forEach((isChecked, index) => {
       if (isChecked) {
-        // Get the name of the skill based on the index and add it to the skills array
         const skillName = this.getSkillName(index);
         this.skills.push(skillName);
         console.log(this.skills)
@@ -73,11 +72,11 @@ export class SignupemployeComponent {
 
 
   validateForm() {
-    // Reset alert status
+   
     this.showAlert = false;
     this.alertMessage = '';
 
-    // Get form inputs
+
     const firstNameInput = document.getElementById('firstName') as HTMLInputElement;
     const lastNameInput = document.getElementById('lastName') as HTMLInputElement;
     const emailInput = document.getElementById('exampleInputEmail1') as HTMLInputElement;
@@ -85,21 +84,20 @@ export class SignupemployeComponent {
     const confirmPasswordInput = document.getElementById('exampleInputPassword2') as HTMLInputElement;
     const agreeCheckbox = document.getElementById('agreeCheckbox') as HTMLInputElement;
 
-    // Check if any required field is empty
+   
     if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value) {
       this.showAlert = true;
       this.alertMessage = 'All the inputs are required';
       return false;
     }
 
-    // Check if password and confirm password match
+   
     if (passwordInput.value !== confirmPasswordInput.value) {
       this.showAlert = true;
       this.alertMessage = 'You should put the same password';
       return false;
     }
 
-    // Check if terms are agreed
    
     if (!agreeCheckbox.checked) {
       this.showAlert = true;
@@ -107,7 +105,6 @@ export class SignupemployeComponent {
       return false;
     }
 
-    // All validations passed
     return true;
   }
 
@@ -126,7 +123,7 @@ export class SignupemployeComponent {
         skills: serializedSkills,
       };
 
-      this.http.post<any>('http://localhost:8000/api/user/createUser', formData)
+      this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe(
           response => {
             this.router.navigate(['/verify-email-employee']);
@@ -150,6 +147,7 @@ export class SignupemployeComponent {
             }
           }
         );
+
 
       const email = formData.email;
       this.http.post<any>(`http://localhost:8000/api/user/RenvoyerEmail/${email}`, {}).subscribe(

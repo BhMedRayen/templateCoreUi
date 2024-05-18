@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule, ModalModule, } from '@coreui/angular';
+import { ButtonModule, FormModule, ModalModule, } from '@coreui/angular';
 import { RouterModule } from '@angular/router';
 import {EmployeeMessagesRoutingModule} from "./employee-messages-routing.module";
 
@@ -11,6 +11,7 @@ import {EmployeeMessagesRoutingModule} from "./employee-messages-routing.module"
     ButtonModule,
     ModalModule ,
     RouterModule,
+    FormModule
   ],
   declarations: [
 

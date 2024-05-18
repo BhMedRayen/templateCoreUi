@@ -8,13 +8,13 @@
             <img class="loginImage" src="../../assets/Login/Login-amico.png" alt="">
           </div>
           <div class="col-lg-3 text-center">
-            <!-- card login  -->
+           
             <div class="card shadow">
               <img src="../../assets/logo.jpg" class="card-img-top" alt="logo">
               <div class="card-body">
                 <h5 class="card-title">Login</h5>
                 <h6 class="card-text">Sign in to your account</h6>
-                <!-- Alert -->
+          
 
                 <div *ngIf="showAlert && (loginForm.controls['email'].hasError('required') || loginForm.controls['password'].hasError('required'))" class="alert alert-danger" role="alert">
                   All inputs are required.
@@ -23,7 +23,7 @@
                 <div *ngIf="showAlert && loginFailed" class="alert alert-danger" role="alert">
                   Password or email are incorrect.
                 </div>
-                <!-- End Alert -->
+              
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                   <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
@@ -47,7 +47,7 @@
                 </form>
               </div>
             </div>
-            <!-- find card login -->
+         
           </div>
         </div>
       </div>
