@@ -1,14 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 
 @Component({
   selector: 'app-delete-emp',
-  standalone: true,
-  imports: [
-    CommonModule
-  ],
   templateUrl: './delete-emp.component.html',
   styleUrl: './delete-emp.component.scss'
 })
