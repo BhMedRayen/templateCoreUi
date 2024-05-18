@@ -19,6 +19,10 @@
                 <div *ngIf="showAlert && (loginForm.controls['email'].hasError('required') || loginForm.controls['password'].hasError('required'))" class="alert alert-danger" role="alert">
                   All inputs are required.
                 </div>
+                
+                <div class="loading-overlay" *ngIf="loading">
+                  <div class="spinner"></div>
+                </div>
 
                 <div *ngIf="showAlert && loginFailed" class="alert alert-danger" role="alert">
                   Password or email are incorrect.
