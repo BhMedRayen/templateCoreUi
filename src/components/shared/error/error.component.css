@@ -1,0 +1,40 @@
+mat-dialog-actions button {
+  padding: 7px 30px;
+  border-radius: 50px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  font-size: 15px;
+}
+mat-dialog-actions .yes {
+
+  background-color: #ff5959;
+
+}
+mat-dialog-actions .yes:hover {
+
+  background-color: #e95050;
+
+}
+mat-dialog-actions .no {
+  margin-right: 20px;
+  background-color: #55b4d8;
+}
+mat-dialog-actions .no:hover {
+  background-color: #4ba2c2;
+}
+.dialog-body {
+  text-align: center;
+}
+mat-dialog-actions {
+  display: block;
+  margin-bottom: 5px;
+}
+mat-dialog-content , mat-dialog-content h3 {
+  margin-bottom: 1em;
+}
+mat-dialog-content  {
+  color: #777777
+}
+

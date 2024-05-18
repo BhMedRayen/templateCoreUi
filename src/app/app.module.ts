@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 import { ProjectsModule } from './views/projects/projects.module';
 import {  RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -44,6 +44,10 @@ import {ClientLayoutComponent} from "./containers/client/client-layout/client-la
 import {EmployeeLayoutComponent} from "./containers/employee/employee-layout/employee-layout.component";
 import {EmployeeHeaderComponent} from "./containers/employee/employee-layout/employee-header/employee-header.component";
 import {EmployeeFooterComponent} from "./containers/employee/employee-layout/employee-footer/employee-footer.component";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {ErrorComponent} from "@docs-components/shared/error/error.component";
+import {MatButtonModule} from "@angular/material/button";
+import {ErrorInterceptor} from "./interceptors/error.iterceptor";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -53,6 +57,7 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent,
   ClientLayoutComponent,
   EmployeeLayoutComponent,
+  ErrorComponent
 ];
 
 @NgModule({
@@ -90,8 +95,13 @@ const APP_CONTAINERS = [
     RouterModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
+
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
