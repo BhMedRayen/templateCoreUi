@@ -1,0 +1,46 @@
+.content {
+    background-color: #f0f2f1;
+    background-image: linear-gradient(to top, rgba(240, 242, 241, 0), rgba(240, 242, 241, 1));
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+     overflow-x: hidden;
+    text-align: center;
+}
+
+
+
+h3 {
+    margin: 1rem;
+    font-style: italic;
+    font-family: monospace;
+    text-align: left;
+    color: #377E75;
+}
+.card {
+    margin-top: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .btn-success {
+    background-color: #20853c;
+    border-color: #20853c;
+  }
+  
+  .btn-success:hover {
+    background-color: #4db363;
+    border-color: #4db363;
+  }
+  

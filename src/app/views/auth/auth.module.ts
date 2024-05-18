@@ -14,7 +14,6 @@ import {SignupclientComponent} from "./signup-client/signupclient.component";
 import {SignuptypeComponent} from "./signuptype/signuptype.component";
 import {SignupemployeComponent} from "./signupemploye/signupemploye.component";
 
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -23,7 +22,8 @@ import {SignupemployeComponent} from "./signupemploye/signupemploye.component";
     SignupemployeComponent,
     RegisterComponent,
     HomenavbarComponent,
-    SignupnavbarComponent
+    SignupnavbarComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -35,7 +35,7 @@ import {SignupemployeComponent} from "./signupemploye/signupemploye.component";
     FormModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ]
 })
 export class AuthModule {
