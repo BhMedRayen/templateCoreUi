@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from '../create-project-dialog/create-project-dialog.component';
 import { DeleteprojectComponent } from '../deleteproject/deleteproject.component';
 import { UpdateprojectComponent } from '../updateproject/updateproject.component'
+import {Subscription} from "rxjs";
 
 
 
@@ -36,6 +37,8 @@ export class ProjectslistComponent implements OnInit {
   tasksMap: { [projectId: number]: Task[] } = {};
   teamsMap: { [projectId: number]: string } = {};
 
+  projectsSub: Subscription | undefined;
+  unDoneProjectsSub: Subscription | undefined;
 
 
 
@@ -50,7 +53,7 @@ export class ProjectslistComponent implements OnInit {
       const dialogRef = this.dialog.open(CreateProjectDialogComponent, {
         width: '500px',
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
@@ -60,9 +63,9 @@ export class ProjectslistComponent implements OnInit {
       console.log("open project update");
       const dialogRef = this.dialog.open(UpdateprojectComponent, {
         width: '500px',
-        data: { projectId: projectId } 
+        data: { projectId: projectId }
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
@@ -71,11 +74,11 @@ export class ProjectslistComponent implements OnInit {
     openDeleteProjectDialog(projectId:number): void {
       const dialogRef = this.dialog.open(DeleteprojectComponent,{
         width:'500px',
-        data: { projectId: projectId } 
+        data: { projectId: projectId }
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        
+
       })
     }
 
@@ -88,18 +91,17 @@ ngOnInit(): void {
   this.getAllProjects();
   this.getDoneProjects();
   this.getAllTeams();
-  this.projectsService.getUnDoneProject().subscribe({
-  next: (response: any) => {
-    this.projects = response.projects;
-    console.log(this.projects);
-    
-    this.fetchTasksAndTeamsForProjects();
-  },
-  error: (error: any) => {
-    console.error('Error fetching projects:', error);
-    this.isProjectsLoading = false;
-  }
-});
+  this.projectsService.fetchUnDoneProject()
+  this.unDoneProjectsSub = this.projectsService.getUndoneProjectsUpdateListener().subscribe({
+    next: (projects: any) => {
+      this.projects = projects;
+      this.fetchTasksAndTeamsForProjects();
+    },
+    error: (error: any) => {
+      console.error('Error fetching projects:', error);
+      this.isProjectsLoading = false;
+    }
+  });
 
 }
 
@@ -145,16 +147,17 @@ getTeamName(projectId: number): string {
   return this.teamsMap[projectId] || 'No team assigned';
 }
 
-getAllProjects() : void {
-  this.projectsService.getAllProjects().subscribe({
-    next:(response : any) => {
-      this.AllProjects=response.projects;
-    }
-  })
-}
+  getAllProjects() : void {
+    this.projectsService.getAllProjects().subscribe({
+      next:(response : any) => {
+        this.AllProjects=response.projects;
+      }
+    })
+  }
+
 getDoneProjects() : void {
   this.projectsService.getDoneProjects().subscribe({
-    next:(response:any)=> 
+    next:(response:any)=>
       this.doneProjects=response.projects
   });
 }
@@ -166,6 +169,6 @@ getAllTeams() : void {
     }
   })
 }
-  
+
 
 }

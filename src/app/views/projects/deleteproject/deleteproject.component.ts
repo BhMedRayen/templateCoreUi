@@ -15,19 +15,19 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrl: './deleteproject.component.scss'
 })
 export class DeleteprojectComponent implements OnInit {
-  projectId: number = 0; 
+  projectId: number = 0;
   loading: boolean = false;
 
 
   onCancelClick(): void {
     this.dialogRef.close();
-    
+
   }
   constructor (
     @Inject(MAT_DIALOG_DATA) public data: { projectId: number },
     private projectsService: ProjectsService,
     public dialogRef: MatDialogRef<DeleteprojectComponent>,
-    private router: Router 
+    private router: Router
 
   ) {}
 
@@ -35,21 +35,25 @@ export class DeleteprojectComponent implements OnInit {
   ngOnInit(): void {
     this.projectId = this.data.projectId;
     console.log("project id : " + this.projectId);
-     
+
   }
 
   onDeleteClick(): void {
-    this.loading = true; 
+    this.loading = true;
     this.projectsService.deleteProject(this.projectId).subscribe(() => {
       console.log("Le projet a été supprimé avec succès");
-      this.router.navigate(['/projects/list']);
+
+      // refresh projects
+      this.projectsService.fetchUnDoneProject();
+
+
     }, error => {
       alert('Une erreur s\'est produite lors de la suppression du projet. Veuillez réessayer plus tard.');
     },
     () => {
-      this.loading = false; 
+      this.loading = false;
       this.dialogRef.close();
     });
   }
-  
+
 }

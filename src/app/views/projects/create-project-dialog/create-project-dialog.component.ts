@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProjectsService } from '../../../services/projects.service';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -35,7 +35,7 @@ export class CreateProjectDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
     private projectsService: ProjectsService,
-    private router: Router 
+    private router: Router
 
   ) { }
   onCancelClick(): void {
@@ -78,20 +78,21 @@ export class CreateProjectDialogComponent {
       product_owner_id : this.product_owner_id
     };
     console.log(projectData);
-    
-    this.loading = true; 
+
+    this.loading = true;
     this.projectsService.createProject(projectData).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         console.log('Project created:', response);
+        this.projectsService.fetchUnDoneProject()
         this.dialogRef.close();
       },
       error: (error) => {
         console.error('Error creating project:', error);
       },
       complete: () => {
-        this.loading = false; 
-        this.router.navigate(['/projects/list']);
-        
+        this.loading = false;
+       // this.router.navigate(['/projects/list']);
+
       }
     });
   }
