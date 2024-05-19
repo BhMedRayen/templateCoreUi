@@ -1,27 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import {EmpInboxComponent} from "./inbox/emp-inbox.component";
+import {TeamProjectComponent} from "./team-project/team-project.component"
+import {EmpInboxComponent} from "./messages/inbox/emp-inbox.component";
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Messages',
+      title: 'Employee',
     },
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'inbox',
+        redirectTo: 'employee',
       },
       {
         path : 'inbox',
         component : EmpInboxComponent
       },
+      {
+        path :'my-team-projects',
+        component : TeamProjectComponent
+      }
     ],
-
+    
   },
+ 
+  
 ];
 
 @NgModule({

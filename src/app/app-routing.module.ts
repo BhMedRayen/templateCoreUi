@@ -21,7 +21,7 @@ const routes: Routes = [
       {
         path: 'messages',
         loadChildren: () =>
-          import('./views/employee/messages/employee-messages.module').then((m) => m.EmployeeMessagesModule)
+          import('./views/employee/employee-messages.module').then((m) => m.EmployeeMessagesModule)
       }
     ]
   },
