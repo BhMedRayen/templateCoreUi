@@ -3,17 +3,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [
-      "@angular/localize"
-    ],
+    "types": ["@angular/localize"],
     "paths": {
       "@docs-components/*": ["./src/components/*"]
     }
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "./src/app/containers/employee/employee-layout/navItems.ts"
   ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*.d.ts"]
 }
