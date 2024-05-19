@@ -8,24 +8,17 @@ export const navItems: INavData[] = [
     iconComponent : {name : 'cil-apps'},
     children : [
       {
+        name : 'My Team Projects',
+        url : 'projects/my-team-projects'
+      },
+      {
         name : 'Active Projects',
         url : 'projects/active-projects'
       },
       {
         name : 'Done Projects',
         url : 'projects/done-projects'
-      }     
-    ]
-  },
-  {
-    name : 'My Team Projects',
-    url : '/team-projects',
-    iconComponent : {name : 'cil-apps'},
-    children : [
-      {
-        name : 'Projects',
-        url : 'projects/projects'
-      }     
+      }
     ]
   },
   {
@@ -51,8 +44,8 @@ export const navItems: INavData[] = [
     ]
   },
 
- 
- 
+
+
 
 
 ];
