@@ -5,7 +5,7 @@
     overflow: hidden; 
 }
 .navbar {
-    background-image: linear-gradient(to bottom, #87BFB8, #f0f2f1);
+    background-image: linear-gradient(to bottom, #87BFB8, #f0f2f1c2);
     z-index: 1000;  
     overflow: hidden; 
     position: fixed; 

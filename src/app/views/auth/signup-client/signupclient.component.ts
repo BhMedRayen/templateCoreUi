@@ -66,7 +66,7 @@ export class SignupclientComponent {
         .subscribe(
           response => {
             this.showSpiner=false;
-            this.router.navigate(['/verify-mail']);
+            this.router.navigate(['/auth/verify-mail']);
 
             // this.http.post<any>('http://localhost:8082/user/createUser', formData)
             // .subscribe(

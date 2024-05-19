@@ -82,7 +82,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/employee'])
             localStorage.setItem("token",response.access_token)
             const employee = {
+              name:response.name,
+              lastName:response.lastName,
               id: response.id,
+              photo : response.photo,
               email: response.email,
               type: response.type,
               email_verified_at: response.email_verified_at,
@@ -99,13 +102,12 @@ export class LoginComponent implements OnInit {
           
           else if (response.type==="client" && response.email_verified_at != null) {
             this.router.navigate(['/client'])
-          }
-          
-          else if (response.type==="client" && response.email_verified_at == null) {
-            this.router.navigate(['/auth/verfiy-mail'])
             localStorage.setItem("token",response.access_token)
             const client = {
               id: response.id,
+              name:response.name,
+              lastName:response.lastName,
+              photo : response.photo,
               email: response.email,
               type: response.type,
               email_verified_at: response.email_verified_at,
@@ -113,11 +115,19 @@ export class LoginComponent implements OnInit {
             };
             localStorage.setItem("Client",JSON.stringify(client))
           }
+          
+          else if (response.type==="client" && response.email_verified_at == null) {
+            this.router.navigate(['/auth/verfiy-mail'])
+   
+          }
 
           else if (response.type=="product_owner") {
             localStorage.setItem("token",response.access_token)
             const product_owner = {
               id: response.id,
+              name:response.name,
+              lastName:response.lastName,
+              photo : response.photo,
               email: response.email,
               type: response.type,
               email_verified_at: response.email_verified_at,
