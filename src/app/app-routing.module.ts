@@ -21,7 +21,12 @@ const routes: Routes = [
       {
         path: 'messages',
         loadChildren: () =>
-          import('./views/employee/employee-messages.module').then((m) => m.EmployeeMessagesModule)
+          import('./views/employee/messages/employee-messages.module').then((m) => m.EmployeeMessagesModule)
+      },
+      {
+        path: 'projects',
+        loadChildren: () =>
+          import('./views/employee/projects/employee-projects.module').then((m) => m.EmployeeProjectsModule)
       }
     ]
   },
@@ -64,7 +69,7 @@ const routes: Routes = [
       },
       {
         path : 'users',
-        loadChildren : () => 
+        loadChildren : () =>
         import ('./views/users/users.module').then((m)=> m.UsersModule)
       }
 
