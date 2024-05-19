@@ -11,15 +11,18 @@ import { Team } from "../models/teams.model"
 })
 export class ProjectsService {
 
-  private projects: Project[] = []; 
+  private projects: Project[] = [];
+
+  private undoneProjects: Project[] = [];
   private tasks : Task[] = [];
+
+  private projectsUpdated = new Subject<Project[]>();
+  private undoneProjectsUpdated = new Subject<Project[]>();
 
 
   private apiUrl = 'http://localhost:8000/api/projects';
-  
 
   constructor(private http: HttpClient) { }
-
   getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl+'/get-all');
   }
@@ -27,7 +30,6 @@ export class ProjectsService {
   getProjectTasks(id: number): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.apiUrl}/project-tasks/${id}`);
   }
-
 
   getUnDoneProject() : Observable<Project[]> {
     return this.http.get<Project[]>(this.apiUrl+'/active-projects')
@@ -64,8 +66,49 @@ export class ProjectsService {
   getBackLogById(backlogId : number) : Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/get-backlog-by-id/${backlogId}`)
   }
-  
-  
-  
+
+
+  fetchUnDoneProject() {
+    this.http.get<Project[]>(this.apiUrl+'/active-projects')
+      .subscribe({
+        next: (responseData: any) => {
+          this.undoneProjects = responseData.projects;
+          if (responseData.projects.length === 0) {
+            this.undoneProjectsUpdated.next([]); // Emit notes changes
+          } else {
+            this.undoneProjectsUpdated.next([...this.undoneProjects]); // Emit notes changes
+          }
+        },
+        error: (error: any) => {
+          console.error('Error fetching active projects:', error);
+        }
+      });
+  }
+
+  getProjectsUpdateListener() {
+    return this.projectsUpdated.asObservable();
+  }
+
+  getUndoneProjectsUpdateListener() {
+    return this.undoneProjectsUpdated.asObservable();
+  }
+
+  fetchAllProjects() {
+    this.http.get<Project[]>(this.apiUrl+'/get-all')
+      .subscribe({
+        next: (responseData: any) => {
+          this.projects = responseData.projects;
+
+          if (responseData.projects.length === 0) {
+            this.projectsUpdated.next([]); // Emit notes changes
+          } else {
+            this.projectsUpdated.next([...this.projects]); // Emit notes changes
+          }
+        },
+        error: (error: any) => {
+          console.error('Error fetching projects:', error);
+        }
+      });
+  }
 
 }
