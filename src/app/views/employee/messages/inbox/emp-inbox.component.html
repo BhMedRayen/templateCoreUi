@@ -1,1 +1,16 @@
-<h1>inbox</h1>
+<div class="chat-container">
+    <div class="chat-header">
+      <h3>Chat</h3>
+    </div>
+    <div class="chat-messages">
+      <div *ngFor="let message of messages" class="message" [ngClass]="{'mine': message.sender_id === user.id, 'theirs': message.sender_id !== user.id}">
+        <img [src]="message.sender_id === user.id ? user.photo : '/path/to/other/user/photo'" alt="User Photo" class="user-photo">
+        <p>{{ message.content }}</p>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" [(ngModel)]="messageContent" placeholder="Type a message...">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  
