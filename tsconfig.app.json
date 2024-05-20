@@ -9,8 +9,7 @@
     }
   },
   "files": [
-    "src/main.ts",
-    "./src/app/containers/employee/employee-layout/navItems.ts"
+    "src/main.ts"
   ],
   "include": ["src/**/*.d.ts"]
 }
