@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
+import Echo from 'laravel-echo'; 
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,23 @@ export class AppComponent implements OnInit {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
+    });
+
+    const echo = new Echo({
+      broadcaster: 'pusher',
+      key: 'local',
+      cluster: 'mtl', 
+      wsHost: window.location.hostname,
+      wsPort: 6001,
+      forceTLS: false,
+      disableStats: true,
+      enabledTransports: ['ws', 'wss'], 
+      wsPath: '',
+    });
+
+    // Listen to the 'chat' channel for 'Chat' event
+    echo.channel('chat').listen('Chat', (res: any) => {
+      console.log('Chat Event Data:', res);
     });
   }
 }
