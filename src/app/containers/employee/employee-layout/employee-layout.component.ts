@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { navItems } from './navItems';
+import { navItems } from './_employee-nav';
 
 @Component({
   selector: 'app-employee',
