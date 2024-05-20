@@ -3,8 +3,6 @@ import Echo from 'laravel-echo';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,17 +25,24 @@ export class MessageService {
     });
   }
 
-  getMessages(): Observable<any> {
-    return this.http.get(this.apiUrl+'/get');
-  }
 
-  sendMessage(message: any): Observable<any> {
-    return this.http.post(this.apiUrl+'/send', message);
-  }
 
   listenToMessages(callback: (message: any) => void): void {
     this.echo.channel('chat').listen('Chat', (message: any) => {
       callback(message);
     });
   }
+
+  sendMessage(messageData: any): Observable<any> {
+    return this.http.post(this.apiUrl, messageData);
+  }
+
+
+
+
+  storeMessage(messageData: any): Observable<any> {
+    return this.http.post(this.apiUrl, messageData);
+  }
+
+
 }

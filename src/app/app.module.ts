@@ -1,5 +1,5 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +48,7 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ErrorComponent} from "@docs-components/shared/error/error.component";
 import {MatButtonModule} from "@angular/material/button";
 import {ErrorInterceptor} from "./interceptors/error.iterceptor";
+import { EmployeeMessagesModule } from './views/employee/messages/employee-messages.module';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -63,6 +64,7 @@ const APP_CONTAINERS = [
 @NgModule({
   declarations: [AppComponent,...APP_CONTAINERS],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -77,6 +79,7 @@ const APP_CONTAINERS = [
     NavModule,
     ButtonModule,
     FormModule,
+    FormsModule,
     UtilitiesModule,
     ButtonGroupModule,
     ReactiveFormsModule,
@@ -97,6 +100,7 @@ const APP_CONTAINERS = [
     MatProgressSpinnerModule,
     MatDialogModule,
     MatButtonModule,
+    EmployeeMessagesModule
   ],
 
   providers: [
