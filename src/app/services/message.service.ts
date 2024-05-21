@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Echo from 'laravel-echo';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class MessageService {
   private echo: Echo;
   private apiUrl = 'http://localhost:8000/api/messages';
+  private messageSubject: Subject<any> = new Subject<any>();
+  
 
 
   constructor(private http: HttpClient) {
@@ -23,26 +25,32 @@ export class MessageService {
       enabledTransports: ['ws', 'wss'],
       wsPath: '',
     });
+
+    this.listenToMessages();
   }
 
 
-
-  listenToMessages(callback: (message: any) => void): void {
+  private listenToMessages(): void {
     this.echo.channel('chat').listen('Chat', (message: any) => {
-      callback(message);
+      console.log('Received message from server:', message);
+      this.messageSubject.next(message);
     });
   }
 
-  sendMessage(messageData: any): Observable<any> {
-    return this.http.post(this.apiUrl, messageData);
+  sendMessage(senderId: number, receiverId: number, content: string): Observable<any> {
+    const body = { sender_id: senderId, receiver_id: receiverId, content: content };
+    return this.http.post<any>(this.apiUrl+'/store', body);
   }
 
-
-
-
-  storeMessage(messageData: any): Observable<any> {
-    return this.http.post(this.apiUrl, messageData);
+  getMessages(userSend: number, userRecu: number): Observable<any[]> {
+    const params = { user_send: userSend.toString(), user_recu: userRecu.toString() };
+    return this.http.get<any[]>(this.apiUrl+'/index', { params: params });
   }
+
+  getMessageObservable(): Observable<any> {
+    return this.messageSubject.asObservable();
+  }
+  
 
 
 }

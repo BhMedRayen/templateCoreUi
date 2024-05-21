@@ -1,62 +1,66 @@
-// .flex-column-reverse {
-//   display: flex;
-//   flex-direction: column-reverse;
-//   height: 100%; /* Ensure messages container takes up full height */
-//   overflow-y: auto; /* Enable vertical scrolling if messages exceed container height */
-// }
+.container-fluid {
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 400px; 
+    height: 70vh;
+  }
+  li {
+    cursor: pointer;
+    
+  }
+  li:hover {
+    background-color: #daf8cb;
+  }
+  .users {
+  height: 75vh;
+  overflow: auto;
+}
+.no-messages {
+  margin-top: 200px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #ccc;
+}
 
-// .card {
-//   height: auto;
-//   overflow: none;
-// }
-// .users {
-//   height: 75vh;
-//   overflow: auto;
-// }
-// .card-header, .card-body {
-//   background-color: #f8f9fa; /* Light gray background */
-// }
+.no-messages i {
+  margin-bottom: 70px;
+  color: #ccc;
+}
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+  }
 
-// .chat-messages {
-//   max-height: 400px; /* Adjust the height as needed */
-//   overflow-y: auto; /* Enable vertical scrollbar if needed */
-// }
+  .sender-message {
+    align-self: flex-end;
+    background-color: #daf8cb;
+    text-align: right;
+  }
 
-// .message {
-//   margin-bottom: 10px;
-//   padding: 10px;
-//   border-radius: 5px;
-//   max-width: 70%;
-// }
+  .receiver-message {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    text-align: left;
+  }
 
-// .sender-message {
-//   background-color: #d4edda; /* Light green background */
-//   align-self: flex-start; /* Align messages to the left */
-// }
+  .message-content {
+    margin-bottom: 5px;
+  }
 
-// .receiver-message {
-//   background-color: #0218072c; /* White background */
-//   align-self: flex-end; /* Align messages to the right */
-// }
-
-// .message-content {
-//   display: block;
-// }
-
-// .message-time {
-//   font-size: 0.8rem;
-//   color: #6c757d;
-// }
-
-// .input-group {
-//   margin-top: 20px;
-// }
-
-// .btn-primary {
-//   background-color: #007bff; 
-//   border-color: #007bff;
-// }
-
-// .btn-primary:hover {
-//   background-color: #0056b3; /* Darker blue on hover */
-// }
+  .message-time {
+    font-size: 0.8em;
+    color: gray;
+  }
+}
