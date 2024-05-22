@@ -48,4 +48,12 @@ export class TeamServiceService {
     return this.http.get<any>(`http://localhost:8000/api/user/eligible-users/${teamId}`)
   }
 
+  getUserTeams(userId : number) : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/user-teams/${userId}`)
+  }
+
+  getProjectByTeamId(teamId : number) : Observable <any> {
+    return this.http.get<any>(`${this.apiUrl}/get-project/${teamId}`)
+  }
+
 }

@@ -27,8 +27,8 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-apps' },
     children : [
       {
-        name :'My Team',
-        url  :'messages/my-team'
+        name :'My Teams',
+        url  :'scrums/my-teams'
       },
     ]
   },

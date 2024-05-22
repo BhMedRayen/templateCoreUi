@@ -1,0 +1,25 @@
+<h1 class="text-center mb-5">My Teams Projects</h1>
+
+<div class="container mt-2">
+  <div class="row justify-content-center">
+    <div *ngFor="let team of teams" class="col mb-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary text-white">
+          {{ team.team.team_name }}
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li *ngFor="let project of projectsByTeam[team.team.id]" class="mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-tasks me-2"></i>{{ project?.projectname }}</span>
+                <button class="btn btn-success btn-check-backlog btn-sm"> 
+                  <i class="bi bi-journal-check"></i> Check Backlog
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
