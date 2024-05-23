@@ -21,6 +21,6 @@ import { FormsModule } from '@angular/forms';
 
 })
 
-export class MyTeamModule {
+export class MyTeamsModule {
     constructor () {}
 }

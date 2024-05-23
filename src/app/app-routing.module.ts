@@ -4,7 +4,6 @@ import { DefaultLayoutComponent } from './containers';
 import {EmployeeLayoutComponent} from "./containers/employee";
 import {ClientLayoutComponent} from "./containers/client";
 
-
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +26,11 @@ const routes: Routes = [
         path: 'projects',
         loadChildren: () =>
           import('./views/employee/projects/employee-projects.module').then((m) => m.EmployeeProjectsModule)
+      },
+      {
+        path :'scrums',
+        loadChildren : ()=> 
+          import ('./views/employee/Scrum/my-teams.module').then((m)=>m.MyTeamsModule)
       }
     ]
   },

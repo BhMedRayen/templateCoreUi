@@ -1,4 +1,3 @@
-// client-layout.component.ts
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({

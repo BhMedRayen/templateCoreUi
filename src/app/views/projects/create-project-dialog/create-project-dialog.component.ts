@@ -88,6 +88,7 @@ export class CreateProjectDialogComponent {
       },
       error: (error) => {
         console.error('Error creating project:', error);
+        this.loading=false;
       },
       complete: () => {
         this.loading = false;
