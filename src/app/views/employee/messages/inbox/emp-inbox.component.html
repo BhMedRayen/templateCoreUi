@@ -4,9 +4,12 @@
       <div class="card users">
         <div class="card-header">Employees</div>
         <div class="card-body" id="users">
-          <input type="text" class="form-control mb-2" placeholder="Search users">
+          <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Search users" [(ngModel)]="searchQuery" (input)="filterUsers()">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
           <ul class="list-group">
-            <li *ngFor="let employee of employees" class="list-group-item" (click)="selectUser(employee.id)">
+            <li *ngFor="let employee of filteredEmployees" class="list-group-item" (click)="selectUser(employee.id)">
               <img [src]="'http://localhost:8000' + employee.photo" alt="User Photo" class="mr-2 rounded-circle" style="width: 30px; height: 30px;">
               {{ employee.name }} {{ employee.lastName }}
             </li>

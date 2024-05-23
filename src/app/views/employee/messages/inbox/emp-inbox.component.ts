@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs';
   templateUrl: './emp-inbox.component.html',
   styleUrls: ['./emp-inbox.component.scss']
 })
-
 export class EmpInboxComponent implements OnInit, OnDestroy {
   messages: any[] = [];
   messageContent: string = '';
@@ -23,6 +22,8 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
   selectedUserId: number = 0; 
   selectedUser: any = null; // To store the selected user's details
   employees: any[] = [];
+  filteredEmployees: any[] = [];
+  searchQuery: string = '';
   messageSubscription!: Subscription;
   private lastSentMessageId: number | null = null;
 
@@ -61,11 +62,18 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
     this.empService.getConfirmedEmp().subscribe({
       next: (response: any) => {
         this.employees = response.users;
+        this.filteredEmployees = [...this.employees]; // Initialize filteredEmployees with all employees
       },
       error: (error: any) => {
         console.log('Error fetching users ', error);
       }
     });
+  }
+
+  filterUsers(): void {
+    this.filteredEmployees = this.employees.filter(employee =>
+      (employee.name + ' ' + employee.lastName).toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 
   selectUser(userId: number): void {
