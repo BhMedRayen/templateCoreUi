@@ -17,11 +17,23 @@
 
     <div class="col-md-9">
       <div class="card">
-        <div class="card-header">Chat</div>
-        <div class="card-body">
+        <div class="card-header">
+          <ng-container *ngIf="selectedUser; else noUserSelected">
+            <img [src]="'http://localhost:8000' + selectedUser.photo" alt="User Photo" class="mr-2 rounded-circle" style="width: 30px; height: 30px;">
+            {{ selectedUser.name }} {{ selectedUser.lastName }}
+          </ng-container>
+          <ng-template #noUserSelected>
+            Chat
+          </ng-template>
+        </div>
+        <div class="card-body chat-body">
           <div class="chat-messages" *ngIf="messages.length > 0; else noMessages">
             <div *ngFor="let message of messages" class="message"
                  [ngClass]="{'sender-message': message.sender_id === user.id, 'receiver-message': message.sender_id !== user.id}">
+   
+              <ng-container *ngIf="message.sender_id !== user.id">
+                <img [src]="'http://localhost:8000' + selectedUser.photo" alt="Receiver Photo" class="ml-2 rounded-circle" style="width: 30px; height: 30px;">
+              </ng-container>
               <span class="message-content">{{ message.content }}</span>
               <span class="message-time">{{ message.created_at | date:'shortTime' }}</span>
             </div>

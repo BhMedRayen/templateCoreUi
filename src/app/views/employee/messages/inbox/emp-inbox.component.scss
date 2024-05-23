@@ -6,41 +6,45 @@
     max-height: 400px; 
     height: 70vh;
   }
+
   li {
     cursor: pointer;
-    
   }
+
   li:hover {
     background-color: #daf8cb;
   }
-  .users {
-  height: 75vh;
-  overflow: auto;
-}
-.no-messages {
-  margin-top: 200px;
-  padding-bottom: 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  color: #ccc;
-}
 
-.no-messages i {
-  margin-bottom: 70px;
-  color: #ccc;
-}
-  .message {
+  .users {
+    height: 75vh;
+    overflow: auto;
+  }
+
+  .no-messages {
+    margin-top: 200px;
+    padding-bottom: 28px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #ccc;
+  }
+
+  .no-messages i {
+    margin-bottom: 70px;
+    color: #ccc;
+  }
+
+  .message {
+    display: flex;
+    flex-direction: row;
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
-    max-width: 60%;
     word-wrap: break-word;
+    align-items: center;
   }
 
   .sender-message {
@@ -52,15 +56,56 @@
   .receiver-message {
     align-self: flex-start;
     background-color: #f1f1f1;
-    text-align: left;
+    text-align: right;
   }
 
   .message-content {
-    margin-bottom: 5px;
+    margin-right: 10px;
   }
 
   .message-time {
     font-size: 0.8em;
     color: gray;
+    margin-left: 10px;
   }
+
+  .sender-message img, .receiver-message img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.chat-body {
+  max-height: 500px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; /* Display messages from bottom upwards */
+}
+
+.sender-message {
+  text-align: left;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.receiver-message {
+  text-align: right;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.message-content {
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.message-time {
+  display: block;
+  font-size: 0.8em;
+  color: gray;
+  margin-left: 10px;
 }
