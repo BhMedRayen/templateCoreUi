@@ -44,7 +44,7 @@
             <p>{{ sprint.description }}</p>
             <div class="d-flex justify-content-center align-items-center">
               <div class="btn-group" role="group" aria-label="Sprint Actions">
-                <button class="btn btn-primary btn-sm m-1" >
+                <button class="btn btn-primary btn-sm m-1" (click)="openUpdateSprint(sprint.id,sprint.sprintname,sprint.description)">
                   <i class="bi bi-pencil"></i> Update
                 </button>
          

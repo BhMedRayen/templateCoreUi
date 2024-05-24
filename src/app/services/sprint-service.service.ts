@@ -21,4 +21,11 @@ export class SprintServiceService {
     getSprintsByProjectId(projectId : number) : Observable <any> {
       return this.http.get(`${this.apiUrl}/backlogs/${projectId}`)
     }
+
+    updateSprint(sprintData : any , sprintId : number ) : Observable <any> {
+      return this.http.put(`${this.apiUrl}/update/${sprintId}`,sprintData)
+    }
+    deleteSprint(sprintId : number) : Observable<any> {
+      return this.http.delete(`${this.apiUrl}/delete/${sprintId}`); 
+    }
 }
