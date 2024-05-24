@@ -22,7 +22,7 @@
               <td>{{ backlog.priority }}</td>
               <td>{{ backlog.num_sprint }}</td>
               <td>
-                <button class="btn btn-primary btn-sm" [disabled]="empId !== scrum_master_id">
+                <button class="btn btn-primary btn-sm"  [disabled]="empId !== scrum_master_id"  (click)="openCreateSprintBacklog(backlog.sprint_name)">
                     Create 
                 </button>
               </td>

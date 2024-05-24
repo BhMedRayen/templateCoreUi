@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductbacklogService } from 'src/app/services/productbacklog.service';
 import {SprintServiceService} from 'src/app/services/sprint-service.service'
+import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-sprint-back-log.component'
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-product-backlog',
   standalone: true,
@@ -24,7 +26,8 @@ export class ProductBacklogComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private sprintService : SprintServiceService,
-    private productService : ProductbacklogService
+    private productService : ProductbacklogService,
+    public dialog: MatDialog
     ) {}
 
   
@@ -71,6 +74,14 @@ export class ProductBacklogComponent implements OnInit {
       }
     })
   }
+
+  openCreateSprintBacklog(sprintname : string) : void {
+      const  dialogRef = this.dialog.open(CreateSprintBackLogComponent,{
+        width : '500px',
+        data : {sprintname : sprintname , backlog_id : this.projectId}
+      })
+  }
+
 
 
 
