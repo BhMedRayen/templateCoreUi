@@ -1,1 +1,45 @@
-<p>create-sprint-back-log works!</p>
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Create Sprint Backlog</h3>
+      </div>
+      <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label for="sprintName" class="form-label">Sprint Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sprintName"
+              [(ngModel)]="data.sprintname"
+              name="sprintName"
+              readonly
+            />
+          </div>
+          <div class="mb-3">
+            <label for="sprintDescription" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="sprintDescription"
+              rows="3"
+              placeholder="Enter sprint description"
+              [(ngModel)]="description"
+              name="sprintDescription"
+            ></textarea>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary me-2" (click)="createSprintBackLog()">
+              <i class="fas fa-plus-circle"></i> Create
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="dialogRef.close()">
+              <i class="fas fa-times-circle"></i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

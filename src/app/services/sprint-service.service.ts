@@ -15,7 +15,7 @@ export class SprintServiceService {
     ) { }
 
     createSprint(sprintData : any) : Observable <any> {
-      return this.http.post(this.apiUrl+'create',sprintData);
+      return this.http.post(this.apiUrl+'/create',sprintData);
     }
     
     getSprintsByProjectId(projectId : number) : Observable <any> {
