@@ -1,38 +1,82 @@
 <div class="container mt-5">
-    <h2 class="title">Manage Sprints</h2>
-    <div class="card ">
-      <div class="card-header bg-primary text-white">
-        <h3 class="mb-0">Product Backlog</h3>
-      </div>
-      <div class="card-body">
-        <table class="table table-hover table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Sprint Name</th>
-              <th scope="col">User Story</th>
-              <th scope="col">Priority</th>
-              <th scope="col">Num Sprint</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let backlog of productBacklogs">
-              <td>{{ backlog.sprint_name }}</td>
-              <td>{{ backlog.user_story }}</td>
-              <td>{{ backlog.priority }}</td>
-              <td>{{ backlog.num_sprint }}</td>
-              <td>
-                <button class="btn btn-primary btn-sm"  [disabled]="empId !== scrum_master_id"  (click)="openCreateSprintBacklog(backlog.sprint_name)">
-                    Create 
+  <h2 class="title">Manage Sprints</h2>
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Product Backlog</h3>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sprint Name</th>
+            <th scope="col">User Story</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Num Sprint</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let backlog of productBacklogs">
+            <td>{{ backlog.sprint_name }}</td>
+            <td>{{ backlog.user_story }}</td>
+            <td>{{ backlog.priority }}</td>
+            <td>{{ backlog.num_sprint }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm btn-sm-custom" [disabled]="empId !== scrum_master_id" (click)="openCreateSprintBacklog(backlog.sprint_name)">
+                Create
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <h2 class="title">Sprints Backlogs</h2>
+  <div *ngIf="sprints.length > 0">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let sprint of paginatedSprints">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white">
+            {{ sprint.sprintname }}
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <p>{{ sprint.description }}</p>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group" role="group" aria-label="Sprint Actions">
+                <button class="btn btn-primary btn-sm m-1" >
+                  <i class="bi bi-pencil"></i> Update
                 </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+         
+              <button class="btn btn-light btn-sm m-1">
+                <i class="bi bi-check-circle"></i> Check Tasks
+              </button>
+              <button class="btn btn-dark btn-sm m-1" >
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <br>
-    <h2 class="title">Sprints BackLogs</h2>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="previousPage()">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let page of totalPages" [class.active]="page === currentPage">
+          <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage * itemsPerPage >= sprints.length">
+          <button class="page-link" (click)="nextPage()">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div *ngIf="sprints.length === 0">
+    <div class="alert alert-dark" role="alert">
+      <i class="bi bi-info-circle-fill"></i> No back log for the sprint is available yet.
+    </div>
+  </div>
 </div>
-
-

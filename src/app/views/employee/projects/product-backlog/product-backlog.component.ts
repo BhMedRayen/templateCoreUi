@@ -21,6 +21,8 @@ export class ProductBacklogComponent implements OnInit {
   productBacklogs : any
   empId: number = 0; 
   sprints : any [] = []
+  currentPage: number = 1;
+  itemsPerPage: number = 3;
 
 
   constructor(
@@ -82,6 +84,29 @@ export class ProductBacklogComponent implements OnInit {
       })
   }
 
+  get paginatedSprints(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.sprints.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  nextPage(): void {
+    if (this.currentPage * this.itemsPerPage < this.sprints.length) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  get totalPages(): number[] {
+    return Array(Math.ceil(this.sprints.length / this.itemsPerPage)).fill(0).map((x, i) => i + 1);
+  }
+  goToPage(page: number): void {
+    this.currentPage = page;
+  }
 
 
 
