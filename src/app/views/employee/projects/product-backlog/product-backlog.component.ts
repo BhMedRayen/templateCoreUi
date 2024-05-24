@@ -6,6 +6,7 @@ import {SprintServiceService} from 'src/app/services/sprint-service.service'
 import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-sprint-back-log.component'
 import { MatDialog } from '@angular/material/dialog';
 import {UpdateSprintComponent} from '../update-sprint/update-sprint.component'
+import {DeleteSprintComponent} from '../delete-sprint/delete-sprint.component'
 @Component({
   selector: 'app-product-backlog',
   standalone: true,
@@ -89,6 +90,13 @@ export class ProductBacklogComponent implements OnInit {
     const dialogRef = this.dialog.open(UpdateSprintComponent,{
       width : '500px',
       data : {sprintId : sprintId , sprintname : sprintname , sprintDescription : sprintDescription}
+    })
+  }
+
+  openDeleteSprint(sprintId : number ) : void {
+    const dialogRef = this.dialog.open(DeleteSprintComponent,{
+      width : '500px',
+      data : {sprintId : sprintId}
     })
   }
 
