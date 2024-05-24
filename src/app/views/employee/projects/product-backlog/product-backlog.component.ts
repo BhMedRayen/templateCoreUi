@@ -5,6 +5,7 @@ import { ProductbacklogService } from 'src/app/services/productbacklog.service';
 import {SprintServiceService} from 'src/app/services/sprint-service.service'
 import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-sprint-back-log.component'
 import { MatDialog } from '@angular/material/dialog';
+import {UpdateSprintComponent} from '../update-sprint/update-sprint.component'
 @Component({
   selector: 'app-product-backlog',
   standalone: true,
@@ -82,6 +83,13 @@ export class ProductBacklogComponent implements OnInit {
         width : '500px',
         data : {sprintname : sprintname , backlog_id : this.projectId}
       })
+  }
+
+  openUpdateSprint(sprintId : number , sprintname : string , sprintDescription : string ) : void {
+    const dialogRef = this.dialog.open(UpdateSprintComponent,{
+      width : '500px',
+      data : {sprintId : sprintId , sprintname : sprintname , sprintDescription : sprintDescription}
+    })
   }
 
   get paginatedSprints(): any[] {
