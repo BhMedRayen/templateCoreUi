@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductbacklogService } from 'src/app/services/productbacklog.service';
 import {SprintServiceService} from 'src/app/services/sprint-service.service'
 import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-sprint-back-log.component'
@@ -11,7 +11,8 @@ import {DeleteSprintComponent} from '../delete-sprint/delete-sprint.component'
   selector: 'app-product-backlog',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './product-backlog.component.html',
   styleUrl: './product-backlog.component.scss'
