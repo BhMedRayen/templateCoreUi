@@ -7,6 +7,7 @@ import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-spr
 import { MatDialog } from '@angular/material/dialog';
 import {UpdateSprintComponent} from '../update-sprint/update-sprint.component'
 import {DeleteSprintComponent} from '../delete-sprint/delete-sprint.component'
+import { cifTz } from '@coreui/icons';
 @Component({
   selector: 'app-product-backlog',
   standalone: true,
@@ -26,6 +27,7 @@ export class ProductBacklogComponent implements OnInit {
   sprints : any [] = []
   currentPage: number = 1;
   itemsPerPage: number = 3;
+  teamid : number= 0 ; 
 
 
   constructor(
@@ -53,6 +55,8 @@ export class ProductBacklogComponent implements OnInit {
       const projectIdParam = params.get('projectId');
       this.scrum_master_id = parseInt(teamIdParam ?? '0', 10);
       this.projectId = parseInt(projectIdParam ?? '0', 10);
+      this.teamid=parseInt(params.get('teamid') ?? '0' , 10)
+      console.log("teamid",this.teamid);
       console.log("scrum master  id : " , this.scrum_master_id , "project id " , this.projectId);
     });
     this.getProductBackLogs(this.projectId);
