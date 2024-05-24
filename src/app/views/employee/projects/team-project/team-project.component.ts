@@ -1,5 +1,3 @@
-// team-project.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { TeamServiceService } from 'src/app/services/team-service.service';
 

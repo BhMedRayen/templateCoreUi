@@ -12,9 +12,11 @@
             <li *ngFor="let project of projectsByTeam[team.team.id]" class="mb-3">
               <div class="d-flex justify-content-between align-items-center">
                 <span><i class="fas fa-tasks me-2"></i>{{ project?.projectname }}</span>
-                <button class="btn btn-success btn-check-backlog btn-sm"> 
-                  <i class="bi bi-journal-check"></i> Check Backlog
-                </button>
+                <a [routerLink]="['/employee/projects/product-backlog', team.team.scrum_master_id, project?.id]" routerLinkActive="router-link-active">
+                  <button class="btn btn-success btn-check-backlog btn-sm">
+                    <i class="bi bi-journal-check"></i> Check Backlog
+                  </button>
+                </a>
               </div>
             </li>
           </ul>
