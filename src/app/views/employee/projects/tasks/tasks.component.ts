@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TeamServiceService } from 'src/app/services/team-service.service';
 
 @Component({
   selector: 'app-tasks',
@@ -27,21 +28,25 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class TasksComponent implements OnInit {
   scrum_master_id: number = 0;
   sprintId: number = 0;
-  teamId : number = 0 ;
+  teamid : number = 0 ;
   tasks: any[] = [];
+  team : any
+  teamMembers : any [] = []
   displayedColumns: string[] = ['id', 'description', 'status', 'assigned_user_id', 'created_at', 'updated_at'];
   loadingTaskId: number | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private taskService: TasksService
+    private taskService: TasksService,
+    private teamService : TeamServiceService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.sprintId = parseInt(params.get('sprintId') ?? '0', 10);
       this.scrum_master_id = parseInt(params.get('scrum_master_id') ?? '0', 10);
-      this.teamId=parseInt(params.get('teamId') ?? '0' , 10)
+      this.teamid=parseInt(params.get('teamid') ?? '0' , 10)
+      this.getTeamById(this.teamid)
       this.getTaskBySprintId();
     });
   }
@@ -72,4 +77,27 @@ export class TasksComponent implements OnInit {
       }
     });
   }
+
+
+  getTeamById(teamId: number): void {
+    this.teamService.getTeamById(teamId).subscribe({
+      next: (response: any) => {
+        this.team = response.team;
+        if (this.team && this.team.users) {
+          this.team.users.forEach((teamMember: any) => {
+            if (teamMember.photo) {
+              teamMember.photo = 'http://localhost:8000' + teamMember.photo;
+            }
+          });
+        }
+        console.log("team", this.team);
+        console.log("Users:", this.team?.users);
+      },
+      error: (error: any) => {
+        console.log('Error fetching team:', error);
+      },
+      complete: () => {}
+    });
+  }
+
 }
