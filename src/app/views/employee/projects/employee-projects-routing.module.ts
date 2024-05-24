@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {TeamProjectComponent} from "./team-project/team-project.component";
 import {ProductBacklogComponent} from "./product-backlog/product-backlog.component"
+import {TasksComponent} from "./tasks/tasks.component"
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,10 @@ const routes: Routes = [
         path: 'product-backlog/:teamId/:projectId',
         component: ProductBacklogComponent,
       },
+      {
+        path : 'tasks/:sprintId',
+        component : TasksComponent
+      }
     ],
 
   },
