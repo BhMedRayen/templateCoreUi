@@ -14,7 +14,6 @@ export class ProjectsService {
   private projects: Project[] = [];
 
   private undoneProjects: Project[] = [];
-  private tasks : Task[] = [];
 
   private projectsUpdated = new Subject<Project[]>();
   private undoneProjectsUpdated = new Subject<Project[]>();
@@ -74,9 +73,9 @@ export class ProjectsService {
         next: (responseData: any) => {
           this.undoneProjects = responseData.projects;
           if (responseData.projects.length === 0) {
-            this.undoneProjectsUpdated.next([]); // Emit notes changes
+            this.undoneProjectsUpdated.next([]); 
           } else {
-            this.undoneProjectsUpdated.next([...this.undoneProjects]); // Emit notes changes
+            this.undoneProjectsUpdated.next([...this.undoneProjects]); 
           }
         },
         error: (error: any) => {
@@ -100,9 +99,9 @@ export class ProjectsService {
           this.projects = responseData.projects;
 
           if (responseData.projects.length === 0) {
-            this.projectsUpdated.next([]); // Emit notes changes
+            this.projectsUpdated.next([]); 
           } else {
-            this.projectsUpdated.next([...this.projects]); // Emit notes changes
+            this.projectsUpdated.next([...this.projects]); 
           }
         },
         error: (error: any) => {
