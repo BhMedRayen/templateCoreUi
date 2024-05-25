@@ -3,24 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { TasksService } from 'src/app/services/tasks.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TeamServiceService } from 'src/app/services/team-service.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import {CreateTaskComponent} from '../create-task/create-task.component'
 @Component({
   selector: 'app-tasks',
   standalone: true,
   imports: [
     CommonModule, 
     RouterModule, 
-    MatButtonModule, 
-    MatCardModule, 
-    MatTableModule, 
-    MatIconModule,
-    MatProgressSpinnerModule
+    
   ],
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss']
@@ -31,14 +23,17 @@ export class TasksComponent implements OnInit {
   teamid : number = 0 ;
   tasks: any[] = [];
   team : any
+  emplId : number = 0 
+  user : any 
   teamMembers : any [] = []
   displayedColumns: string[] = ['id', 'description', 'status', 'assigned_user_id', 'created_at', 'updated_at'];
-  loadingTaskId: number | null = null;
+  loading : boolean = false 
 
   constructor(
     private route: ActivatedRoute,
     private taskService: TasksService,
-    private teamService : TeamServiceService
+    private teamService : TeamServiceService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +44,16 @@ export class TasksComponent implements OnInit {
       this.getTeamById(this.teamid)
       this.getTaskBySprintId();
     });
+    const userData = localStorage.getItem('employee');
+    if (userData) {
+      this.user = JSON.parse(userData);
+      console.log("user auth ", this.user);
+    } else {
+      console.error('User data not found in local storage.');
+    }
+    this.emplId = this.user.id;
+
+
   }
   
   getTaskBySprintId(): void {
@@ -64,16 +69,16 @@ export class TasksComponent implements OnInit {
   }
 
   changeTaskStatus(taskId: number): void {
-    this.loadingTaskId = taskId;
+    this.loading=true
     this.taskService.changeTaskStatus(taskId).subscribe({
       next: (response: any) => {
         console.log("Task status changed", response);
         this.getTaskBySprintId(); 
-        this.loadingTaskId = null;
+        this.loading=false
       },
       error: (error: any) => {
         console.log("Error changing task status", error);
-        this.loadingTaskId = null;
+        this.loading=false
       }
     });
   }
@@ -99,5 +104,14 @@ export class TasksComponent implements OnInit {
       complete: () => {}
     });
   }
+
+
+ openCreateTask() : void {
+   const dialogRef = this.dialog.open(CreateTaskComponent,{
+     width : '500px',
+     data :  {sprintId : this.sprintId}
+   })
+ }
+  
 
 }
