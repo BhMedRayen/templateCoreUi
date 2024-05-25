@@ -36,6 +36,9 @@ export class TasksService {
     return this.http.put<any>(`${this.apiUrl}/${taskId}/update-description`,description) 
   }
 
+  assignTask(taskId : number , userId : number ) : Observable<any> {
+    return this.http.put<any> (`${this.apiUrl}/${taskId}/assign/${userId}`,'')
+  }
  
 
 }
