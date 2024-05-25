@@ -7,7 +7,7 @@ import {CreateSprintBackLogComponent} from '../create-sprint-back-log/create-spr
 import { MatDialog } from '@angular/material/dialog';
 import {UpdateSprintComponent} from '../update-sprint/update-sprint.component'
 import {DeleteSprintComponent} from '../delete-sprint/delete-sprint.component'
-import { cifTz } from '@coreui/icons';
+
 @Component({
   selector: 'app-product-backlog',
   standalone: true,
@@ -64,6 +64,9 @@ export class ProductBacklogComponent implements OnInit {
     this.getSprintByProjectId();
     
   }
+
+
+ 
 
 
   getProductBackLogs(backlogId : number) : void {
