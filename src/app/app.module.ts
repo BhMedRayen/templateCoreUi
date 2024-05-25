@@ -49,6 +49,7 @@ import {ErrorComponent} from "@docs-components/shared/error/error.component";
 import {MatButtonModule} from "@angular/material/button";
 import {ErrorInterceptor} from "./interceptors/error.iterceptor";
 import { EmployeeMessagesModule } from './views/employee/messages/employee-messages.module';
+import {AuthGuard} from "./guards/auth.guard";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -104,6 +105,7 @@ const APP_CONTAINERS = [
   ],
 
   providers: [
+    AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     // {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {
