@@ -27,4 +27,8 @@ export class TasksService {
   getTasksForUser(userId: number): Observable<any> {
     return this.http.get<any>(this.apiUrl + '/user/' + userId);
   }
+
+  deleteTask(taskId : number) : Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${taskId}/delete`)
+  }
 }
