@@ -7,6 +7,7 @@ import { TeamServiceService } from 'src/app/services/team-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import {CreateTaskComponent} from '../create-task/create-task.component'
 import {DeleteTaskComponent} from '../delete-task/delete-task.component'
+import {UpdateTaskComponent} from '../update-task/update-task.component'
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -27,7 +28,6 @@ export class TasksComponent implements OnInit {
   emplId : number = 0 
   user : any 
   teamMembers : any [] = []
-  displayedColumns: string[] = ['id', 'description', 'status', 'assigned_user_id', 'created_at', 'updated_at'];
   loading : boolean = false 
 
   constructor(
@@ -120,5 +120,10 @@ export class TasksComponent implements OnInit {
         data : {taskId : taskId}
    })
  }
-
+ openUpdateTask( taskId : number, description : string ) : void {
+  const dialogRef  = this.dialog.open(UpdateTaskComponent, {
+        width : '500px',
+        data : {taskId : taskId , description : description}
+   })
+ }
 }
