@@ -10,12 +10,17 @@ import {User} from "../models/user.model";
 })
 export class UsersService {
 
-  
+
   private usersSubject: Subject<User[]> = new Subject<User[]>();
 
   private apiUrl = 'http://localhost:8000/api/auth';
 
   constructor(private http: HttpClient) { }
+
+
+  getUserById(userId : number ) : Observable<any>  {
+   return this.http.get<any>('http://localhost:8000/api/user/get-user-by-id/'+userId) 
+  }
 
   logIn(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
