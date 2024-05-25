@@ -4,7 +4,7 @@
       <h3 class="mb-0">Tasks for Sprint {{ sprintId }}</h3>
     </div>
     <div class="card-body">
-      <button class="btn btn-primary btn-sm mb-3 add"  (click)="openCreateTask()">
+      <button class="btn btn-primary btn-sm mb-3 add"  (click)="openCreateTask()" [disabled]="emplId !== scrum_master_id">
        
         <i class="bi bi-plus"></i> Create Task
       </button>
@@ -25,18 +25,32 @@
             <tr *ngFor="let task of tasks">
               <td>{{ task.description }}</td>
               <td>
-                <i class="bi" [ngClass]="{'bi-check-circle-fill text-success': task.status === 'done', 'bi-x-circle-fill text-danger': task.status === 'undone'}"
-                  (click)="changeTaskStatus(task.id)"
-                  [ngStyle]="{ 'font-size': '24px', 'cursor': 'pointer' }"
-                  >
-                </i>
+                <button class="hidden"
+                (click)="changeTaskStatus(task.id)"
+                [disabled]="emplId !== task.assigned_user_id">
+          <i class="bi" [ngClass]="{
+              'bi-check-circle-fill text-success': task.status === 'done',
+              'bi-x-circle-fill text-danger': task.status === 'undone',
+              'text-muted': emplId !== task.assigned_user_id
+            }"
+            [ngStyle]="{ 'font-size': '24px', 'cursor': emplId === task.assigned_user_id ? 'pointer' : 'not-allowed' }">
+          </i>
+        </button>
               </td>
-              <td>{{ task.assigned_user_id }}</td>
+              <td>
+              <div *ngIf="task.assignedUser; else noUser">
+                <img [src]="task.assignedUserPhoto" alt="{{ task.assignedUser.firstName }} {{ task.assignedUser.lastName }}" class="rounded-circle" width="40" height="40">
+                <span>{{ task.assignedUser.firstName }} {{ task.assignedUser.lastName }}</span>
+              </div>
+              <ng-template #noUser>
+                <p>No user assigned</p>
+              </ng-template>
+            </td>
               <td>
                 <button class="btn btn-primary btn-sm mb-1 add" [disabled]="emplId !== scrum_master_id" (click)="openUpdateTask(task.id,task.description)">
                   <i class="bi bi-pencil"></i> Update Task
                 </button>
-                <button class="btn btn-light btn-sm m-1" [disabled]="emplId !== scrum_master_id">
+                <button class="btn btn-light btn-sm m-1" [disabled]="emplId !== scrum_master_id" (click)="openAssignTask(task.id)">
                   <i class="bi bi-person-plus"></i> Assign Task
                 </button>
                 <button class="btn btn-dark btn-sm m-1" [disabled]="emplId !== scrum_master_id" (click)="openDeleteTask(task.id)">

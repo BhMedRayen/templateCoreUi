@@ -8,6 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 import {CreateTaskComponent} from '../create-task/create-task.component'
 import {DeleteTaskComponent} from '../delete-task/delete-task.component'
 import {UpdateTaskComponent} from '../update-task/update-task.component'
+import {AssignTaskComponent} from '../assign-task/assign-task.component'
+import { UsersService } from 'src/app/services/users.service';
+
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -29,11 +32,15 @@ export class TasksComponent implements OnInit {
   user : any 
   teamMembers : any [] = []
   loading : boolean = false 
+  assignedUser : any
+  assignedUserPhoto : string= ''
+
 
   constructor(
     private route: ActivatedRoute,
     private taskService: TasksService,
     private teamService : TeamServiceService,
+    private userService : UsersService,
     public dialog: MatDialog
   ) {}
 
@@ -53,21 +60,50 @@ export class TasksComponent implements OnInit {
       console.error('User data not found in local storage.');
     }
     this.emplId = this.user.id;
-
-
   }
   
   getTaskBySprintId(): void {
     this.taskService.getTsksBySprintId(this.sprintId).subscribe({
       next: (response: any) => {
         this.tasks = response.tasks;
-        console.log("tasks ", this.tasks);
+        console.log("tasks", this.tasks);
+        this.tasks.forEach((task: any) => {
+          if (task.assigned_user_id) {
+            this.userService.getUserById(task.assigned_user_id).subscribe({
+              next: (userResponse: any) => {
+                task.assignedUser = userResponse.user;
+                task.assignedUserPhoto = "http://localhost:8000" + task.assignedUser.photo;
+              },
+              error: (error: any) => {
+                console.log("Error fetching user", error);
+                task.assignedUser = null;
+              }
+            });
+          } else {
+            task.assignedUser = null;
+          }
+        });
       },
       error: (error: any) => {
-        console.log("error fetching tasks ", error);
-      }     
+        console.log("error fetching tasks", error);
+      }
     });
   }
+
+  // getUserById (userId : number ) : void {
+  //   this.userService.getUserById(userId).subscribe({
+  //     next : (response : any )=> {
+  //       this.assignedUser = response.user
+  //       console.log("user" , this.assignedUser);
+        
+  //       this.assignedUserPhoto = "http://localhost:8000"+ this.assignedUser.photo 
+  //     },
+  //     error : (error : any)=> {
+  //       console.log("error fetching user ", error );
+  //     }
+  //   })
+  // }
+
 
   changeTaskStatus(taskId: number): void {
     this.loading=true
@@ -126,4 +162,14 @@ export class TasksComponent implements OnInit {
         data : {taskId : taskId , description : description}
    })
  }
+
+ openAssignTask(taskId : number) : void {
+   const dialogRef = this.dialog.open(AssignTaskComponent,{
+     width : '500px',
+     data : {teamId :this.teamid  , taskId : taskId}
+   })
+ }
+
+ 
+
 }
