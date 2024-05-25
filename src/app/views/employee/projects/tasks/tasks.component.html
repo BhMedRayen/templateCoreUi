@@ -33,7 +33,7 @@
               </td>
               <td>{{ task.assigned_user_id }}</td>
               <td>
-                <button class="btn btn-dark btn-sm m-1" [disabled]="emplId !== scrum_master_id">
+                <button class="btn btn-primary btn-sm mb-1 add" [disabled]="emplId !== scrum_master_id" (click)="openUpdateTask(task.id,task.description)">
                   <i class="bi bi-pencil"></i> Update Task
                 </button>
                 <button class="btn btn-light btn-sm m-1" [disabled]="emplId !== scrum_master_id">
