@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
+      
+    <div class="text-center">
+      <h3 class="bg-primary text-white p-2 rounded">Assign Task</h3>
+    </div>
+    <div *ngIf="team?.users?.length">
+      <form class="mt-4">
+        <div class="form-group">
+          <label for="teamMembers">Select a team member to assign the task:</label>
+          <div id="teamMembers" class="d-flex flex-wrap">
+            <ng-container *ngFor="let user of team.users">
+              <div *ngIf="user.id !== scrum_master_id" class="card m-2 p-2 user-card" style="width: 8rem;" (click)="selectUser(user.id)" [class.selected]="selectedUserId === user.id">
+                <div class="card-body text-center p-1">
+                  <input type="radio" name="user" [value]="user.id" (change)="selectedUserId = user.id" class="mb-1" [checked]="selectedUserId === user.id" hidden>
+                  <img [src]="user.photo" alt="{{user.firstName}} {{user.lastName}}" class="rounded-circle mb-1" width="40" height="40">
+                  <div class="user-info">
+                    <span class="font-weight-bold d-block" style="font-size: 0.8rem;">{{user.firstName}} {{user.lastName}}</span>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="mt-4 d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary btn-sm m-2" (click)="cancel()">
+            <i class="bi bi-x-circle"></i> Cancel
+          </button>
+          <button type="button" class="btn btn-primary btn-sm m-2" (click)="assignTask()">
+            <i class="bi bi-check-circle"></i> Assign Task
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="!team?.users?.length" class="text-center">
+      <p>No team members found.</p>
+    </div>
+  </div>
+  
