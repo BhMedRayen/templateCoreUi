@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
 import {EmployeeLayoutComponent} from "./containers/employee";
 import {ClientLayoutComponent} from "./containers/client";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     data: {
       title: 'Employee Home'
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'messages',
@@ -29,7 +31,7 @@ const routes: Routes = [
       },
       {
         path :'scrums',
-        loadChildren : ()=> 
+        loadChildren : ()=>
           import ('./views/employee/Scrum/my-teams.module').then((m)=>m.MyTeamsModule)
       }
     ]
@@ -54,6 +56,7 @@ const routes: Routes = [
     data: {
       title: 'Home'
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly tokenKey = 'auth_token'; 
+  private readonly tokenKey = 'token';
 
   setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
@@ -16,5 +16,17 @@ export class AuthService {
 
   removeToken(): void {
     localStorage.removeItem(this.tokenKey);
+  }
+
+  /**
+   * Getting isAuthenticated
+   */
+  getIsAuth() {
+    return this.getToken() != '';
+  }
+
+  logout() {
+    this.removeToken()
+    //todo clear all user data in local storage
   }
 }
