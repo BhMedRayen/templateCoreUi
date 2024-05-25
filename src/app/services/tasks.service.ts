@@ -11,9 +11,10 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  createTask(taskData: string): Observable<any> {
+  createTask(taskData: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "/create", taskData);
   }
+
 
   getTsksBySprintId(sprintId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/sprint/${sprintId}`);
