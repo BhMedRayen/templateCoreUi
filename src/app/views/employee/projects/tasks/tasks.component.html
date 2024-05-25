@@ -39,7 +39,7 @@
                 <button class="btn btn-light btn-sm m-1" [disabled]="emplId !== scrum_master_id">
                   <i class="bi bi-person-plus"></i> Assign Task
                 </button>
-                <button class="btn btn-dark btn-sm m-1" [disabled]="emplId !== scrum_master_id">
+                <button class="btn btn-dark btn-sm m-1" [disabled]="emplId !== scrum_master_id" (click)="openDeleteTask(task.id)">
                   <i class="bi bi-trash"></i> Delete Task
                 </button>
               </td>

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TeamServiceService } from 'src/app/services/team-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import {CreateTaskComponent} from '../create-task/create-task.component'
+import {DeleteTaskComponent} from '../delete-task/delete-task.component'
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -113,5 +114,11 @@ export class TasksComponent implements OnInit {
    })
  }
   
+ openDeleteTask(taskId : number ) : void {
+  const dialogRef  = this.dialog.open(DeleteTaskComponent, {
+        width : '500px',
+        data : {taskId : taskId}
+   })
+ }
 
 }
