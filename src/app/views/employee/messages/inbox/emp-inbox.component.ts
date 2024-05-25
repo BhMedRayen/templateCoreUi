@@ -20,7 +20,7 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
   messageContent: string = '';
   user: any;
   selectedUserId: number = 0; 
-  selectedUser: any = null; // To store the selected user's details
+  selectedUser: any = null; 
   employees: any[] = [];
   filteredEmployees: any[] = [];
   searchQuery: string = '';
@@ -57,12 +57,11 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
       this.messageSubscription.unsubscribe();
     }
   }
-
   getEmployees(): void {
     this.empService.getConfirmedEmp().subscribe({
       next: (response: any) => {
-        this.employees = response.users;
-        this.filteredEmployees = [...this.employees]; // Initialize filteredEmployees with all employees
+        this.employees = response.users.filter((employee: any) => employee.id !== this.user.id);
+        this.filteredEmployees = [...this.employees]; 
       },
       error: (error: any) => {
         console.log('Error fetching users ', error);
@@ -94,11 +93,10 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
     this.messageService.sendMessage(this.user.id, this.selectedUserId, this.messageContent).subscribe({
       next: (response: any) => {
         console.log('Message sent successfully:', response);
-        this.lastSentMessageId = response.id; // Track the last sent message ID
-        // this.messages.push(response); // Add the sent message to the messages array
+        this.lastSentMessageId = response.id; 
         this.messageContent = '';
-        this.scrollToBottom(); // Scroll to the bottom after sending a message
-        this.cdr.detectChanges(); // Explicitly trigger change detection
+        this.scrollToBottom(); 
+        this.cdr.detectChanges(); 
       },
       error: (error: any) => {
         console.error('Error sending message:', error);
