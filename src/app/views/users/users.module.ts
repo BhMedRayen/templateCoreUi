@@ -8,6 +8,7 @@ import {ConfirmEmpRequestComponent} from "./confirm-emp-request/confirm-emp-requ
 import {ClientsComponent} from "./clients/clients.component";
 import {AllEmployeesComponent} from "./all-employees/all-employees.component";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     CommonModule,
     UsersRoutingModule,
     PaginationModule,
-    FormModule
+    FormModule,
+    FormsModule,
+    CommonModule
   ]
 })
 export class UsersModule { }

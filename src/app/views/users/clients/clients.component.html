@@ -1,1 +1,43 @@
-<p>clients works!</p>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Aliret Service Current Clients</h2>
+    <div class="row mb-4">
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search by name or last name..." 
+            [(ngModel)]="searchQuery" 
+            (input)="filterClients()">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let client of paginatedClients" class="col-md-6 col-lg-4">
+        <div class="card mb-4 shadow-sm d-flex align-items-center mt-1">
+          <img [src]="client.photo" class="card-img-top mt-2" [alt]="client.firstName + ' ' + client.lastName">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ client.name }} {{ client.lastName }}</h5>
+            <p class="card-text"><i class="bi bi-envelope"></i> {{ client.email }}</p>
+            <p class="card-text"><i class="bi bi-phone"></i> {{ client.phone }}</p>
+            <button class="btn btn-primary sign">Sign Contract</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center mt-4">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="previousPage()">Previous</button>
+        </li>
+        <li *ngFor="let page of totalPagesArray" class="page-item" [class.active]="page === currentPage">
+          <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage * itemsPerPage >= clients.length">
+          <button class="page-link" (click)="nextPage()">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
