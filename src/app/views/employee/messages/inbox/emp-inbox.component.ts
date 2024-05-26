@@ -4,6 +4,7 @@ import { EmployeeServiceService } from 'src/app/services/employee-service.servic
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-emp-inbox',
@@ -19,17 +20,20 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
   messages: any[] = [];
   messageContent: string = '';
   user: any;
-  selectedUserId: number = 0; 
-  selectedUser: any = null; 
+  selectedUserId: number = 0;
+  selectedUser: any = null;
   employees: any[] = [];
-  filteredEmployees: any[] = [];
+  productOwner: any;
+  filteredUsers: any[] = [];
   searchQuery: string = '';
   messageSubscription!: Subscription;
   private lastSentMessageId: number | null = null;
+  selectedUserType: string = 'employees'; // Default to employees
 
   constructor(
     private messageService: MessageService,
     private empService: EmployeeServiceService,
+    private userService: UsersService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -46,10 +50,11 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
     this.messageSubscription = this.messageService.getMessageObservable().subscribe((message: any) => {
       console.log('New message received:', message);
       if (message.message.id !== this.lastSentMessageId) {
-        this.messages.push(message.message); 
+        this.messages.push(message.message);
         this.cdr.detectChanges();
       }
     });
+    this.getProductOwner();
   }
 
   ngOnDestroy(): void {
@@ -57,28 +62,46 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
       this.messageSubscription.unsubscribe();
     }
   }
+
   getEmployees(): void {
     this.empService.getConfirmedEmp().subscribe({
       next: (response: any) => {
         this.employees = response.users.filter((employee: any) => employee.id !== this.user.id);
-        this.filteredEmployees = [...this.employees]; 
+        this.filteredUsers = [...this.employees];
       },
       error: (error: any) => {
-        console.log('Error fetching users ', error);
+        console.log('Error fetching employees ', error);
       }
     });
   }
 
+  getProductOwner(): void {
+    this.userService.getProductOwner().subscribe({
+      next: (response: any) => {
+        this.productOwner = response.product_owner;
+        console.log("Product owner ", this.productOwner);
+      },
+      error: (error: any) => {
+        console.log("Error fetching product owner ", error);
+      }
+    });
+  }
   filterUsers(): void {
-    this.filteredEmployees = this.employees.filter(employee =>
-      (employee.name + ' ' + employee.lastName).toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+    if (this.selectedUserType === 'employees') {
+      this.filteredUsers = this.employees.filter(user => (user.name + ' ' + user.lastName).toLowerCase().includes(this.searchQuery.toLowerCase()));
+    } else if (this.selectedUserType === 'productOwner' && this.productOwner) {
+      this.filteredUsers = this.productOwner;
+    }
+  }
+  
+  onChangeUserType(): void {
+    this.filterUsers();
   }
 
   selectUser(userId: number): void {
     console.log('Selected user ID:', userId);
     this.selectedUserId = userId;
-    this.selectedUser = this.employees.find(emp => emp.id === userId);
+    this.selectedUser = this.filteredUsers.find(user => user.id === userId);
     console.log('Selected user:', this.selectedUser);
     this.messages = [];
     this.retrieveMessages();
@@ -93,10 +116,10 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
     this.messageService.sendMessage(this.user.id, this.selectedUserId, this.messageContent).subscribe({
       next: (response: any) => {
         console.log('Message sent successfully:', response);
-        this.lastSentMessageId = response.id; 
+        this.lastSentMessageId = response.id;
         this.messageContent = '';
-        this.scrollToBottom(); 
-        this.cdr.detectChanges(); 
+        this.scrollToBottom();
+        this.cdr.detectChanges();
       },
       error: (error: any) => {
         console.error('Error sending message:', error);
@@ -119,8 +142,8 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
           console.log('Message content:', message.content);
           console.log('Message created_at:', message.created_at);
         });
-        this.scrollToBottom(); // Scroll to the bottom after retrieving messages
-        this.cdr.detectChanges(); // Explicitly trigger change detection
+        this.scrollToBottom();
+        this.cdr.detectChanges();
       },
       error: (error: any) => {
         console.error('Error retrieving messages:', error);
@@ -133,7 +156,7 @@ export class EmpInboxComponent implements OnInit, OnDestroy {
     if (chatBody) {
       setTimeout(() => {
         chatBody.scrollTop = chatBody.scrollHeight;
-      }, 100); 
+      }, 100);
     }
   }
 }
