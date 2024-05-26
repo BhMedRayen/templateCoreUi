@@ -26,6 +26,10 @@ export class UsersService {
     return this.http.get<any>('http://localhost:8000/api/user/product-owner')
   }
 
+  getAallClients() : Observable<any> {
+    return this.http.get<any>('http://localhost:8000/api/user/get-all-clients')
+  }
+
   logIn(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
