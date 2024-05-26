@@ -4,9 +4,10 @@
         <div class="card users">
           <div class="card-header">Users</div>
           <div class="card-body" id="users">
-            <select class="form-control" [(ngModel)]="selectedUserType" (change)="onChangeUserType()">
-              <option value="employees">Employees</option>
-              <option value="productOwner">Product Owner</option>
+            
+            <select class="form-select" [(ngModel)]="selectedUserType" (change)="onChangeUserType()">
+              <option value="employees"> Employees <i class="bi bi-caret-down"></i></option>
+              <option value="productOwner">Product Owner <i class="bi bi-caret-down"></i></option>
             </select>
             <div class="input-group mt-2">
               <input type="text" class="form-control" placeholder="Search users" [(ngModel)]="searchQuery" (input)="filterUsers()">
