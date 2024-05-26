@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+    <h1>Contracts</h1>
+    <div class="loading-overlay" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Client Information -->
+      <div class="col-md-6">
+        <div class="card mb-4 h-100">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-5">Client Information</h5>
+            <div class="text-center">
+              <img [src]="clientPhoto" class="rounded-circle mb-3" alt="Client Photo" width="120" height="120">
+            </div>
+            <div class="data mt-5">
+              <p><strong>Name:</strong> {{ client?.name }}</p>
+              <p><strong>Last Name:</strong> {{ client?.lastName }}</p>
+              <p>
+                <i class="fas fa-envelope me-2 mt-1"></i>
+                <strong>Email:</strong> {{ client?.email }}
+              </p>
+              <p>
+                <i class="fas fa-phone me-2 mt-1"></i>
+                <strong>Phone:</strong> {{ client?.phone }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Contract Form -->
+      <div class="col-md-6">
+        <div class="card mb-4 h-100">
+          <div class="card-body">
+            <h5 class="card-title">Create New Contract</h5>
+            <form (ngSubmit)="createAndDownloadContract()" #contractForm="ngForm">
+              <div class="mb-3">
+                <label for="workType" class="form-label">Description</label>
+                <input type="text" class="form-control" id="workType" required [(ngModel)]="work_type" name="work_type">
+              </div>
+              <div class="mb-3">
+                <label for="startDate" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="startDate" required [(ngModel)]="start_date" name="start_date">
+              </div>
+              <div class="mb-3">
+                <label for="endDate" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="endDate" required [(ngModel)]="end_date" name="end_date">
+              </div>
+              <div class="mb-3">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="amount" required [(ngModel)]="amount" name="amount">
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-file-earmark-arrow-down"></i> Create and Download Contract
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

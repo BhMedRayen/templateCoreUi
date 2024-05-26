@@ -21,7 +21,9 @@
             <h5 class="card-title">{{ client.name }} {{ client.lastName }}</h5>
             <p class="card-text"><i class="bi bi-envelope"></i> {{ client.email }}</p>
             <p class="card-text"><i class="bi bi-phone"></i> {{ client.phone }}</p>
+            <a  [routerLink]="['/users/contract', client.id]" routerLinkActive="router-link-active"k>
             <button class="btn btn-primary sign">Sign Contract</button>
+             </a>
           </div>
         </div>
       </div>
