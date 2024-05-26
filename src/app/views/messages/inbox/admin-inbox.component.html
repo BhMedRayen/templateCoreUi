@@ -1,0 +1,65 @@
+<div class="container-fluid gradient-bg">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card users">
+        <div class="card-header">Users</div>
+        <div class="card-body" id="users">
+          <select class="form-select" [(ngModel)]="selectedUserType" (change)="onChangeUserType()">
+            <option value="employees"> Employees <i class="bi bi-caret-down"></i></option>
+            <option value="clients">Clients <i class="bi bi-caret-down"></i></option>
+          </select>
+          <div class="input-group mt-2">
+            <input type="text" class="form-control" placeholder="Search users" [(ngModel)]="searchQuery" (input)="filterUsers()">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <ul class="list-group mt-2">
+            <li *ngFor="let user of filteredUsers" class="list-group-item" (click)="selectUser(user.id)">
+              <img [src]="'http://localhost:8000' + user.photo" alt="User Photo" class="mr-2 rounded-circle" style="width: 30px; height: 30px;">
+              {{ user.name }} {{ user.lastName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          <ng-container *ngIf="selectedUser; else noUserSelected">
+            <img [src]="'http://localhost:8000' + selectedUser.photo" alt="User Photo" class="mr-2 rounded-circle" style="width: 30px; height: 30px;">
+            {{ selectedUser.name }} {{ selectedUser.lastName }}
+          </ng-container>
+          <ng-template #noUserSelected>
+            Chat
+          </ng-template>
+        </div>
+        <div class="card-body chat-body">
+          <div class="chat-messages" *ngIf="messages.length > 0; else noMessages">
+            <div *ngFor="let message of messages" class="message"
+                [ngClass]="{'sender-message': message.sender_id === user.id, 'receiver-message': message.sender_id !== user.id}">
+  
+              <ng-container *ngIf="message.sender_id !== user.id">
+                <img [src]="'http://localhost:8000' + selectedUser.photo" alt="Receiver Photo" class="ml-2 rounded-circle" style="width: 30px; height: 30px;">
+              </ng-container>
+              <span class="message-content">{{ message.content }}</span>
+              <span class="message-time">{{ message.created_at | date:'shortTime' }}</span>
+            </div>
+          </div>
+          <ng-template #noMessages>
+            <div class="no-messages">
+              <i class="fas fa-comments fa-5x"></i>
+              <p>Select a user to start chatting or no messages yet.</p>
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="card-footer">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type your message..." [(ngModel)]="messageContent" #messageInput>
+            <button class="btn btn-primary" type="button" (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
