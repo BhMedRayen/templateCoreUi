@@ -10,13 +10,11 @@
                     <div class="col-lg-3 text-center"> 
                         <div *ngIf="showSpiner" class="overlay"></div>
                         <div *ngIf="showSpiner" class="loading-spinner"></div>
-                        <!-- card signup client  -->
                         <div class="card shadow ">
                             <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert">
                             <div class="card-body">
-                                <h5 class="card-title" *ngIf="!showAlert">Sign up</h5>
+                                <h3 class="card-title" *ngIf="!showAlert">Sign up</h3>
                                 <form>
-                                
                                     <div class="alert alert-danger" role="alert" *ngIf="showAlert">
                                         {{ alertMessage }}
                                     </div>
@@ -79,16 +77,12 @@
                                         </div>      
 
                                     </div>
-                                  
                                         <button type="submit" class="btn btn-outline-success ms-2" (click)="submitForm()" id="login_btn">Create my account</button>
-                                      
-                                 
-
                                 </form>
                                 <a routerLink="/login">Already have an account ?<span>Log In</span></a>
                             </div>         
                         </div>
-                        <!-- find card sigup client -->
+                   
                     </div>
                 </div>
             </div>
