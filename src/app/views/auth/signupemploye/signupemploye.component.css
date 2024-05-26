@@ -33,6 +33,10 @@
 }
 .btn-primary {
     width: 100%;
+    color: white;
+}
+.btn-secondary {
+    color: white;
 }
 .card-body {
     text-align: center;
@@ -41,7 +45,9 @@
     background-color: #1DA291;
     color: #FFFFFF;
     border-color: #1DA291;
-   /* width: 50%; */
+}
+.form-check-input {
+    cursor: pointer;
 }
 #login_btn:hover {
     background-color: #FFFFFF;
@@ -65,12 +71,16 @@ p{
 }
 a {
     text-decoration: none;
-    color: black;
+    color: #1DA291;
     margin-top: 10px !important; 
 }
 span {
     color: #1DA291;
 }
+.pagination {
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 720px) {
     .card {

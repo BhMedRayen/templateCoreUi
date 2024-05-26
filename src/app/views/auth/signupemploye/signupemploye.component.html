@@ -1,7 +1,7 @@
 <div class="content">
     <app-signupnavbar></app-signupnavbar>
-    <div class="text-center mt-5">
-        <div class="d-flex justify-content-center m-5 p-5">
+    <div class="text-center mt-3">
+        <div class="d-flex justify-content-center m-4 p-5">
             <div class="col-xl-12">
                 <div class="row gap-5">
                     <div class="col-lg-6 d-none d-lg-block">
@@ -12,7 +12,7 @@
                         <div class="card shadow ">
                             <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert"> 
                             <div class="card-body">
-                                <h5 class="card-title" *ngIf="!showAlert">Sign up</h5>
+                                <h2 class="card-title" *ngIf="!showAlert">Sign up</h2>
                                 <form>
                                     <div class="alert alert-danger" role="alert" *ngIf="showAlert">
                                         {{ alertMessage }}
@@ -101,7 +101,7 @@
                                                     </nav>
                                     
                                                     <div *ngIf="currentPage === 1">
-                                                        <h5 class="d-flex justify-content-center">Back End</h5>
+                                                        <h4 class="d-flex justify-content-center">Back End</h4>
                                     
                                                         <div class="row">
                                                             <div class="col-md-3">
@@ -132,7 +132,7 @@
                                                     </div>
                                     
                                                     <div *ngIf="currentPage === 2">
-                                                        <h5 class="d-flex justify-content-center">Front End</h5>
+                                                        <h4 class="d-flex justify-content-center">Front End</h4>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="form-check form-check-inline">
@@ -162,7 +162,7 @@
                                                     </div>
                                     
                                                     <div *ngIf="currentPage === 3">
-                                                        <h5 class="d-flex justify-content-center">Design</h5>
+                                                        <h4 class="d-flex justify-content-center">Design</h4>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="form-check form-check-inline">
@@ -189,7 +189,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary" (click)="saveSkills()">Save skills</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveSkills()">Save skills</button>
                                                 </div>
                                             </div>
                                         </div>
