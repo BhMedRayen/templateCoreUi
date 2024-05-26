@@ -21,7 +21,7 @@ export const navItems: INavData[] = [
   {
     name : 'Scrums',
     url : '/scrums',
-    iconComponent : {name : 'cil-apps'},
+    iconComponent : {name : 'cil-address-book'},
 
     children : [
       {
@@ -48,6 +48,17 @@ export const navItems: INavData[] = [
         url :'users/clients'
       }
     ]
-  }
+  },
+  {
+    name: 'Messages',
+    url: '/messages',
+    iconComponent: { name: 'cil-send' },
+    children : [
+      {
+        name :'Inbox',
+        url  :'messages/inbox'
+      },
+    ]
+  },
   
 ];
