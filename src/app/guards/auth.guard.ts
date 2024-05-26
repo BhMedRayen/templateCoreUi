@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   private checkAuth(): boolean | Observable<boolean> | Promise<boolean> {
-    const isAuth = this.authService.getIsAuth(); // Adjust this method name as per your service
+    const isAuth = this.authService.getIsAuth(); 
     if (!isAuth) {
       this.router.navigate(['/auth/login']);
       return false;
