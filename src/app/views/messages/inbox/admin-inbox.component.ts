@@ -38,7 +38,7 @@ export class AdminInboxComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('employee');
+    const userData = localStorage.getItem('product_owner');
     if (userData) {
       this.user = JSON.parse(userData);
       console.log("user auth ", this.user);
