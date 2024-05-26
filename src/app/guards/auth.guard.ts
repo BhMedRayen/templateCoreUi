@@ -10,9 +10,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
-    let test = this.checkAuth();
-    console.log('test', test);
-    return  test;
+    return  this.checkAuth();
   }
 
   canActivateChild(): boolean | Observable<boolean> | Promise<boolean> {
