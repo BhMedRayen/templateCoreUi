@@ -78,7 +78,12 @@ const routes: Routes = [
         path : 'users',
         loadChildren : () =>
         import ('./views/users/users.module').then((m)=> m.UsersModule)
-      }
+      },
+      {
+        path: 'messages',
+        loadChildren: () =>
+         import('./views/messages/product-owner-messages.module').then((m)=>m.ProductOwnerMessageModule)
+      },
 
     ]
   },
