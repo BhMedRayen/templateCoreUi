@@ -92,8 +92,10 @@ import {
   cilApps,
   cilAddressBook,
   cilSend,
- 
-  
+  cilCog,
+  cilAccountLogout,
+
+
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -189,7 +191,9 @@ export const iconSubset = {
   cilUserUnfollow,
   cilApps,
   cilSend,
-  cilAddressBook
+  cilAddressBook,
+  cilCog,
+  cilAccountLogout
 };
 
 export enum IconSubset {
@@ -285,5 +289,7 @@ export enum IconSubset {
   cilUserUnfollow = 'cilUserUnfollow',
   cilApps = 'cilApps',
   cilAddressBook = 'cilAddressBook',
-  cilSend = 'cilSend'
+  cilSend = 'cilSend',
+  cilCog = 'cilCog',
+  cilAccountLogout = 'cilAccountLogout'
 }
