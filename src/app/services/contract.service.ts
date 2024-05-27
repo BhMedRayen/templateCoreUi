@@ -36,4 +36,11 @@ export class ContractService {
     return this.http.delete<any>(`${this.apiUrl}/delete-contract/${contractId}`);
   }
 
+  downloadContract(contractId: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/dowload-exist/${contractId}`, { responseType: 'blob' })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
 }
