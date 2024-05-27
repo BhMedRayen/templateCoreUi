@@ -17,7 +17,7 @@ import { HttpResponse } from '@angular/common/http';
   styleUrl: './contract.component.scss'
 })
 export class ContractComponent implements OnInit{
-  
+    contracts: any[] = [];
     work_type: string = ''
     start_date: string =''
     end_date: string =''
@@ -39,6 +39,7 @@ export class ContractComponent implements OnInit{
       console.log("client id",this.clientId);
       this.getClientById();
     });
+    this.getContractsByClientId();
   }
 
   getClientById () : void {
@@ -82,8 +83,39 @@ export class ContractComponent implements OnInit{
       a.click();
       window.URL.revokeObjectURL(url);
       this.loading=false
+      location.reload()
     }, error => {
       console.error('Error downloading contract:', error);
+    });
+  }
+
+  getContractsByClientId(): void {
+    this.contractService.getContractsByClientId(this.clientId).subscribe({
+      next: (response: any) => {
+        this.contracts = response.contracts;
+        console.log("Contracts:", this.contracts);
+      },
+      error: (error: any) => {
+        console.log("Error fetching contracts", error);
+      }
+    });
+  }
+
+  downloadContract(contractId: number) {
+    this.loading = true;
+    this.contractService.downloadContract(contractId).subscribe((response: Blob) => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'contract.pdf';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      this.loading = false;
+    }, error => {
+      console.error('Error downloading contract:', error);
+      this.loading = false;
     });
   }
 

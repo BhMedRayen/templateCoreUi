@@ -60,5 +60,36 @@
         </div>
       </div>
     </div>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center mb-4">Old Contracts</h1>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let contract of contracts">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title text-center">Contract ID: {{ contract.id }}</h5>
+                <div class="contract-info">
+                  <p><strong>Work Type:</strong> {{ contract.work_type }}</p>
+                  <p><strong>Start Date:</strong> {{ contract.start_date }}</p>
+                  <p><strong>End Date:</strong> {{ contract.end_date }}</p>
+                  <p><strong>Amount:</strong> {{ contract.amount }} <strong>DT</strong></p>
+                </div>
+                <div class="text-center mt-3">
+                  <button class="btn btn-primary me-2" (click)="downloadContract(contract.id)">
+                    <i class="bi bi-cloud-download next"></i> Download
+                  </button>
+                  <button class="btn btn-success">
+                    <i class="bi bi-pencil next"></i> Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
   </div>
   
