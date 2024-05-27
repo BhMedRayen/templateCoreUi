@@ -33,7 +33,12 @@ const routes: Routes = [
         path :'scrums',
         loadChildren : ()=>
           import ('./views/employee/Scrum/my-teams.module').then((m)=>m.MyTeamsModule)
-      }
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./views/employee/profile/emp-profile.module').then((m) => m.EmpProfileModule)
+      },
     ]
   },
   {
@@ -63,7 +68,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
-
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./views/profile/profile.module').then((m) => m.ProfileModule)
+      },
       {
         path: 'projects',
         loadChildren: () =>
