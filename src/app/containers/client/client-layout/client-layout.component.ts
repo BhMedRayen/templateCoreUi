@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-client-layout',
@@ -12,7 +12,7 @@ export class ClientLayoutComponent implements OnInit {
   constructor() { }
 
 
-  isDropdownOpen = false;
+
 
 
   ngOnInit(): void {
@@ -22,13 +22,5 @@ export class ClientLayoutComponent implements OnInit {
     }  
   }
 
-  isNavbarCollapsed = true;
 
-  toggleNavbar() {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
-  }
-
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
 }
