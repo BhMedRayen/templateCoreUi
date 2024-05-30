@@ -8,19 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ClientLayoutComponent implements OnInit {
 
   user: any;
+  userPhoto: string = '';
 
   constructor() { }
-
-
-
-
 
   ngOnInit(): void {
     const userData = localStorage.getItem('Client');
     if (userData) {
       this.user = JSON.parse(userData);
-    }  
+      this.userPhoto = "http://localhost:8000" + this.user.photo;
+    }
   }
-
-
 }
