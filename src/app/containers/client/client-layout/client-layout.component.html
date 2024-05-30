@@ -1,38 +1,79 @@
-<div class="content"> 
-    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
-        <a class="navbar-brand" href="#">
-            <img class="logo" src="../../../../assets/logo.jpg" alt="">
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand">
+          <img class="logo" src="../../../../assets/logo.jpg" alt="Logo">
         </a>
-        <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" (click)="toggleNavbar()" aria-controls="navbarNav" aria-expanded="!isNavbarCollapsed" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" [ngClass]="{'show': isNavbarCollapsed}" id="navbarNav">
-            <ul class="navbar-nav">
-            </ul>
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li>
-
-                <li class="nav-item dropdown" (click)="toggleDropdown()">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img id="logo" [src]="'http://localhost:8000' + user.photo"  alt="User Image" class="user-image">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
-                    </div>
-                </li>
-            </ul>
+        <div [ngClass]="{'collapse': isNavbarCollapsed}" class="navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item mt-2">
+              <a class="nav-link">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown" (click)="toggleDropdown()" [ngClass]="{'show': isDropdownOpen}">
+              <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" [attr.aria-expanded]="isDropdownOpen">
+                <img id="userPhoto" [src]="userPhoto" alt="User Photo">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-person"></i> Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-gear"></i> Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
+      
     
-<div class="text-center">
-    <h1>welcome {{user.name}} {{user.lastname}} </h1>
-</div>
-</div>
+    <div class="text-center">
+      <h1>Welcome {{user.name}} {{user.lastname}}</h1>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card text-center">
+              <img src="../../../../assets/Voice chat-rafiki.png" class="card-img-top" alt="Contact Owner Photo">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h5 class="card-title">Contact Product Owner</h5>
+                <p class="card-text">Contact the product owner of Aliret Service</p>
+                <a href="#" class="btn btn-primary"><i class="bi bi-chat-dots"></i> Contact</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card text-center">
+              <img src="../../../../assets/Business deal-bro.png" class="card-img-top" alt="Check Contracts Photo">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h5 class="card-title">Check My Contracts</h5>
+                <p class="card-text" style="font-size: 15px;">Check contracts i have with Aliret Service </p>
+                <a href="#" class="btn btn-primary"><i class="bi bi-check-circle"></i> Check Contracts</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card text-center">
+              <img src="../../../../assets/Profile data-amico.png" class="card-img-top" alt="Profile Photo">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h5 class="card-title">Profile</h5>
+                <p class="card-text">Check my account on Aliret Service </p>
+                <a href="#" class="btn btn-primary"><i class="bi bi-person"></i> View Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+  </div>
+  

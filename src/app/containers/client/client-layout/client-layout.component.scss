@@ -13,47 +13,19 @@
   margin-right: 20px;
 }
 
-.navbar {
-  background-image: linear-gradient(to bottom, #87BFB8, #f0f2f1c2);
-  z-index: 1000;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
 
-.navbar .btn-success {
-  margin-right: 10px;
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  color: #067a6d;
-}
 
-.navbar .btn-outline-success {
-  background-color: #1DA291;
-  color: #FFFFFF;
-  border-color: #1DA291;
-}
 
-.navbar .btn-outline-success:hover {
-  background-color: #FFFFFF;
-  color: #1DA291;
-  border-color: #1DA291;
-}
 
-.navbar .btn-success:hover {
-  background-color: #1DA291;
-  color: #FFFFFF;
-  border-color: #1DA291;
-}
+
 
 .content {
   background-color: #f0f2f1;
-  background-image: linear-gradient(to top, rgba(240, 242, 241, 0), rgba(240, 242, 241, 1));
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -67,3 +39,72 @@
 .nav-item {
   font-size: 25px;
 }
+
+.dropdown-menu {
+  cursor: pointer;
+  top: calc(100% + 10px);
+  top: 100%;
+  z-index: 1100; 
+  margin-left : -120px;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+.card-img-top {
+  height: 300px;
+  width: 100%;
+  
+}
+.btn-primary {
+  color: white;
+}
+
+.navbar-custom {
+  position: fixed;
+  width: 100%;
+  background-color: #067a6d;
+  color: #FFFFFF; 
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand {
+  margin-right: 20px; 
+}
+
+.navbar-custom .navbar-toggler {
+  color: #FFFFFF; 
+  border-color: #FFFFFF;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+  color: #FFFFFF;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+  color: #FFFFFF;
+}
+
+.navbar-custom .dropdown-menu {
+  background-color: #FFFFFF;
+  border: none; 
+  border-radius: 0.7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar-custom .dropdown-item {
+  color: #212529; 
+}
+
+.navbar-custom .dropdown-item:hover {
+  background-color: #067a6d; 
+  color: #FFFFFF;
+}
+
+
+
