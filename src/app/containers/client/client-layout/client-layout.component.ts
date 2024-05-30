@@ -9,6 +9,8 @@ export class ClientLayoutComponent implements OnInit {
 
   user: any;
   userPhoto: string = '';
+  isNavbarCollapsed: boolean = true;
+  isDropdownOpen: boolean = false;
 
   constructor() { }
 
@@ -18,5 +20,12 @@ export class ClientLayoutComponent implements OnInit {
       this.user = JSON.parse(userData);
       this.userPhoto = "http://localhost:8000" + this.user.photo;
     }
+  }
+  toggleNavbar(): void {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }
