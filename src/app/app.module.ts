@@ -51,6 +51,7 @@ import {ErrorInterceptor} from "./interceptors/error.iterceptor";
 import { EmployeeMessagesModule } from './views/employee/messages/employee-messages.module';
 import {AuthGuard} from "./guards/auth.guard";
 import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';
+import {ClientWelcomeComponent} from "./containers/client/client-layout/client-welcome.component";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -61,7 +62,8 @@ const APP_CONTAINERS = [
   ClientLayoutComponent,
   EmployeeLayoutComponent,
   ErrorComponent,
-  ClientContractsComponent
+  ClientContractsComponent,
+  ClientWelcomeComponent
 ];
 
 @NgModule({
