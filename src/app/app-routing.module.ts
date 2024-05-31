@@ -52,7 +52,13 @@ const routes: Routes = [
         path: 'projects',
         loadChildren: () =>
           import('./views/client/projects/client-projects.module').then((m) => m.ClientProjectsModule)
+      },
+      {
+        path :'',
+        loadChildren : ()=> 
+          import ('../app/containers/client/client-routing.module').then((m)=> m.ClientRoutingModule )
       }
+     
     ]
   },
   {
@@ -136,7 +142,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'
-      // relativeLinkResolution: 'legacy'
+     
     })
   ],
   exports: [RouterModule]

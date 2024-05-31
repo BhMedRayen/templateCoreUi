@@ -112,6 +112,7 @@ export class UpdateprojectComponent implements OnInit {
         this.loading=false;
         console.log('Project updated successfully:', updatedProject);
         this.dialogRef.close();
+        location.reload()
       },
       (error) => {
         console.error('Error updating project:', error);
