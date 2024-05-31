@@ -6,6 +6,7 @@ import {ClientLayoutComponent} from "./containers/client";
 import {AuthGuard} from "./guards/auth.guard";
 import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';
 import {ClientWelcomeComponent} from "./containers/client/client-layout/client-welcome.component";
+import {ChatComponent} from './containers/client/chat/chat.component'
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path :'contracts/:id',
         component : ClientContractsComponent
+      },
+      {
+        path : 'chat/:id',
+        component : ChatComponent
       }
 
 
