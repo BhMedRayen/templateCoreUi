@@ -10,7 +10,7 @@
         <div class="card-body d-flex flex-column justify-content-center">
           <h5 class="card-title">Contact Product Owner</h5>
           <p class="card-text">Contact the product owner of Aliret Service</p>
-          <a href="#" class="btn btn-primary"><i class="bi bi-chat-dots"></i> Contact</a>
+          <a [routerLink]="['/client/chat', user?.id]" class="btn btn-primary"><i class="bi bi-chat-dots"></i> Contact</a>
         </div>
       </div>
     </div>
