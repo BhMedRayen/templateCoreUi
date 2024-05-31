@@ -1,1 +1,38 @@
-<h1 class="title">Client Contracts </h1>
+    <div class="content">
+        <div class="row">
+        <div class="col-lg-8">
+            <div *ngIf="contracts.length > 0; else noContracts">
+            <div class="row d-flex justify-content-center">
+                <h1 class="text-center mb-2">Your Contracts With Aliret Service</h1>
+                <div class="col-md-6 mt-4" *ngFor="let contract of contracts">
+                <div class="card mb-3">
+                    <div class="card-body">
+                    <h4 class="card-title text-center"><strong>Contract REF :</strong>  {{ contract.id }}</h4>
+                    <p class="card-text"><strong>Subject:</strong>  {{contract.work_type}}</p>
+                    <p class="cart-text"> <strong>Start Date :</strong>  {{contract.start_date}}</p>
+                    <p class="card-text"> <strong>End Date :</strong>  {{contract.end_date}}</p>
+                    <p class="card-text"> <strong> Contract Date:</strong> {{ contract.contract_date }}</p>
+                    <p class="card-text"> <strong>Amount:</strong>   {{ contract.amount }}</p>
+                    <div class="text-center">
+                        <button class="btn btn-primary" (click)="downloadContract(contract.id)" [disabled]="loading">
+                        <i class="bi bi-file-pdf"></i> Download Contract
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <ng-template #noContracts>
+            <div class="alert alert-warning" role="alert">
+                No contracts found for this client.
+            </div>
+            </ng-template>
+        </div>
+        
+        <div class="col-lg-4 d-none d-lg-block">
+            <img src="../../../../assets/Business deal-bro.png" class="img-fluid" alt="Image">
+        </div>
+        </div>
+    </div>
+    
