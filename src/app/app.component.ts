@@ -4,14 +4,14 @@ import { Router, NavigationEnd } from '@angular/router';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
-import Echo from 'laravel-echo'; 
+import Echo from 'laravel-echo';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-  title = 'CoreUI Free Angular Admin Template';
+  title = 'Aliret @ Tasks Management System';
 
   constructor(
     private router: Router,
@@ -33,12 +33,12 @@ export class AppComponent implements OnInit {
     const echo = new Echo({
       broadcaster: 'pusher',
       key: 'local',
-      cluster: 'mtl', 
+      cluster: 'mtl',
       wsHost: window.location.hostname,
       wsPort: 6001,
       forceTLS: false,
       disableStats: true,
-      enabledTransports: ['ws', 'wss'], 
+      enabledTransports: ['ws', 'wss'],
       wsPath: '',
     });
 
