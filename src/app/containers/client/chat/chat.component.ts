@@ -47,7 +47,6 @@ export class ChatComponent  implements OnInit{
     this.getProductOwner();
   }
 
- 
   getProductOwner(): void {
     this.userService.getProductOwner().subscribe({
       next: (response: any) => {
@@ -62,56 +61,6 @@ export class ChatComponent  implements OnInit{
 
   
 
-
-
-      ssage(): void {
-
-    this.messageService.sendMessage(this.user.id, this.selectedUserId, this.messageContent).subscribe({
-      next: (response: any) => {
-        console.log('Message sent successfully:', response);
-        this.lastSentMessageId = response.id;
-        this.messageContent = '';
-        this.scrollToBottom();
-        this.cdr.detectChanges();
-      },
-      error: (error: any) => {
-        console.error('Error sending message:', error);
-      }
-    });
-  }
-
-  retrieveMessages(): void {
-    if (this.selectedUserId === 0) {
-      console.log('Please select a user.');
-      return;
-    }
-
-    this.messageService.getMessages(this.user.id, this.selectedUserId).subscribe({
-      next: (response: any) => {
-        console.log('Messages retrieved successfully:', response);
-        this.messages = response;
-        console.log("messages:", this.messages);
-        this.messages.forEach(message => {
-          console.log('Message content:', message.content);
-          console.log('Message created_at:', message.created_at);
-        });
-        this.scrollToBottom();
-        this.cdr.detectChanges();
-      },
-      error: (error: any) => {
-        console.error('Error retrieving messages:', error);
-      }
-    });
-  }
-
-  scrollToBottom(): void {
-    const chatBody = document.querySelector('.chat-body');
-    if (chatBody) {
-      setTimeout(() => {
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 100);
-    }
-  }
   
 }
 
