@@ -28,4 +28,9 @@ export class ClientWelcomeComponent implements OnInit {
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+  logNavigation(): void {
+    console.log('Navigating to contracts with user ID:', this.user.id);
+  }
+  
 }

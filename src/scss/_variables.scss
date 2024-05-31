@@ -1535,7 +1535,7 @@ $disabled-dark:         rgba(shift-color($green-base, +26), .38);*/
 // $sidebar-padding-y:                        0;
 // $sidebar-padding-x:                        0;
 // $sidebar-color:                            $high-emphasis-light;
-$sidebar-bg:                               $green-base;
+$sidebar-bg:                               #178278;
 // $sidebar-border-width:                     0;
 // $sidebar-border-color:                     transparent;
 // $sidebar-transition:                       margin-left .15s, margin-right .15s, box-shadow .075s, transform .15s, width .15s, z-index 0s ease .15s;
@@ -1543,7 +1543,7 @@ $sidebar-bg:                               $green-base;
 
 // $sidebar-brand-height:                     4rem;
 // $sidebar-brand-color:                      $high-emphasis-light;
-// $sidebar-brand-bg:                         rgba($black, .2);
+ $sidebar-brand-bg:                     $green-base; 
 
 // $sidebar-header-height:                    4rem;
 // $sidebar-header-padding-y:                 .75rem;
@@ -1603,7 +1603,7 @@ $sidebar-nav-link-icon-color:              $white;
 // $sidebar-footer-height-transition:         height .15s, padding .15s;
 
 // $sidebar-toggler-height:                   3rem;
-// $sidebar-toggler-bg:                       rgba($black, .2);
+ $sidebar-toggler-bg:                      $green-base;
 // $sidebar-toggler-transition:               transform .15s;
 
 // $sidebar-toggler-indicator-width:          4rem;
