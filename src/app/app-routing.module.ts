@@ -4,6 +4,7 @@ import { DefaultLayoutComponent } from './containers';
 import {EmployeeLayoutComponent} from "./containers/employee";
 import {ClientLayoutComponent} from "./containers/client";
 import {AuthGuard} from "./guards/auth.guard";
+import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';
 
 const routes: Routes = [
   {
@@ -48,16 +49,16 @@ const routes: Routes = [
       title: 'Client Home'
     },
     children: [
+      // {
+      //   path: 'projects',
+      //   loadChildren: () =>
+      //     import('./views/client/projects/client-projects.module').then((m) => m.ClientProjectsModule)
+      // },
       {
-        path: 'projects',
-        loadChildren: () =>
-          import('./views/client/projects/client-projects.module').then((m) => m.ClientProjectsModule)
-      },
-      {
-        path :'',
-        loadChildren : ()=> 
-          import ('../app/containers/client/client-routing.module').then((m)=> m.ClientRoutingModule )
+        path :'contracts',
+        component : ClientContractsComponent
       }
+      
      
     ]
   },
