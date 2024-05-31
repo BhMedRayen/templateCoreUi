@@ -1,6 +1,9 @@
     <div class="content">
         <div class="row">
         <div class="col-lg-8">
+            <div class="loading-overlay" *ngIf="loading">
+                <div class="spinner"></div>
+              </div>
             <div *ngIf="contracts.length > 0; else noContracts">
             <div class="row d-flex justify-content-center">
                 <h1 class="text-center mb-2">Your Contracts With Aliret Service</h1>
