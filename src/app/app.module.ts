@@ -47,7 +47,6 @@ import {EmployeeFooterComponent} from "./containers/employee/employee-layout/emp
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ErrorComponent} from "@docs-components/shared/error/error.component";
 import {MatButtonModule} from "@angular/material/button";
-import {ErrorInterceptor} from "./interceptors/error.iterceptor";
 import { EmployeeMessagesModule } from './views/employee/messages/employee-messages.module';
 import {AuthGuard} from "./guards/auth.guard";
 import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';

@@ -55,7 +55,7 @@ const routes: Routes = [
         component : ClientWelcomeComponent
       },
       {
-        path :'contracts',
+        path :'contracts/:id',
         component : ClientContractsComponent
       }
 
