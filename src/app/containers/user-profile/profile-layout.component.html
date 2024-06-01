@@ -1,0 +1,26 @@
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-md-3 h-100">
+      <div class="card h-100">
+        <div class="card-header">
+          Profile Navigation
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a class="nav-link" routerLink="overview" routerLinkActive="active">Profile Overview</a>
+          </li>
+          <li class="list-group-item">
+            <a class="nav-link" routerLink="settings" routerLinkActive="active">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card h-100">
+        <div class="card-body">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

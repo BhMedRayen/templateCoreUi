@@ -7,6 +7,9 @@ import {AuthGuard} from "./guards/auth.guard";
 import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';
 import {ClientWelcomeComponent} from "./containers/client/client-layout/client-welcome.component";
 import {ChatComponent} from './containers/client/chat/chat.component'
+import {ProfileLayoutComponent} from "./containers/user-profile/profile-layout.component";
+import {OverviewComponent} from "./containers/user-profile/overview/overview.component";
+import {SettingsComponent} from "./containers/user-profile/settings/settings.component";
 
 const routes: Routes = [
   {
@@ -45,6 +48,25 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'profile',
+    component: ProfileLayoutComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'User Profile'
+    },
+    children: [
+      {
+        path :'overview',
+        component : OverviewComponent
+      },
+      {
+        path :'settings',
+        component : SettingsComponent
+      },
+      { path: '', redirectTo: 'overview', pathMatch: 'full' }
+    ]
+  },
+  {
     path: 'client',
     component: ClientLayoutComponent,
     data: {
@@ -79,11 +101,6 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
-      },
-      {
-        path: 'profile',
-        loadChildren: () =>
-          import('./views/profile/profile.module').then((m) => m.ProfileModule)
       },
       {
         path: 'projects',
