@@ -26,7 +26,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .text-center h1 {
@@ -67,6 +67,7 @@
 .navbar-custom {
   position: fixed;
   width: 100%;
+  z-index: 1000;
   background-color: #067a6d;
   color: #FFFFFF; 
   padding: 10px 20px;
