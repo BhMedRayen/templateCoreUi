@@ -51,6 +51,9 @@ import { EmployeeMessagesModule } from './views/employee/messages/employee-messa
 import {AuthGuard} from "./guards/auth.guard";
 import { ClientContractsComponent } from './containers/client/client-contracts/client-contracts.component';
 import {ClientWelcomeComponent} from "./containers/client/client-layout/client-welcome.component";
+import {OverviewComponent} from "./containers/user-profile/overview/overview.component";
+import {SettingsComponent} from "./containers/user-profile/settings/settings.component";
+import {ProfileLayoutComponent} from "./containers/user-profile/profile-layout.component";
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -62,7 +65,10 @@ const APP_CONTAINERS = [
   EmployeeLayoutComponent,
   ErrorComponent,
   ClientContractsComponent,
-  ClientWelcomeComponent
+  ClientWelcomeComponent,
+  OverviewComponent,
+  SettingsComponent,
+  ProfileLayoutComponent
 ];
 
 @NgModule({
