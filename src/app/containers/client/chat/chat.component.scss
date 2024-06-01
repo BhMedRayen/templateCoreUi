@@ -1,5 +1,9 @@
-.content {
-    margin-top: 110px;
+.gradient-bg {
+    margin-top: 140px;
+    overflow-y: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    
 }
 .container-fluid {
     .chat-messages {
@@ -112,4 +116,7 @@
     color: gray;
     margin-left: 10px;
   }
-  
+  #image {
+    height: 550px;
+    width: 600px;
+  }
