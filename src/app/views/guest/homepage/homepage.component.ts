@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit{
   ngOnInit(): void {
     this.getConfirmedEmp()
     this.getDoneProjects()
+    localStorage.clear(); 
   }
 
 

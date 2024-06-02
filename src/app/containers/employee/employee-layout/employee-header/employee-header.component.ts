@@ -15,15 +15,15 @@ export class EmployeeHeaderComponent extends HeaderComponent {
 
   constructor(
     private classToggler: ClassToggleService,
-    private authService: AuthService, // Inject AuthService
-    private router: Router // Inject Router for navigation
+    private authService: AuthService,
+    private router: Router
 
 ) {
     super();
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout(); 
     this.router.navigate(['/auth/login']); 
   }
 }
