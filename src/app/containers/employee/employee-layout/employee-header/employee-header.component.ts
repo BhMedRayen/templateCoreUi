@@ -23,7 +23,7 @@ export class EmployeeHeaderComponent extends HeaderComponent {
   }
 
   logout() {
-    this.authService.logout(); // Call the logout method from AuthService
-    this.router.navigate(['/auth/login']); // Redirect to login page
+    this.authService.logout();
+    this.router.navigate(['/auth/login']); 
   }
 }
