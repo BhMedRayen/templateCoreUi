@@ -56,7 +56,7 @@ const routes: Routes = [
     },
     children: [
       {
-        path :'overview',
+        path :'overview/:id',
         component : OverviewComponent
       },
       {
