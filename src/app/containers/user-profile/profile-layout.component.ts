@@ -28,6 +28,7 @@ export class ProfileLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.loadUserIdFromLocalStorage()
     this.getUserById()
+
   
    
   }
@@ -56,13 +57,15 @@ export class ProfileLayoutComponent implements OnInit {
       return;
     }
   
-    userType = localStorage.getItem('client');
+    userType = localStorage.getItem('Client');
     if (userType) {
       const userData = JSON.parse(userType);
       this.userId = userData.id;
       return;
     }
   }
+
+  
 
   getUserById() : void {
     this.userService.getUserById(this.userId).subscribe({
@@ -71,18 +74,21 @@ export class ProfileLayoutComponent implements OnInit {
           this.employee=response.user
           this.employeePhoto= 'http://localhost:8000'+ this.employee.photo
           this.parseSkills()
+        
           console.log("employee auth " , this.employee)
         }
         else if (response.user.type ==="product_owner") {
           this.productOwner=response.user
           this.productOwnerPhoto='http://localhost:8000'+this.productOwner.photo
           console.log("admin auth " , this.productOwner);
+        
           
         }
         else {
           this.client=response.user
           this.clientPhoto='http://localhost:8000'+this.client.photo
           console.log("client auth",this.client);
+         
         }
       },
       error : (error : any)=> {

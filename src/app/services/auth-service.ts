@@ -27,6 +27,6 @@ export class AuthService {
 
   logout() {
     this.removeToken()
-    //todo clear all user data in local storage
+    localStorage.clear();
   }
 }
