@@ -36,11 +36,6 @@ const routes: Routes = [
           import('./views/employee/projects/employee-projects.module').then((m) => m.EmployeeProjectsModule)
       },
       {
-        path :'scrums',
-        loadChildren : ()=>
-          import ('./views/employee/Scrum/my-teams.module').then((m)=>m.MyTeamsModule)
-      },
-      {
         path: 'profile',
         loadChildren: () =>
           import('./views/employee/profile/emp-profile.module').then((m) => m.EmpProfileModule)
