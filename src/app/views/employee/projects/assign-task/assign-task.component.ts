@@ -72,6 +72,7 @@ export class AssignTaskComponent implements OnInit {
           this.loading=false
           console.log('Task assigned successfully', response);
           this.dialogRef.close();
+          location.reload()
         },
         error: (error) => {
           this.loading=false
