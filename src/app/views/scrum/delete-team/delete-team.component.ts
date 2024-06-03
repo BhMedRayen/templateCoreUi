@@ -43,6 +43,7 @@ loading : boolean = false;
       () => {
         this.loading=false;
         console.log("Le projet a été supprimé avec succès.");
+        location.reload()
      
       },
       (error) => {

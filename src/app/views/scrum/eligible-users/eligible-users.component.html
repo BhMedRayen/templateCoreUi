@@ -20,11 +20,10 @@
                 <img class="photo mb-2" [src]="user.photo" alt="User Photo">
                 <div>{{ user.name }} {{ user.lastName }}</div>
                 <input type="checkbox" name="selectedUser" class="custom-control-input mr-2" 
-                  (change)="toggleUserSelection(user.id)"> <!-- Bind the method to handle checkbox change -->
-              </div>
+                  (change)="toggleUserSelection(user.id)"> 
             </div>
 
-            <button class="btn btn-primary" (click)="addToTeam()">Add to Team</button> <!-- Bind the method to add users -->
+            <button class="btn btn-primary" (click)="addToTeam()">Add to Team</button> 
           </div>
         </div>
       </div>
