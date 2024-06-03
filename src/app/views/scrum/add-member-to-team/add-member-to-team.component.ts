@@ -24,6 +24,7 @@ constructor (
     this.teamService.addTeamMember(teamId, userIds).subscribe({
       next: (response: any) => {
         console.log('Team members added successfully:', response);
+        location.reload()
       },
       error: (error: any) => {
         console.error('Error adding team members:', error);

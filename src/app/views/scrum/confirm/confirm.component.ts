@@ -40,6 +40,7 @@ export class ConfirmComponent implements OnInit {
       next : (response : any) => {
         console.log("Team master assigned succefuly");
         this.loading=false
+        location.reload()
         
       },
       error : (error : any) =>{
