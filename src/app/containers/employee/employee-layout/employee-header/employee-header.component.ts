@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
@@ -9,10 +9,10 @@ import {Router} from "@angular/router";
   selector: 'app-employee-header',
   templateUrl: './employee-header.component.html',
 })
-export class EmployeeHeaderComponent extends HeaderComponent {
+export class EmployeeHeaderComponent extends HeaderComponent implements OnInit {
 
   @Input() sidebarId: string = "sidebar";
-
+  userPhoto : string =''
   constructor(
     private classToggler: ClassToggleService,
     private authService: AuthService,
@@ -20,6 +20,18 @@ export class EmployeeHeaderComponent extends HeaderComponent {
 
 ) {
     super();
+  }
+  ngOnInit(): void {
+   this.getUserPhoto()
+  }
+
+  
+  getUserPhoto() {
+    const userData = localStorage.getItem('employee');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.userPhoto = 'http://localhost:8000'+user.photo;
+    }
   }
 
   logout() {
