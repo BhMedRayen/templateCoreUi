@@ -11,25 +11,6 @@ export const navItems: INavData[] = [
         name : 'My Team Projects',
         url : 'projects/my-team-projects'
       },
-      // {
-      //   name : 'Active Projects',
-      //   url : 'projects/active-projects'
-      // },
-      // {
-      //   name : 'Done Projects',
-      //   url : 'projects/done-projects'
-      // }
-    ]
-  },
-  {
-    name: 'Scrum',
-    url: '/scrums',
-    iconComponent: { name: 'cil-address-book' },
-    children : [
-      {
-        name :'My Teams',
-        url  :'scrums/my-teams'
-      },
     ]
   },
   {

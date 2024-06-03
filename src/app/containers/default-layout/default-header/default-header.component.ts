@@ -15,7 +15,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   public newMessages = new Array(4)
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
-  userImage : String = ''
+  userPhoto : String = ''
 
   constructor(
     private classToggler: ClassToggleService,
@@ -34,7 +34,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     const userData = localStorage.getItem('product_owner');
     if (userData) {
       const user = JSON.parse(userData);
-      this.userImage = 'http://localhost:8000'+user.photo;
+      this.userPhoto = 'http://localhost:8000'+user.photo;
     }
   }
 
