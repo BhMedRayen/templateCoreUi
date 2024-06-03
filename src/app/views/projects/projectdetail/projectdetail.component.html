@@ -42,9 +42,16 @@
   </div>
 </div>
 
-<hr/>
+
 
 <h2 class="text-center mt-3 mb-3 text">Project team - {{ team?.team.team_name }}</h2>
+<ng-container *ngIf="!team?.team">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+    <strong class="text-danger">No team assigned yet!</strong> Please assign a team to this project.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</ng-container>
 <div class="container">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div *ngFor="let teamMember of team?.team_members" class="col">

@@ -9,6 +9,7 @@
   import {CreateProductBackLogComponent} from '../../productbacklog/create-product-back-log/create-product-back-log.component'
   import {UpdateProductBackLogComponent} from '../../productbacklog/update-product-back-log/update-product-back-log.component'
   import { AssignTeamComponent } from '../../scrum/assign-team/assign-team.component'
+import { TeamServiceService } from 'src/app/services/team-service.service';
   @Component({
     selector: 'app-bakclogdetails',
     standalone: true,
@@ -20,24 +21,20 @@
 
       backlogId: number = 0; 
       backlog : any ;
-      productBacklogs : any ;
+      productBacklogs : any [] = [] ;
+      teamsMap: { [projectId: number]: string } = {};
+      team: any; 
+  
 
 
   constructor(
         private route: ActivatedRoute,
         private projectsService: ProjectsService,
         private productService : ProductbacklogService,
-        public dialog: MatDialog
+        public dialog: MatDialog , 
+        private teamService : TeamServiceService
     ) {}
 
-
-
-    
-
-
-
-  
-    
 
     ngOnInit(): void {
 
@@ -45,6 +42,7 @@
         this.backlogId=params['id'];
         console.log("backlog id :",this.backlogId);
         this.getBackLogById(this.backlogId);
+        this.fetchTeamForProject(this.backlogId)
     })
 
   }
@@ -106,6 +104,23 @@
       data : { projectId : projectId }
     })
   }
-  
+
+  fetchTeamForProject(projectId: number): void {
+    this.teamService.getTeamByProjectId(projectId).subscribe({
+      next: (team: any) => {
+        this.teamsMap[projectId] = team;
+        this.team = team; 
+        this.team.team_members.forEach((teamMember: any) => {
+          teamMember.photo = 'http://localhost:8000' + teamMember.photo;
+        
+          
+        });
+        console.log(team);
+      },
+      error: (error: any) => {
+        console.error(`Error fetching team for project ${projectId}:`, error);
+      }
+    });
+  }
 
   }
