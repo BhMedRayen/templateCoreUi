@@ -48,10 +48,9 @@ export class CreateProductBackLogComponent implements OnInit{
     this.productService.createSprint(sprintData, this.data.backlogId).subscribe({
       next: (response: any) => {
         console.log("Sprint created successfully:", response);
-       
         this.loading = false;
         this.dialogRef.close();
-        
+        location.reload()
       },
       error: (error: any) => {
         console.log("Error creating sprint:", error);
