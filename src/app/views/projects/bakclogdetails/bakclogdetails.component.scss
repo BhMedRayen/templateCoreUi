@@ -13,11 +13,23 @@
   font-size: 1.3rem;
   margin-top: 10px;
 }
-.container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
+.card-body {
+  text-align: center;
 }
-.card-header {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.card-text {
+  font-size: 1rem;
+}
+.user-photo {
+  width: 70px; 
+  height: 70px;
+  object-fit: cover;
+}
+h2 {
+  font-size: 2rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #0d534a;
 }

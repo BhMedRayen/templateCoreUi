@@ -127,6 +127,8 @@ export class AllprojectsComponent implements OnInit{
       });
     }
 
+  
+
   }
 
 
