@@ -33,8 +33,7 @@ export class DeleteProductBackLogComponent implements OnInit{
   onDeleteClick() : void {
     this.loading = true;
     this.productService.deleteProductBacklog(this.sprintId).subscribe(()=> {
-      alert("Sprint deletet succefuly")
-      console.log("la sprint a été supprimé avec succes");
+     
     },
    error => {
     alert('Une erreur s\'est produite lors de la suppression du product sprint. Veuillez réessayer plus tard.');
@@ -42,6 +41,7 @@ export class DeleteProductBackLogComponent implements OnInit{
    ()=> {
      this.loading = false;
      this.dialogRef.close();
+     location.reload()
    })
   }
 
