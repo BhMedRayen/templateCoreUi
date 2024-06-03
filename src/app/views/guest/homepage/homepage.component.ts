@@ -46,17 +46,20 @@ export class HomepageComponent implements OnInit{
   getDoneProjects() : void {
     this.projectsService.getDoneProjects().subscribe({
       next: (response: any) => {
-        
-        this.projects = response.projects;
-        
-        console.log("projects : ",this.projects);
-        
+        this.projects = response.projects.map((project: any) => {
+          if (!Array.isArray(project.technologies)) {
+            project.technologies = [];
+          }
+          return project;
+        });
+        console.log("projects : ", this.projects);
       },
-      error:(error:any) => {
-        console.log("error fetching projects")
+      error: (error:any) => {
+        console.log("error fetching projects", error);
       }
-    })
+    });
   }
+  
 
 
   getTechnologyImage(technology: string): string {
