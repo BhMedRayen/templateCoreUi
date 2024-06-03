@@ -145,52 +145,6 @@ export class LoginComponent implements OnInit {
         console.log("Error login" , error);
       }
     })
-
-  //   const apiUrl = 'http://localhost:8000/user/login';
-  //   const loginData = this.loginForm.value;
-
-  //   this.http.post<any>(apiUrl, loginData).subscribe(
-  //     (response) => {
-  //       const { user, token } = response;
-  //       localStorage.setItem('token', token);
-  //       // this.fetchUserByEmail(user.email);
-
-  //     },
-  //     (error) => {
-  //       console.error('Error:', error);
-  //       this.showAlert = true;
-  //       this.loginFailed = true;
-  //     }
-  //   );
-  // }
-
-  // fetchUserByEmail(email: string) {
-  //   const apiUrl = `http://localhost:8000/api/user/findUserByEmail?email=${email}`;
-  //   this.http.get<any>(apiUrl).subscribe(
-  //     (response) => {
-  //       const userData = response.data;
-  //       console.log('User details:', userData);
-
-  //       if (userData.type === 'employee' && userData.email_verified_at !== null && userData.confirmed === 1) {
-  //         console.log('Navigating to employee interface');
-  //         this.router.navigate(['/interface-employee']);
-  //       } else if (userData.type === 'employee' && userData.confirmed === 0) {
-  //         console.log('Navigating to sended-request');
-  //         this.router.navigate(['/sended-request']);
-  //       } else if (userData.type === 'client' && userData.email_verified_at !== null ) {
-  //         console.log('Navigating to client interface');
-  //         this.router.navigate(['/interface-client']);
-  //       } else if (userData.email_verified_at === null) {
-  //         console.log('Navigating to verify-email');
-  //         this.router.navigate(['/verify-email']);
-  //       }
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching user by email:', error);
-  //       console.log('Full error response:', error);
-  //     }
-  //   );
-  // }
   }
 
 }
