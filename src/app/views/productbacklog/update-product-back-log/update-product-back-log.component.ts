@@ -55,6 +55,7 @@ export class UpdateProductBackLogComponent implements OnInit{
         this.loading = false;
         this.dialogRef.close();
         console.log("Update sprint operation completed.");
+        location.reload()
       }
     });
   }
