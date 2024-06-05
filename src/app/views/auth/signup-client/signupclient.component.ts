@@ -14,8 +14,9 @@ export class SignupclientComponent {
   passwordVisible: boolean = false;
   passwordVisible2: boolean = false;
   showAlert: boolean = false;
-  showSpiner : boolean = false;
+  loading : boolean = false;
   alertMessage: string = '';
+  
 
   constructor(
     private http: HttpClient, 
@@ -57,7 +58,7 @@ export class SignupclientComponent {
   submitForm() {
   
     if (this.validateForm()) {
-      this.showSpiner=true;
+      this.loading=true;
       const formData = {
         name: (document.getElementById('firstName') as HTMLInputElement).value, 
         lastname: (document.getElementById('lastName') as HTMLInputElement).value,
@@ -70,7 +71,7 @@ export class SignupclientComponent {
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe({
           next : (response : any)=> {
-            this.showSpiner=false;
+            this.loading=false;
             this.router.navigate(['/auth/verify-mail']);
             this.authService.createUser(formData).subscribe({
               next : (response : any) => {
@@ -88,7 +89,7 @@ export class SignupclientComponent {
             } else {
               console.error(`Server-side error: ${error.status} - ${error.error.message}`);
             }
-            this.showSpiner = false;
+            this.loading = false;
           }
         
          } );

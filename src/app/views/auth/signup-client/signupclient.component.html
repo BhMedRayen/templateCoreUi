@@ -1,5 +1,8 @@
 <div class="content">
     <app-signupnavbar></app-signupnavbar>
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
     <div class="text-center mt-5">
         <div class="d-flex justify-content-center m-5 p-5">
             <div class="col-xl-12">
@@ -8,8 +11,6 @@
                         <img class="loginImage" src="../../assets/SignUp Client/Customer relationship management-rafiki.png" alt="">
                     </div>
                     <div class="col-lg-3 text-center"> 
-                        <div *ngIf="showSpiner" class="overlay"></div>
-                        <div *ngIf="showSpiner" class="loading-spinner"></div>
                         <div class="card shadow ">
                             <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert">
                             <div class="card-body">
