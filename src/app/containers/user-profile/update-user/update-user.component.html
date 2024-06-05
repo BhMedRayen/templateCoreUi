@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="text-center mb-4">Update Profile</h2>
+    <form>
+        <div class="loading-overlay" *ngIf="loading">
+            <div class="spinner"></div>
+          </div>
+      <div class="form-group">
+        <label for="name"><i class="bi bi-person-fill m-1"></i> Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="data.userData.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="lastname"><i class="bi bi-person-fill m-1"></i> Last Name:</label>
+        <input type="text" class="form-control" id="lastname" [(ngModel)]="data.userData.lastName" name="lastname">
+      </div>
+      <div class="form-group">
+        <label for="phone"><i class="bi bi-phone-fill m-1"></i> Phone:</label>
+        <input type="text" class="form-control" id="phone" [(ngModel)]="data.userData.phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="photo" class="d-flex align-items-center"><i class="bi bi-image-fill m-1"></i> Update Photo:</label>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="photo" (change)="onFileSelected($event)">
+          <label class="custom-file-label" for="photo">Choose file</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mx-2 m-1" (click)="onUpdateUser()"><i class="bi bi-check-circle-fill"></i> Update</button>
+        <button type="button" class="btn btn-secondary mx-2 m-1" (click)="closeDialog()"><i class="bi bi-x-circle-fill"></i> Cancel</button>
+      </div>
+    </form>
+  </div>
+  

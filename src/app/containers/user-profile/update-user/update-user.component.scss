@@ -1,0 +1,61 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #067a6d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; 
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  .custom-file-input::before {
+    content: 'Choose File';
+    display: inline-block;
+    background: #067a6d;
+    color: white;
+    padding: 8px 12px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .custom-file-input:hover::before {
+    background: #067a6d;
+  }
+  
+  .custom-file-input:active::before {
+    background: #067a6d;
+  }
+  
+  .custom-file-input:focus::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .custom-file-input::after {
+    content: 'No file chosen';
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
