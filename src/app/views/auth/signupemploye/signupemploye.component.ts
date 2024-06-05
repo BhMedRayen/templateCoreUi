@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth-service';
 
 @Component({
   selector: 'app-signupemploye',
@@ -16,9 +17,14 @@ export class SignupemployeComponent {
   checkboxValues: boolean[] = [false, false, false, false, false, false, false, false];
   showAlert: boolean = false;
   alertMessage: string = '';
+  loading : boolean = false 
   skills : String [] = [];
 
-  constructor(private http: HttpClient, private router: Router) {} 
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private authService : AuthService
+    ) {} 
 
   
   saveSkills() {
@@ -122,33 +128,34 @@ export class SignupemployeComponent {
         confirmed: false,
         skills: serializedSkills,
       };
-
+      this.loading=true
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
-        .subscribe(
-          response => {
+        .subscribe({
+          next : ( response : any)=> {
             this.router.navigate(['/auth/verify-mail-employee']);
-
-            // this.http.post<any>('http://localhost:8082/user/createUser', formData)
-            //   .subscribe(
-            //     response => {
-            //       console.log("account created on spring boot data base")
-            //     },
-            //     error => {
-            //       console.error('Error creating user on second URL: ', error);
-            //     }
-            //   );
+            this.authService.createUser(formData).subscribe({
+              next : (response : any) => {
+                console.log("user created on spring data base",response);
+                
+              },
+              error : (error : any )=> {
+                console.log("error creating user on spring data base " , error );
+              }
+            })
           },
-          error => {
+          error : (error : any) => {
+            this.loading=false
             console.error('Error creating user: ', error);
             if (error.error instanceof ErrorEvent) {
               console.error('Client-side error: ', error.error.message);
             } else {
               console.error(`Server-side error: ${error.status} - ${error.error.message}`);
             }
-          }
-        );
-
-
+          },
+        complete  : () => [
+            this.loading=false
+          ]
+        })
       const email = formData.email;
       this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}).subscribe(
         response => {

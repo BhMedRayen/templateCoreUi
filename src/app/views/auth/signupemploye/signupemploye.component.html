@@ -1,5 +1,9 @@
 <div class="content">
     <app-signupnavbar></app-signupnavbar>
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="spinner"></div>
+      </div>
+      
     <div class="text-center mt-3">
         <div class="d-flex justify-content-center m-4 p-5">
             <div class="col-xl-12">
