@@ -90,19 +90,7 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  // getUserById (userId : number ) : void {
-  //   this.userService.getUserById(userId).subscribe({
-  //     next : (response : any )=> {
-  //       this.assignedUser = response.user
-  //       console.log("user" , this.assignedUser);
-        
-  //       this.assignedUserPhoto = "http://localhost:8000"+ this.assignedUser.photo 
-  //     },
-  //     error : (error : any)=> {
-  //       console.log("error fetching user ", error );
-  //     }
-  //   })
-  // }
+
 
 
   changeTaskStatus(taskId: number): void {
