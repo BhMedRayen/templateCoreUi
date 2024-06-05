@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ModalModule } from '@coreui/angular';
+import { AuthService } from 'src/app/services/auth-service';
 
 
 @Component({
@@ -17,7 +17,12 @@ export class SignupclientComponent {
   showSpiner : boolean = false;
   alertMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router,private spinner: NgxSpinnerService) {} 
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private authService : AuthService
+    ) {} 
 
   validateForm() {
 
@@ -63,23 +68,20 @@ export class SignupclientComponent {
       };
   
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
-        .subscribe(
-          response => {
+        .subscribe({
+          next : (response : any)=> {
             this.showSpiner=false;
             this.router.navigate(['/auth/verify-mail']);
-
-            // this.http.post<any>('http://localhost:8082/user/createUser', formData)
-            // .subscribe(
-            //   response => {
-            //    console.log("account created on spring boot data base")
-            //   },
-            //   error => {       
-            //     console.error('Error creating user on second URL: ', error);
-            //   }
-            // );
+            this.authService.createUser(formData).subscribe({
+              next : (response : any) => {
+                console.log("user created on spring data base");
+              },
+              error : (error : any )=> {
+                console.log("error creating user on spring data base " , error );
+              }
+            })
           },
-          
-          error => {       
+         error : (error : any)=> {       
             console.error('Error creating user: ', error);
             if (error.error instanceof ErrorEvent) {
               console.error('Client-side error: ', error.error.message);
@@ -89,8 +91,7 @@ export class SignupclientComponent {
             this.showSpiner = false;
           }
         
-        );
-
+         } );
         const email = formData.email;
         this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}) .subscribe(
           response => {
