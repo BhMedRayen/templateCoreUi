@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   verifyEmail(email: string) {
-
     const apiUrl = `http://localhost:8000/api/mail/verify/${email}`;
     this.http.post<any>(apiUrl, {}).subscribe(
       (response) => {
@@ -43,9 +42,7 @@ export class LoginComponent implements OnInit {
 
 
   togglePasswordVisibility() {
-
     this.passwordVisible = !this.passwordVisible;
-
   }
   ngOnInit(): void {
 
@@ -77,7 +74,6 @@ export class LoginComponent implements OnInit {
     this.userService.logIn(this.loginForm.value).subscribe({
       next : (response : any) => {
           this.loading=false
-       
           if(response.type==="employee" && response.email_verified_at != null && response.confirmed != 0) {
             this.router.navigate(['/employee'])
             localStorage.setItem("token",response.access_token)
