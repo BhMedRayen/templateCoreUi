@@ -89,9 +89,10 @@ export class SignupemployeComponent {
     const passwordInput = document.getElementById('exampleInputPassword1') as HTMLInputElement;
     const confirmPasswordInput = document.getElementById('exampleInputPassword2') as HTMLInputElement;
     const agreeCheckbox = document.getElementById('agreeCheckbox') as HTMLInputElement;
+    const phone = document.getElementById('phone') as HTMLInputElement;
 
    
-    if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value) {
+    if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value || !phone.value) {
       this.showAlert = true;
       this.alertMessage = 'All the inputs are required';
       return false;
@@ -121,6 +122,7 @@ export class SignupemployeComponent {
       const formData = {
         name: (document.getElementById('firstName') as HTMLInputElement).value,
         lastname: (document.getElementById('lastName') as HTMLInputElement).value,
+        phone : (document.getElementById('phone') as HTMLInputElement).value,
         email: (document.getElementById('exampleInputEmail1') as HTMLInputElement).value,
         password: (document.getElementById('exampleInputPassword1') as HTMLInputElement).value,
         sex: (document.querySelector('input[name="gender"]:checked') as HTMLInputElement)?.value,

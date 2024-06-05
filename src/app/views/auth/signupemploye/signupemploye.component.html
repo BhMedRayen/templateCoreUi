@@ -2,8 +2,8 @@
     <app-signupnavbar></app-signupnavbar>
     <div class="loading-overlay" *ngIf="loading">
         <div class="spinner"></div>
-      </div>
-      
+    </div>
+    
     <div class="text-center mt-3">
         <div class="d-flex justify-content-center m-4 p-5">
             <div class="col-xl-12">
@@ -12,15 +12,14 @@
                         <img class="loginImage" src="../../assets/signUp employe/Work anniversary-amico.png" alt="">
                     </div>
                     <div class="col-lg-3 text-center mb-3">
-                    
-                        <div class="card shadow ">
-                            <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert"> 
+                        <div class="card shadow">
+                            <img src="../../assets/logo.jpg" class="card-img-top" alt="logo" *ngIf="!showAlert">
                             <div class="card-body">
                                 <h2 class="card-title" *ngIf="!showAlert">Sign up</h2>
                                 <form>
                                     <div class="alert alert-danger" role="alert" *ngIf="showAlert">
                                         {{ alertMessage }}
-                                      </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col pl-3">
                                             <div class="input-group mb-3">
@@ -29,13 +28,17 @@
                                         </div>
                                         <div class="col">
                                             <div class="input-group mb-3">
-                                                <input type="email" class="form-control" id="lastName"  placeholder="Last Name">
+                                                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                                        <input type="text" class="form-control" id="phone" placeholder="Phone Number">
                                     </div>
                                     <div class="mb-3">
                                         <div class="input-group mb-3">
@@ -44,16 +47,15 @@
                                             <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible = !passwordVisible" style="cursor: pointer;">
                                                 <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
                                             </button>
-                                        </div>
-                                        <div class="input-group mb-3">
+                                            <div style="margin: 0 10px;"></div>
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
                                             <input [type]="passwordVisible2 ? 'text' : 'password'" class="form-control" id="exampleInputPassword2" aria-describedby="Password" placeholder="Confirm Password">
                                             <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible2 = !passwordVisible2" style="cursor: pointer;">
-                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+                                                <i class="bi" [ngClass]="passwordVisible2 ? 'bi-eye-slash' : 'bi-eye'"></i>
                                             </button>
                                         </div>
-                                    
-                                         <div class="mb-2">
+                                        
+                                        <div class="mb-2">
                                             <label class="form-label d-flex left">Gender:</label>
                                             <div class="row align-items-center">
                                                 <div class="col-auto">
@@ -70,21 +72,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-
                                         <div class="mb-3 d-flex align-items-center">
                                             <input type="file" class="form-control me-2" id="fichier">
                                             <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal_btn">Add your skills</button>
                                         </div>
-
                                         <div class="mb-2 form-check small-text">
-                                            <input type="checkbox" class="form-check-input" id="agreeCheckbox" id="agreeCheckbox">
+                                            <input type="checkbox" class="form-check-input" id="agreeCheckbox">
                                             <label class="form-check-label" for="agreeCheckbox">Yes, I understand and agree to the Aliret Terms of Service, including the User Agreement and Privacy Policy.</label>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-outline-success ms-2"  (click)="submitForm()" id="login_btn">Create my account</button>
+                                    <button type="button" class="btn btn-outline-success ms-2" (click)="submitForm()" id="login_btn">Create my account</button>
                                     <button type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modalTriggerButton"></button>
-                                    <!-- Modal -->
+                            
                                     <div class="modal fade" #exampleModal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -93,7 +92,6 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <!-- Pagination controls -->
                                                     <nav aria-label="Page navigation example">
                                                         <ul class="pagination">
                                                             <li class="page-item"><a class="page-link" (click)="prevPage()">Previous</a></li>
@@ -103,10 +101,8 @@
                                                             <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
                                                         </ul>
                                                     </nav>
-                                    
                                                     <div *ngIf="currentPage === 1">
                                                         <h4 class="d-flex justify-content-center">Back End</h4>
-                                    
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="form-check form-check-inline">
@@ -134,7 +130,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                    
                                                     <div *ngIf="currentPage === 2">
                                                         <h4 class="d-flex justify-content-center">Front End</h4>
                                                         <div class="row">
@@ -164,7 +159,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                    
                                                     <div *ngIf="currentPage === 3">
                                                         <h4 class="d-flex justify-content-center">Design</h4>
                                                         <div class="row">
@@ -174,14 +168,12 @@
                                                                     <label class="form-check-label" for="figmaCheckbox">Figma</label>
                                                                 </div>
                                                             </div>
-                                    
                                                             <div class="col-md-3">
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="checkbox" id="SketchCheckbox" [checked]="isChecked(9)" (change)="toggleCheckbox(9)">
                                                                     <label class="form-check-label" for="SketchCheckbox">Sketch</label>
                                                                 </div>
                                                             </div>
-                                    
                                                             <div class="col-md-4">
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="checkbox" id="adobeXDCheckbox" [checked]="isChecked(10)" (change)="toggleCheckbox(10)">
@@ -197,9 +189,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                    </div>
                                 </form>
-                                <a routerLink="/login">Already have an account ?<span>Log In</span></a>
+                                <a routerLink="/login">Already have an account? <span>Log In</span></a>
                             </div>
                         </div>
                     </div>
@@ -208,6 +200,3 @@
         </div>
     </div>
 </div>
-
-
-
