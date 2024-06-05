@@ -26,6 +26,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: '',
+        loadChildren: () =>
+          import('./views/employee/overview/overview.module').then((m) => m.OverviewModule)
+      },
+      {
         path: 'messages',
         loadChildren: () =>
           import('./views/employee/messages/employee-messages.module').then((m) => m.EmployeeMessagesModule)
