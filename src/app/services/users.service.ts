@@ -30,6 +30,14 @@ export class UsersService {
     return this.http.get<any>('http://localhost:8000/api/user/get-all-clients')
   }
 
+  updateUserData (userData : any) : Observable <any> {
+    return this.http.put<any>('http://localhost:8000/api/user/update-user-data',userData)
+  }
+
+
+
+
+
   logIn(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
