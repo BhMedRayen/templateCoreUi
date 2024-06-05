@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service';
 import { UsersService } from 'src/app/services/users.service';
+import {UpdateUserComponent} from './update-user/update-user.component'
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class ProfileLayoutComponent implements OnInit {
   constructor(
     private userService : UsersService,
     private authService : AuthService,
-    private router: Router 
+    private router: Router ,
+    public dialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.loadUserIdFromLocalStorage()
@@ -112,6 +115,14 @@ export class ProfileLayoutComponent implements OnInit {
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  
+
+  openUpdateUser(userData : any) : void {
+    const dialogRef = this.dialog.open(UpdateUserComponent , {
+      width : '500px' , 
+      data : {userData : userData}
+    })
   }
   
 
