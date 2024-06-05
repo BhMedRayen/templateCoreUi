@@ -35,19 +35,22 @@
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                                        <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                                    </div>
                                     <div class="mb-3">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                                            <input [type]="passwordVisible ? 'text' : 'password' " class="form-control" id="exampleInputPassword1" aria-describedby="Password" placeholder="Password">
+                                            <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="exampleInputPassword1" aria-describedby="Password" placeholder="Password">
                                             <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible = !passwordVisible" style="cursor: pointer;">
-                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye' "></i>
+                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
                                             </button>
-                                        </div>    
-                                        <div class="input-group mb-3">
+                                            <div style="margin: 0 10px;"></div>
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                                            <input [type]="passwordVisible2 ? 'text' : 'password' " class="form-control" id="exampleInputPassword2" aria-describedby="Password" placeholder="Confirm Password">
+                                            <input [type]="passwordVisible2 ? 'text' : 'password'" class="form-control" id="exampleInputPassword2" aria-describedby="Password" placeholder="Confirm Password">
                                             <button class="btn btn-outline-secondary" type="button" (click)="passwordVisible2 = !passwordVisible2" style="cursor: pointer;">
-                                                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye' "></i>
+                                                <i class="bi" [ngClass]="passwordVisible2 ? 'bi-eye-slash' : 'bi-eye'"></i>
                                             </button>
                                         </div>
                                         <div class="mb-2">

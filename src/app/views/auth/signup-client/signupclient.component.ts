@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/services/auth-service';
 
 
@@ -16,12 +15,12 @@ export class SignupclientComponent {
   showAlert: boolean = false;
   loading : boolean = false;
   alertMessage: string = '';
+
   
 
   constructor(
     private http: HttpClient, 
     private router: Router,
-    private spinner: NgxSpinnerService,
     private authService : AuthService
     ) {} 
 
@@ -36,8 +35,8 @@ export class SignupclientComponent {
     const passwordInput = document.getElementById('exampleInputPassword1') as HTMLInputElement;
     const confirmPasswordInput = document.getElementById('exampleInputPassword2') as HTMLInputElement;
     const agreeCheckbox = document.getElementById('agreeCheckbox') as HTMLInputElement;
-    
-    if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value) {
+    const phone = document.getElementById('phone') as HTMLInputElement;
+    if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value || !confirmPasswordInput.value || !phone) {
       this.showAlert = true;
       this.alertMessage = 'All the inputs are required';
       return false;
@@ -64,6 +63,7 @@ export class SignupclientComponent {
         lastname: (document.getElementById('lastName') as HTMLInputElement).value,
         email: (document.getElementById('exampleInputEmail1') as HTMLInputElement).value,
         password: (document.getElementById('exampleInputPassword1') as HTMLInputElement).value,
+        phone : (document.getElementById('phone')as HTMLInputElement).value , 
         sex: (document.querySelector('input[name="gender"]:checked') as HTMLInputElement)?.value,
         type :("client"),
       };
