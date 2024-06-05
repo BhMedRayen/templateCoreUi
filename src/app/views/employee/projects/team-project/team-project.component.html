@@ -1,34 +1,41 @@
 <h1 class="text-center mb-5">My Teams Projects</h1>
 
 <div class="container mt-2">
-  <div class="row justify-content-center">
-    <div *ngFor="let team of teams" class="col mb-4">
-      <div class="card h-100">
-        <div class="card-header bg-primary text-white">
-          {{ team.team.team_name }}
-        </div>
-        <div class="card-body">
-          <ng-container *ngIf="projectsByTeam[team.team.id]?.length; else noProjectsAlert">
-            <ul class="list-unstyled">
-              <li *ngFor="let project of projectsByTeam[team.team.id]" class="mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <span><i class="fas fa-tasks me-2"></i>{{ project?.projectname }}</span>
-                  <a [routerLink]="['/employee/projects/product-backlog', team.team.scrum_master_id, project?.id ,{teamid : team.team.id}]" routerLinkActive="router-link-active">
-                    <button class="btn btn-success btn-check-backlog btn-sm">
-                      <i class="bi bi-journal-check"></i> Check Backlog
-                    </button>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-          <ng-template #noProjectsAlert>
-            <div class="alert alert-warning" role="alert">
-              <i class="bi bi-exclamation-triangle-fill"></i> No projects assigned yet for this team.
-            </div>
-          </ng-template>
+  <ng-container *ngIf="teams.length > 0; else noTeamsAlert">
+    <div class="row justify-content-center">
+      <div *ngFor="let team of teams" class="col mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white">
+            {{ team.team.team_name }}
+          </div>
+          <div class="card-body">
+            <ng-container *ngIf="projectsByTeam[team.team.id]?.length; else noProjectsAlert">
+              <ul class="list-unstyled">
+                <li *ngFor="let project of projectsByTeam[team.team.id]" class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-tasks me-2"></i>{{ project?.projectname }}</span>
+                    <a [routerLink]="['/employee/projects/product-backlog', team.team.scrum_master_id, project?.id ,{teamid : team.team.id}]" routerLinkActive="router-link-active">
+                      <button class="btn btn-success btn-check-backlog btn-sm">
+                        <i class="bi bi-journal-check"></i> Check Backlog
+                      </button>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #noProjectsAlert>
+              <div class="alert alert-warning" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i> No projects assigned yet for this team.
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #noTeamsAlert>
+    <div class="alert alert-danger text-center mt-3" role="alert">
+      <i class="bi bi-exclamation-triangle-fill"></i> You're not assigned to any team yet.
+    </div>
+  </ng-template>
 </div>
