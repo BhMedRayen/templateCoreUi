@@ -84,6 +84,7 @@ export class LoginComponent implements OnInit {
               photo : response.photo,
               email: response.email,
               type: response.type,
+              phone : response.phone,
               email_verified_at: response.email_verified_at,
               confirmed: response.confirmed
             };
@@ -106,6 +107,7 @@ export class LoginComponent implements OnInit {
               photo : response.photo,
               email: response.email,
               type: response.type,
+              phone : response.phone,
               email_verified_at: response.email_verified_at,
               confirmed: response.confirmed
             };
@@ -126,6 +128,7 @@ export class LoginComponent implements OnInit {
               photo : response.photo,
               email: response.email,
               type: response.type,
+              phone : response.phone,
               email_verified_at: response.email_verified_at,
               confirmed: response.confirmed
             };
