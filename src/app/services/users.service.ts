@@ -40,6 +40,10 @@ export class UsersService {
     return this.http.put<any>(`${this.apiUrl}/update-photo/${userId}`, formData);
   }
 
+  updatePassword(userData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/update-password`, userData);
+  }
+
 
 
 

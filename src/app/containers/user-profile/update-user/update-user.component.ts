@@ -16,7 +16,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UpdateUserComponent implements OnInit {
  
-  password: string = '';
+
   loading : boolean = false
   userPhoto : string = ''
   selectedFile: File | null = null;
