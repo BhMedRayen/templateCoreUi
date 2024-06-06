@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth-service';
 import { UsersService } from 'src/app/services/users.service';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import  {ChangePasswordComponent} from './change-password/change-password.component'
 
 @Component({
   selector: 'user-layout-profile',
@@ -143,8 +144,7 @@ updatePhoto() {
   }
 }
 
-changePassword() {
-}
+
 
 
 
@@ -165,6 +165,13 @@ onFileSelected(event: any): void {
 
   openUpdateUser(userData: any): void {
     this.dialog.open(UpdateUserComponent, {
+      width: '500px',
+      data: { userData: userData },
+    });
+  }
+
+  OpenchangePassword(userData: any) {
+    this.dialog.open(ChangePasswordComponent, {
       width: '500px',
       data: { userData: userData },
     });
