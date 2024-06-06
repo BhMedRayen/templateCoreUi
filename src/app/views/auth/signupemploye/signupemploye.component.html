@@ -73,9 +73,9 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 d-flex align-items-center">
-                                            <input type="file" class="form-control me-2" id="fichier">
+                                            <input type="file" class="form-control me-2" id="fichier" (change)="onFileSelected($event)">
                                             <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal_btn">Add your skills</button>
-                                        </div>
+                                        </div>                                        
                                         <div class="mb-2 form-check small-text">
                                             <input type="checkbox" class="form-check-input" id="agreeCheckbox">
                                             <label class="form-check-label" for="agreeCheckbox">Yes, I understand and agree to the Aliret Terms of Service, including the User Agreement and Privacy Policy.</label>

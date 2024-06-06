@@ -15,6 +15,7 @@ export class SignupclientComponent {
   showAlert: boolean = false;
   loading : boolean = false;
   alertMessage: string = '';
+  selectedFile: File | null = null;
 
   
 
@@ -55,34 +56,36 @@ export class SignupclientComponent {
   }
 
   submitForm() {
-  
     if (this.validateForm()) {
       this.loading=true;
-      const formData = {
-        name: (document.getElementById('firstName') as HTMLInputElement).value, 
-        lastname: (document.getElementById('lastName') as HTMLInputElement).value,
-        email: (document.getElementById('exampleInputEmail1') as HTMLInputElement).value,
-        password: (document.getElementById('exampleInputPassword1') as HTMLInputElement).value,
-        phone : (document.getElementById('phone')as HTMLInputElement).value , 
-        sex: (document.querySelector('input[name="gender"]:checked') as HTMLInputElement)?.value,
-        type :("client"),
-      };
+      const formData = new FormData();
+      formData.append('name', (document.getElementById('firstName') as HTMLInputElement).value);
+      formData.append('lastname', (document.getElementById('lastName') as HTMLInputElement).value);
+      formData.append('email', (document.getElementById('exampleInputEmail1') as HTMLInputElement).value);
+      formData.append('password', (document.getElementById('exampleInputPassword1') as HTMLInputElement).value);
+      formData.append('phone', (document.getElementById('phone') as HTMLInputElement).value);
+      formData.append('sex', (document.querySelector('input[name="gender"]:checked') as HTMLInputElement)?.value || '');
+      formData.append('type', 'client');
+      
+      if (this.selectedFile) {
+        formData.append('photo', this.selectedFile, this.selectedFile.name);
+      }
   
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe({
-          next : (response : any)=> {
-            this.loading=false;
+          next: (response: any) => {
+            this.loading = false;
             this.router.navigate(['/auth/verify-mail']);
             this.authService.createUser(formData).subscribe({
-              next : (response : any) => {
+              next: (response: any) => {
                 console.log("user created on spring data base");
               },
-              error : (error : any )=> {
-                console.log("error creating user on spring data base " , error );
+              error: (error: any) => {
+                console.log("error creating user on spring data base ", error);
               }
             })
           },
-         error : (error : any)=> {       
+          error: (error: any) => {
             console.error('Error creating user: ', error);
             if (error.error instanceof ErrorEvent) {
               console.error('Client-side error: ', error.error.message);
@@ -91,18 +94,25 @@ export class SignupclientComponent {
             }
             this.loading = false;
           }
-        
-         } );
-        const email = formData.email;
-        this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}) .subscribe(
-          response => {
-            console.log("Verification email sent successfully");
-          },
-          error => {
-            console.error('Error sending verification email: ', error);
-              }
-            )
-          } 
+        });
+
+      const email = formData.get('email'); 
+      this.http.post<any>(`http://localhost:8000/api/mail/RenvoyerEmail/${email}`, {}).subscribe(
+        response => {
+          console.log("Verification email sent successfully");
+        },
+        error => {
+          console.error('Error sending verification email: ', error);
+        }
+      );
+    }
+}
+
+
+      onFileSelected(event: any) {
+        this.selectedFile = event.target.files[0];
+        console.log('Selected file:', this.selectedFile);
       }
+      
       
     }
