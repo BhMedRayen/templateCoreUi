@@ -1,4 +1,9 @@
 <div class="content">
+  
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+  
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom mb-5">
     <a class="navbar-brand">
       <img class="logo" src="../../../../assets/logo.jpg" alt="Logo">
@@ -39,8 +44,10 @@
       <div class="card profile-card">
         <div class="card-body">
           <div class="text-center">
-            <img src="{{ employeePhoto || productOwnerPhoto || clientPhoto }}" class="rounded-circle img-fluid" alt="User Photo" style="width: 150px; height: 150px;">
-            <h2 class="mt-3">{{ employee?.name || productOwner?.name || client?.name }} {{ employee?.lastName || productOwner?.lastName || client?.lastName }}</h2>
+            <div class="text-center" (click)="fileInput.click()">
+              <img src="{{ employeePhoto || productOwnerPhoto || clientPhoto }}" class="rounded-circle img-fluid" alt="User Photo" style="width: 150px; height: 150px;" >
+              <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+            </div>            <h2 class="mt-3">{{ employee?.name || productOwner?.name || client?.name }} {{ employee?.lastName || productOwner?.lastName || client?.lastName }}</h2>
             <p class="mail">{{ employee?.email || productOwner?.email || client?.email }}</p>
           </div>
           <hr>
@@ -51,7 +58,6 @@
                 <li class="list-group-item"><strong><i class="bi bi-person-badge"></i> Type:</strong> {{ employee ? 'Employee' : productOwner ? 'Product Owner' : 'Client' }}</li>
                 <li class="list-group-item"><strong><i class="bi bi-phone"></i> Phone:</strong> {{ (employee && employee.phone) || (productOwner && productOwner.phone) || (client && client.phone) }}</li>
               </ul>
-  
             </div>
             <div class="col-md-6">
               <h5>Actions</h5>
@@ -59,19 +65,30 @@
                 <button type="button" class="btn btn-primary" (click)="openUpdateUser(employee || productOwner || client)">
                   <i class="bi bi-pencil"></i> Edit Profile
                 </button>
+                <br>
+                <button *ngIf="employee" type="button" class="btn btn-primary" (click)="updateSkills()">
+                  <i class="bi bi-gear"></i> Update Skills
+                </button>
+                <br>
+                <button type="button" class="btn btn-primary" (click)="changePassword()">
+                  <i class="bi bi-key"></i> Change Password
+                </button>
+                
               </div>
             </div>
           </div>
           <div *ngIf="parsedSkills.length > 0" class="mt-4">
             <h5><i class="bi bi-tools"></i> Skills</h5>
-            <ul class="list-group">
-              <li *ngFor="let skill of parsedSkills" class="list-group-item"><i class="bi bi-check-circle-fill"></i> {{ skill }}</li>
-            </ul>
+            <div class="d-flex flex-wrap">
+              <div *ngFor="let skill of parsedSkills" class="p-1">
+                <div class="list-group-item"><i class="bi bi-check-circle-fill"></i> {{ skill }}</div>
+              </div>
+            </div>
           </div>
           <div *ngIf="parsedSkills.length === 0" class="text-center mt-4 no-skills-message">
             <br><br><br><br>
             <p class="text-muted"><i class="bi bi-exclamation-triangle-fill text-warning"></i> No skills to show</p>
-          </div>          
+          </div>
         </div>
       </div>
     </div>
@@ -79,5 +96,6 @@
       <img src="../../../assets/Resume-pana.png" alt="Additional Image" class="img-fluid">
     </div>
   </div>
+
 </div>
 

@@ -22,6 +22,9 @@ export class ProfileLayoutComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
   isDropdownOpen: boolean = false;
   parsedSkills: string[] = [];
+  selectedFile: File | null = null;
+  loading : boolean = false 
+
 
   constructor(
     private userService: UsersService,
@@ -102,6 +105,55 @@ export class ProfileLayoutComponent implements OnInit {
       },
     });
   }
+
+updateSkills() {
+
+}
+
+updatex(userId: number, formData: FormData) {
+  this.userService.updatePhoto(userId, formData).subscribe({
+    next: (response: any) => {
+      console.log('Photo updated successfully:', response);
+    },
+    error: (error: any) => {
+      console.error('Error updating photo:', error);
+    }
+  });
+}
+
+updatePhoto() {
+  let userId: number;
+  if (this.employee) {
+    userId = this.employee.id;
+  } else if (this.productOwner) {
+    userId = this.productOwner.id;
+  } else if (this.client) {
+    userId = this.client.id;
+  } else {
+    console.error('User type not recognized.');
+    return;
+  }
+
+  if (this.selectedFile) {
+    const formData = new FormData();
+    formData.append('photo', this.selectedFile);
+    this.updatex(userId, formData);
+  } else {
+    console.error('No file selected.');
+  }
+}
+
+changePassword() {
+}
+
+
+
+onFileSelected(event: any): void {
+  this.selectedFile = event.target.files[0];
+  this.updatePhoto();
+  console.log('Selected file:', this.selectedFile);
+  
+}
 
   toggleNavbar(): void {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
