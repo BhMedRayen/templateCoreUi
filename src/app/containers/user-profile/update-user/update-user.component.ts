@@ -46,8 +46,9 @@ export class UpdateUserComponent implements OnInit {
       lastname: this.data.userData.lastName,
       skills: this.data.userData.skills,
       phone: this.data.userData.phone,
-      photo: this.selectedFile || null 
     };
+
+ 
     console.log("user data ", userData);
     this.loading=true
     this.userService.updateUserData(userData).subscribe({
@@ -68,6 +69,6 @@ export class UpdateUserComponent implements OnInit {
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+    console.log("selected file ", this.selectedFile);
   }
-
 }

@@ -33,7 +33,12 @@ export class UsersService {
   updateUserData (userData : any) : Observable <any> {
     return this.http.put<any>('http://localhost:8000/api/user/update-user-data',userData)
   }
+  updatePhoto(userId: number, photo: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('photo', photo);
 
+    return this.http.put<any>(`${this.apiUrl}/update-photo/${userId}`, formData);
+  }
 
 
 
