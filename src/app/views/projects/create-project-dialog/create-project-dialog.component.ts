@@ -92,7 +92,7 @@ export class CreateProjectDialogComponent {
       },
       complete: () => {
         this.loading = false;
-       // this.router.navigate(['/projects/list']);
+       
 
       }
     });
