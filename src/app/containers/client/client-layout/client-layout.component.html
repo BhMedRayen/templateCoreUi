@@ -23,12 +23,10 @@
                 <img id="userPhoto" [src]="userPhoto" alt="User Photo">
               </a>
               <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" routerLink="/profile">
                   <i class="bi bi-person"></i> Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="bi bi-gear"></i> Settings
-                </a>
+         
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">
                   <i class="bi bi-box-arrow-right"></i> Logout
