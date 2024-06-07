@@ -36,7 +36,7 @@ export class CreateSprintBackLogComponent  implements OnInit{
       description: this.description,
       sprintname: this.data.sprintname
     };
-    
+
     this.sprintService.createSprint(data).subscribe({
       next: (response: any) => {
         this.loading = false;
@@ -48,5 +48,4 @@ export class CreateSprintBackLogComponent  implements OnInit{
       }
     });
   }
-
 }

@@ -138,6 +138,14 @@ export class SignupemployeComponent {
           console.log(key, value);
       });
 
+      const user = {
+        name: (document.getElementById('firstName') as HTMLInputElement).value,
+        lastname: (document.getElementById('lastName') as HTMLInputElement).value,
+        email: (document.getElementById('exampleInputEmail1') as HTMLInputElement).value,
+        password: (document.getElementById('exampleInputPassword1') as HTMLInputElement).value,
+        type: 'employee'
+      };
+
   
         this.loading = true;
   
@@ -145,7 +153,7 @@ export class SignupemployeComponent {
             .subscribe({
                 next: (response: any) => {
                     this.router.navigate(['/auth/verify-mail-employee']);
-                    this.authService.createUser(formData).subscribe({
+                    this.authService.createUser(user).subscribe({
                         next: (response: any) => {
                             console.log("user created on spring data base", response);
                         },

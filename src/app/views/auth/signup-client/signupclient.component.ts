@@ -70,13 +70,20 @@ export class SignupclientComponent {
       if (this.selectedFile) {
         formData.append('photo', this.selectedFile, this.selectedFile.name);
       }
+      const user = {
+        name: (document.getElementById('firstName') as HTMLInputElement).value,
+        lastname: (document.getElementById('lastName') as HTMLInputElement).value,
+        email: (document.getElementById('exampleInputEmail1') as HTMLInputElement).value,
+        password: (document.getElementById('exampleInputPassword1') as HTMLInputElement).value,
+        type: 'client'
+      };
   
       this.http.post<any>('http://localhost:8000/api/auth/register', formData)
         .subscribe({
           next: (response: any) => {
             this.loading = false;
             this.router.navigate(['/auth/verify-mail']);
-            this.authService.createUser(formData).subscribe({
+            this.authService.createUser(user).subscribe({
               next: (response: any) => {
                 console.log("user created on spring data base");
               },
